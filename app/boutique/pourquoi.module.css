@@ -1,0 +1,78 @@
+.plaqueShape {
+  clip-path: polygon(
+    3.2% 0,
+    46.7% 0,
+    47.3% 2.2%,
+    48.2% 3.8%,
+    50% 5.4%,
+    51.8% 3.8%,
+    52.7% 2.2%,
+    53.3% 0,
+    96.8% 0,
+    96.8% 2.7%,
+    99.7% 2.7%,
+    99.7% 97.3%,
+    96.8% 97.3%,
+    96.8% 100%,
+    3.2% 100%,
+    3.2% 97.3%,
+    0.3% 97.3%,
+    0.3% 2.7%,
+    3.2% 2.7%
+  );
+}
+
+.plaqueFrame {
+  filter: drop-shadow(0 28px 42px rgba(0, 0, 0, 0.42));
+}
+
+.plaqueBorder {
+  background: linear-gradient(135deg, #8f6d29, #e2c47c 48%, #82601f);
+  padding: 2px;
+}
+
+.plaque {
+  position: relative;
+  min-height: 30rem;
+  overflow: hidden;
+  background: #f4eee2;
+}
+
+.plaque::after {
+  position: absolute;
+  inset: 0;
+  content: "";
+  pointer-events: none;
+  background:
+    linear-gradient(135deg, rgba(255, 255, 255, 0.46), transparent 45%, rgba(173, 139, 77, 0.06)),
+    url("/img/fond-lin.webp") center / cover;
+  opacity: 0.12;
+}
+
+@media (max-width: 639px) {
+  .plaque {
+    min-height: 0;
+  }
+
+  .plaqueShape {
+    clip-path: polygon(
+      7% 0,
+      43% 0,
+      45% 2%,
+      50% 4.2%,
+      55% 2%,
+      57% 0,
+      93% 0,
+      93% 1.2%,
+      100% 1.2%,
+      100% 98.8%,
+      93% 98.8%,
+      93% 100%,
+      7% 100%,
+      7% 98.8%,
+      0 98.8%,
+      0 1.2%,
+      7% 1.2%
+    );
+  }
+}

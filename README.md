@@ -1,36 +1,42 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Uncommon People Tribe
 
-## Getting Started
+Boutique Next.js pour les collections Héritage et Signature.
 
-First, run the development server:
+## Lancer le projet
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Copier `.env.example` vers `.env.local`, puis renseigner les valeurs réelles. Ne jamais committer `.env.local`.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Paiement et stock Shopify
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Le panier est conservé dans le navigateur. Au paiement, le serveur crée un panier avec la Storefront Cart API de Shopify puis redirige vers le checkout sécurisé Shopify.
 
-## Learn More
+Variables nécessaires :
 
-To learn more about Next.js, take a look at the following resources:
+- `SHOPIFY_STORE_DOMAIN`
+- `SHOPIFY_STOREFRONT_ACCESS_TOKEN`
+- `SHOPIFY_STOREFRONT_API_VERSION`
+- `SHOPIFY_VARIANTS_JSON`
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Les clés de `SHOPIFY_VARIANTS_JSON` sont produites par `creerCleVariante` dans `lib/products.ts`. Exemple : `polo-signature-up:noir:M`. Une variante non reliée n’est jamais envoyée au paiement.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Contact et newsletter
 
-## Deploy on Vercel
+Resend assure l’envoi du formulaire de contact et l’enregistrement réel des abonnés :
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- `RESEND_API_KEY`
+- `RESEND_FROM_EMAIL`, après validation du domaine dans Resend
+- `RESEND_SEGMENT_ID`, facultatif mais recommandé
+- `NEWSLETTER_WELCOME_CODE`, pour envoyer automatiquement l’avantage de bienvenue
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Sans configuration serveur valide, l’interface affiche une erreur explicite et ne simule jamais une inscription ou un paiement réussi.
+
+## Vérification
+
+```bash
+npm run build
+```
