@@ -1,7 +1,7 @@
 // Page Blog (retour Tom v6). Reprend le contenu editorial de la marque.
 // Layout editorial calque sur la maquette client : article vedette grand format +
 // 3 articles compacts empiles.
-import { Cta } from "@/components/cta";
+import { Cta, Kicker } from "@/components/cta";
 import { AlerteArticles } from "./alerte";
 import { Calendrier } from "./calendrier";
 
@@ -44,9 +44,7 @@ export default function Blog() {
     <main className="bg-[#EEE5D5]">
       <div className="mx-auto max-w-6xl px-6 pb-20 pt-32 md:pt-40">
         <div className="text-center">
-          <span className="flex items-center justify-center gap-3 text-[0.62rem] font-semibold uppercase tracking-[0.22em] text-[#9C7E32] sm:text-[0.68rem] sm:tracking-[0.28em]" aria-hidden="true">
-            <span className="text-[0.55rem] sm:text-[0.6rem]">◆</span> Le blog UP <span className="text-[0.55rem] sm:text-[0.6rem]">◆</span>
-          </span>
+          <Kicker>Le blog UP</Kicker>
           <h1 className="font-display mt-2 text-[clamp(1.8rem,7vw,3.2rem)] text-[#191610] sm:mt-4">
             Des récits de <span className="italic text-[#9C7E32]">la tribu</span>
           </h1>

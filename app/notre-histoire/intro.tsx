@@ -3,7 +3,7 @@
 // Section d'ouverture "Notre histoire" : calquee sur la maquette fournie par le client
 // (portrait + carte "Racines / Transmission / Exigence" en superposition legere, bloc
 // savoir-faire compact, feuillage filigrane en fond).
-import { Reveal } from "@/components/cta";
+import { Reveal, Kicker } from "@/components/cta";
 
 function Monogramme({ className = "" }: { className?: string }) {
   return (
@@ -15,7 +15,7 @@ function Monogramme({ className = "" }: { className?: string }) {
 
 export function Intro() {
   return (
-    <section className="relative overflow-hidden bg-[#EEE5D5] px-6 py-20 md:py-28">
+    <section className="relative overflow-hidden bg-[#EEE5D5] px-6 pb-20 pt-36 sm:pt-40 md:pb-28">
       <span
         className="pointer-events-none absolute -left-10 -top-10 h-[26rem] w-[26rem] bg-contain bg-left-top bg-no-repeat opacity-[0.14] mix-blend-multiply"
         style={{ backgroundImage: "url(/img/fond-feuillage.webp)" }}
@@ -25,33 +25,32 @@ export function Intro() {
       <div className="relative z-10 mx-auto max-w-6xl">
         <div className="grid items-center gap-14 lg:grid-cols-[1.05fr_0.95fr]">
           <Reveal>
-            <span className="text-[0.68rem] font-semibold uppercase tracking-[0.28em] text-[#9C7E32]">
-              Notre histoire
-            </span>
+            <Kicker>Le fondateur</Kicker>
             <h1 className="font-display mt-4 text-[clamp(2.1rem,4.2vw,3.1rem)] leading-[1.12] text-[#191610]">
-              Nés de la terre,
+              Parti à 11 ans.
               <br />
-              <span className="italic text-[#9C7E32]">portés par l&apos;héritage.</span>
+              <span className="italic text-[#9C7E32]">Revenu pour créer.</span>
             </h1>
             <p className="mt-7 max-w-lg leading-relaxed text-[#191610]/78">
-              Originaire de Martinique, de Guadeloupe et de Guyane, je porte en moi
-              l&apos;héritage de nos terres, de nos familles et de nos traditions.
-              C&apos;est cette richesse qui m&apos;anime et donne un sens profond à
-              chacune de mes créations.
+              Érick quitte le nord de la Martinique à 11 ans pour l&apos;Hexagone. Il y
+              construit sa vie comme enseignant en EPS et ostéopathe, au contact de la
+              transmission, de l&apos;effort et des autres, sans jamais perdre le lien avec son île.
             </p>
             <p className="mt-4 max-w-lg leading-relaxed text-[#191610]/78">
-              De Koh-Lanta à aujourd&apos;hui, chaque étape a renforcé ma volonté de
-              bâtir une marque qui nous ressemble : authentique, exigeante et tournée
-              vers l&apos;avenir.
+              En 2022, il revient s&apos;installer en Martinique. Uncommon People Tribe naît
+              de ce retour : transformer ses racines en un langage vestimentaire contemporain
+              et prouver qu&apos;avec du travail et les bonnes personnes, on accomplit de grandes choses.
             </p>
 
             <div className="mt-9 border-l-2 border-[#D4B36A] pl-5">
               <blockquote className="font-display text-lg italic leading-snug text-[#191610]">
-                « Plus qu&apos;une marque,
+                « Plus qu&apos;une marque :
                 <br />
-                une identité, une excellence. »
+                une identité à porter. »
               </blockquote>
-              <Monogramme className="mt-4 text-2xl" />
+              <p className="mt-4 text-[0.62rem] font-semibold uppercase tracking-[0.2em] text-[#9C7E32]">
+                Érick · Fondateur
+              </p>
             </div>
           </Reveal>
 
@@ -83,27 +82,18 @@ export function Intro() {
         </div>
 
         <Reveal delay={0.15} className="mt-14">
-          <div
-            id="savoir-faire"
-            className="grid overflow-hidden border border-[#191610]/12 bg-[#F5F1E8] shadow-[0_16px_36px_rgba(25,22,16,0.08)] sm:grid-cols-[1.1fr_0.9fr]"
-          >
-            <div className="flex flex-col justify-center p-7">
-              <h2 className="font-display text-lg text-[#191610]">Le savoir-faire</h2>
-              <p className="mt-4 text-[0.88rem] leading-relaxed text-[#191610]/72">
-                Broderies délicates, matières sélectionnées, finitions exigeantes.
-              </p>
-              <p className="mt-1 text-[0.82rem] font-semibold text-[#9C7E32]">
-                Chaque détail raconte notre exigence.
-              </p>
-            </div>
-            <img
-              src="/img/detail-drapeau.webp"
-              alt="Macro du drapeau martiniquais cousu sur la manche"
-              width={1344}
-              height={768}
-              loading="lazy"
-              className="h-full min-h-[9rem] w-full object-cover"
-            />
+          <div className="grid overflow-hidden border border-[#191610]/12 bg-[#F5F1E8] shadow-[0_16px_36px_rgba(25,22,16,0.08)] sm:grid-cols-3 sm:divide-x sm:divide-[#191610]/10">
+            {[
+              ["Enseignant", "Transmettre et faire grandir."],
+              ["Ostéopathe", "Écouter, comprendre, accompagner."],
+              ["Entrepreneur", "Créer avec exigence et persévérance."],
+            ].map(([titre, texte], index) => (
+              <div key={titre} className="relative border-b border-[#191610]/10 p-7 last:border-b-0 sm:border-b-0">
+                <span className="font-faq text-2xl text-[#B8925A]">0{index + 1}</span>
+                <h2 className="font-display mt-4 text-lg text-[#191610]">{titre}</h2>
+                <p className="mt-3 text-[0.86rem] leading-relaxed text-[#191610]/68">{texte}</p>
+              </div>
+            ))}
           </div>
         </Reveal>
 

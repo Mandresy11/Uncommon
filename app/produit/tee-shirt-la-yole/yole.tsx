@@ -3,7 +3,7 @@
 // Grande section immersive "La yole ronde" : raconte le symbole culturel derriere le
 // tee-shirt best-seller. Fond photo mer/yole pleine largeur + overlay, registre coherent
 // avec Declic (notre-histoire) et Calendrier (blog).
-import { Reveal } from "@/components/cta";
+import { Reveal, Kicker } from "@/components/cta";
 
 export function LaYole() {
   return (
@@ -17,9 +17,7 @@ export function LaYole() {
 
       <div className="relative z-10 mx-auto grid max-w-6xl items-center gap-14 px-6 lg:grid-cols-2">
         <Reveal>
-          <span className="text-[0.68rem] font-semibold uppercase tracking-[0.28em] text-[#D4B36A]">
-            Le symbole
-          </span>
+          <Kicker>Le symbole</Kicker>
           <h2 className="font-display mt-3 text-[clamp(2rem,4.2vw,2.9rem)] leading-[1.15] text-[#F5F1E8]">
             La <span className="italic text-[#E3C888]">yole ronde</span>
           </h2>

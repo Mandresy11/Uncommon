@@ -5,7 +5,6 @@
 // puis section "D'autres questions" avec recherche + filtre par categorie.
 import { useMemo, useState } from "react";
 import Link from "next/link";
-import { Cta, Kicker } from "@/components/cta";
 import {
   IconPanier,
   IconCamion,
@@ -32,8 +31,7 @@ const CATEGORIES: { valeur: Categorie | "toutes"; label: string; icone: React.Re
   { valeur: "produit", label: "Produit", icone: <IconTshirt /> },
 ];
 
-export function Faq({ principales, autres }: { principales: Question[]; autres: QuestionCategorisee[] }) {
-  const [ouvert, setOuvert] = useState<number | null>(null);
+export function Faq({ autres }: { autres: QuestionCategorisee[] }) {
   const [ouvertAutres, setOuvertAutres] = useState<number | null>(null);
   const [recherche, setRecherche] = useState("");
   const [categorie, setCategorie] = useState<Categorie | "toutes">("toutes");
@@ -49,93 +47,8 @@ export function Faq({ principales, autres }: { principales: Question[]; autres: 
 
   return (
     <main className="bg-[#0A0908]">
-      <section className="relative overflow-hidden">
-        <div className="grid lg:grid-cols-[18rem_1fr]">
-          {/* Bandeau lateral */}
-          <div className="relative hidden overflow-hidden border-r border-[#D4B36A]/15 lg:block">
-            <div
-              className="absolute inset-0 bg-cover bg-center"
-              style={{ backgroundImage: "url(/img/fond-hero.webp)" }}
-              aria-hidden="true"
-            />
-            <div className="absolute inset-0 bg-[#0A0908]/55" aria-hidden="true" />
-            <span
-              className="font-display pointer-events-none absolute -bottom-6 -left-3 select-none text-[16rem] leading-none text-[#D4B36A] opacity-[0.14]"
-              aria-hidden="true"
-            >
-              UP
-            </span>
-            <div className="relative z-10 flex h-full flex-col justify-center px-8 py-20">
-              <span className="block h-16 w-px bg-[#D4B36A]/50" aria-hidden="true" />
-              <p className="mt-6 space-y-1 text-[0.72rem] font-semibold uppercase tracking-[0.22em] text-[#F5F1E8]/85">
-                <span className="block">Uncommon</span>
-                <span className="block">People Tribe</span>
-                <span className="block">West Indian</span>
-                <span className="block">Excellence</span>
-              </p>
-            </div>
-          </div>
-
-          {/* Contenu */}
-          <div className="relative px-6 py-20 md:px-14 md:py-28">
-            <div className="text-center">
-              <Kicker>FAQ</Kicker>
-              <h1 className="font-display mt-5 text-[clamp(2.1rem,4.2vw,3rem)] text-[#F5F1E8]">
-                Questions <span className="italic text-[#E3C888]">fréquentes</span>
-              </h1>
-              <p className="mt-3 text-[0.95rem] text-[#F5F1E8]/70">
-                Des réponses claires pour une expérience sans surprise.
-              </p>
-            </div>
-
-            <div className="mx-auto mt-12 max-w-2xl">
-              {principales.map((item, i) => {
-                const estOuvert = ouvert === i;
-                return (
-                  <div key={item.q} className="mb-4 border border-[#D4B36A]/25 bg-[#0A0908]/60">
-                    <button
-                      onClick={() => setOuvert(estOuvert ? null : i)}
-                      aria-expanded={estOuvert}
-                      className="flex w-full items-center gap-5 px-6 py-5 text-left"
-                    >
-                      <span className="font-display shrink-0 text-[0.95rem] text-[#9C7E32]">
-                        {String(i + 1).padStart(2, "0")}
-                      </span>
-                      <span className="h-6 w-px shrink-0 bg-[#D4B36A]/30" aria-hidden="true" />
-                      <span className="font-display flex-1 text-[1.05rem] text-[#F5F1E8]">
-                        {item.q}
-                      </span>
-                      <span
-                        className={`flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-[#D4B36A]/60 text-base text-[#D4B36A] transition-transform ${
-                          estOuvert ? "rotate-45" : ""
-                        }`}
-                        aria-hidden="true"
-                      >
-                        +
-                      </span>
-                    </button>
-                    {estOuvert && (
-                      <p className="px-6 pb-5 pl-[3.75rem] text-[0.88rem] leading-relaxed text-[#F5F1E8]/72">
-                        {item.r}
-                      </p>
-                    )}
-                  </div>
-                );
-              })}
-            </div>
-
-            <div className="mx-auto mt-8 flex max-w-2xl flex-col items-center justify-center gap-4 sm:flex-row">
-              <span className="flex items-center gap-3 text-[0.72rem] font-semibold uppercase tracking-[0.16em] text-[#F5F1E8]/70">
-                Besoin d&apos;une réponse rapide ?
-              </span>
-              <Cta href="/contact" variante="or">Nous contacter</Cta>
-            </div>
-          </div>
-        </div>
-      </section>
-
       {/* D'autres questions : composition claire calée sur la maquette de référence */}
-      <section id="autres-questions" className="font-faq relative overflow-hidden bg-[#f1e9dc] px-5 pb-16 pt-6 text-[#28221c] md:px-8 md:pb-20 lg:min-h-[58.8125rem]">
+      <section id="autres-questions" className="font-faq relative overflow-hidden bg-[#f1e9dc] px-5 pb-16 pt-32 text-[#28221c] md:px-8 md:pb-20 md:pt-36 lg:min-h-[58.8125rem]">
         <span
           className="pointer-events-none absolute inset-0 bg-cover bg-center opacity-[0.055] mix-blend-multiply"
           style={{ backgroundImage: "url(/img/fond-papier.webp)" }}
@@ -156,9 +69,9 @@ export function Faq({ principales, autres }: { principales: Question[]; autres: 
             <p className="mt-1 text-[0.58rem] font-semibold uppercase tracking-[0.32em] text-[#4b4238]/70">
               Uncommon People Tribe
             </p>
-            <h2 className="mt-10 text-[clamp(2.35rem,3.15vw,2.9rem)] font-medium uppercase leading-none tracking-[0.065em] text-[#211c18]">
+            <h1 className="mt-10 text-[clamp(2.35rem,3.15vw,2.9rem)] font-medium uppercase leading-none tracking-[0.065em] text-[#211c18]">
               D&apos;autres questions
-            </h2>
+            </h1>
             <span className="mx-auto mt-5 flex items-center justify-center gap-2" aria-hidden="true">
               <span className="h-1.5 w-1.5 rotate-45 border border-[#b68b37]" />
             </span>

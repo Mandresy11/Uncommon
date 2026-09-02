@@ -90,7 +90,7 @@ export function ProduitClient({ couleurInitiale }: { couleurInitiale?: string })
         <div className="grid gap-8 pb-16 md:grid-cols-[1.15fr_0.85fr] md:gap-12">
           <div>
             <div className="mb-4 md:hidden">
-              <p className="text-[0.66rem] uppercase tracking-[0.2em] text-[#9C7E32]">Collection Signature · Série limitée</p>
+              <Kicker>Collection Signature · Série limitée</Kicker>
               <p className="font-display mt-1 text-[1.7rem] text-[#191610]">Polo Signature UP</p>
               <p className="mt-1 text-xl font-semibold text-[#191610]">60 €</p>
             </div>
@@ -130,7 +130,7 @@ export function ProduitClient({ couleurInitiale }: { couleurInitiale?: string })
 
           <div className="md:sticky md:top-32 md:h-fit">
             <div className="hidden md:block">
-              <p className="text-[0.68rem] uppercase tracking-[0.2em] text-[#9C7E32]">Collection Signature · Série limitée</p>
+              <Kicker>Collection Signature · Série limitée</Kicker>
               <h2 className="font-display mt-2 text-[clamp(1.7rem,3.5vw,2.4rem)] text-[#191610]">
                 Polo Signature UP
               </h2>
@@ -167,9 +167,10 @@ export function ProduitClient({ couleurInitiale }: { couleurInitiale?: string })
                   Guide des tailles
                 </Link>
               </div>
-              <div className="mt-3 grid grid-cols-4 gap-2.5">
+              <div className="mt-3 grid grid-cols-4 gap-3">
                 {TAILLES_POLO.map((t) => {
                   const dispo = estDisponible(creerCleVariante(PRODUIT.id, couleur.nom, t));
+                  const selectionne = taille === t;
                   return (
                     <button
                       key={t}
@@ -178,15 +179,20 @@ export function ProduitClient({ couleurInitiale }: { couleurInitiale?: string })
                         setTaille(t);
                         setAjoute(false);
                       }}
-                      className={`flex h-12 items-center justify-center border text-[0.82rem] font-semibold transition ${
+                      className={`btn-cut relative flex h-14 items-center justify-center text-[0.95rem] font-bold uppercase tracking-[0.06em] transition-all duration-200 ${
                         !dispo
-                          ? "cursor-not-allowed border-[#191610]/10 text-[#191610]/25 line-through"
-                          : taille === t
-                            ? "border-[#191610] bg-[#191610] text-white"
-                            : "border-[#191610]/25 text-[#191610] hover:border-[#191610]"
+                          ? "cursor-not-allowed bg-[#191610]/5 text-[#191610]/25 line-through"
+                          : selectionne
+                            ? "scale-[1.04] bg-[#191610] text-[#E3C888] shadow-[0_8px_20px_rgba(25,22,16,0.35)]"
+                            : "bg-white text-[#191610] shadow-[0_2px_8px_rgba(25,22,16,0.1)] ring-1 ring-inset ring-[#191610]/15 hover:bg-[#191610] hover:text-white hover:shadow-[0_6px_16px_rgba(25,22,16,0.25)]"
                       }`}
                     >
                       {t}
+                      {selectionne && (
+                        <span className="absolute -right-1.5 -top-1.5 flex h-5 w-5 items-center justify-center rounded-full bg-[#9C7E32] text-[0.6rem] text-white shadow-[0_2px_6px_rgba(0,0,0,0.3)]" aria-hidden="true">
+                          ✓
+                        </span>
+                      )}
                     </button>
                   );
                 })}

@@ -45,24 +45,46 @@ export function Galerie({ images }: { images: Image[] }) {
 
   return (
     <>
-      <div className="mb-8 flex flex-wrap justify-center gap-2">
-        {FILTRES.map((f) => (
-          <button
-            key={f.valeur}
-            type="button"
-            onClick={() => {
-              setFiltre(f.valeur);
-              setActif(null);
-            }}
-            className={`border px-4 py-2 text-[0.68rem] font-semibold uppercase tracking-[0.16em] transition-colors ${
-              filtre === f.valeur
-                ? "border-[#191610] bg-[#191610] text-[#F5F1E8]"
-                : "border-[#191610]/25 text-[#191610]/70 hover:border-[#191610]/60"
-            }`}
-          >
-            {f.label}
-          </button>
-        ))}
+      <div className="mx-auto mb-9 grid w-full max-w-[38rem] grid-cols-2 gap-2.5 sm:grid-cols-4">
+        {FILTRES.map((f) => {
+          const estActif = filtre === f.valeur;
+
+          return (
+            <button
+              key={f.valeur}
+              type="button"
+              aria-pressed={estActif}
+              onClick={() => {
+                setFiltre(f.valeur);
+                setActif(null);
+              }}
+              style={{ clipPath: "polygon(0 0, calc(100% - 9px) 0, 100% 9px, 100% 100%, 9px 100%, 0 calc(100% - 9px))" }}
+              className={`group relative isolate min-h-[2.9rem] overflow-hidden border px-4 py-2.5 text-[0.68rem] font-semibold uppercase tracking-[0.18em] transition-[color,background-color,border-color,box-shadow,transform] duration-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#9C7E32] ${
+                estActif
+                  ? "-translate-y-px border-[#191610] bg-[#191610] text-[#F5F1E8] shadow-[0_8px_20px_rgba(25,22,16,0.16)]"
+                  : "border-[#9C7E32]/35 bg-[#F5F1E8]/35 text-[#191610]/72 shadow-[inset_0_1px_0_rgba(255,255,255,0.65)] hover:-translate-y-px hover:border-[#9C7E32]/70 hover:bg-[#F5F1E8]/75 hover:text-[#191610]"
+              }`}
+            >
+              <span
+                className={`pointer-events-none absolute inset-[3px] border transition-colors duration-300 ${
+                  estActif ? "border-[#D4B36A]/38" : "border-transparent group-hover:border-[#9C7E32]/20"
+                }`}
+                aria-hidden="true"
+              />
+              <span className="relative flex items-center justify-center gap-2.5">
+                <span
+                  className={`h-1.5 w-1.5 rotate-45 transition-all duration-300 ${
+                    estActif
+                      ? "bg-[#D4B36A] opacity-100"
+                      : "border border-[#9C7E32] opacity-0 group-hover:opacity-70"
+                  }`}
+                  aria-hidden="true"
+                />
+                {f.label}
+              </span>
+            </button>
+          );
+        })}
       </div>
 
       <div className="columns-2 gap-4 md:columns-3 [&>*]:mb-4">

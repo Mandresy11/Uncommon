@@ -99,7 +99,7 @@ export function ProduitClient({ couleurInitiale }: { couleurInitiale?: string })
           <div>
             {/* Titre + prix AU-DESSUS de la photo, sur mobile uniquement */}
             <div className="mb-4 md:hidden">
-              <p className="text-[0.66rem] uppercase tracking-[0.2em] text-[#9C7E32]">Best-seller · Série limitée</p>
+              <Kicker>Best-seller · Série limitée</Kicker>
               <p className="font-display mt-1 text-[1.7rem] text-[#191610]">Tee-shirt La Yole</p>
               <p className="mt-1 text-xl font-semibold text-[#191610]">39 €</p>
             </div>
@@ -142,7 +142,7 @@ export function ProduitClient({ couleurInitiale }: { couleurInitiale?: string })
           {/* Panneau sticky (titre+prix caches sur mobile car deja au-dessus de la photo) */}
           <div className="md:sticky md:top-32 md:h-fit">
             <div className="hidden md:block">
-              <p className="text-[0.68rem] uppercase tracking-[0.2em] text-[#9C7E32]">Best-seller · Série limitée</p>
+              <Kicker>Best-seller · Série limitée</Kicker>
               <h2 className="font-display mt-2 text-[clamp(1.7rem,3.5vw,2.4rem)] text-[#191610]">
                 Tee-shirt La Yole
               </h2>
@@ -179,26 +179,35 @@ export function ProduitClient({ couleurInitiale }: { couleurInitiale?: string })
                   Guide des tailles
                 </Link>
               </div>
-              <div className="mt-3 grid grid-cols-3 gap-2.5 sm:grid-cols-5">
-                {TAILLES.map((s) => (
-                  <button
-                    key={s.t}
-                    disabled={!estDisponible(creerCleVariante(PRODUIT.id, couleur.nom, s.t))}
-                    onClick={() => {
-                      setTaille(s.t);
-                      setAjoute(false);
-                    }}
-                    className={`flex h-12 items-center justify-center border text-[0.82rem] font-semibold transition ${
-                      !estDisponible(creerCleVariante(PRODUIT.id, couleur.nom, s.t))
-                        ? "cursor-not-allowed border-[#191610]/10 text-[#191610]/25 line-through"
-                        : taille === s.t
-                          ? "border-[#191610] bg-[#191610] text-white"
-                          : "border-[#191610]/25 text-[#191610] hover:border-[#191610]"
-                    }`}
-                  >
-                    {s.t}
-                  </button>
-                ))}
+              <div className="mt-3 grid grid-cols-3 gap-3 sm:grid-cols-5">
+                {TAILLES.map((s) => {
+                  const dispo = estDisponible(creerCleVariante(PRODUIT.id, couleur.nom, s.t));
+                  const selectionne = taille === s.t;
+                  return (
+                    <button
+                      key={s.t}
+                      disabled={!dispo}
+                      onClick={() => {
+                        setTaille(s.t);
+                        setAjoute(false);
+                      }}
+                      className={`btn-cut relative flex h-14 items-center justify-center text-[0.95rem] font-bold uppercase tracking-[0.06em] transition-all duration-200 ${
+                        !dispo
+                          ? "cursor-not-allowed bg-[#191610]/5 text-[#191610]/25 line-through"
+                          : selectionne
+                            ? "scale-[1.04] bg-[#191610] text-[#E3C888] shadow-[0_8px_20px_rgba(25,22,16,0.35)]"
+                            : "bg-white text-[#191610] shadow-[0_2px_8px_rgba(25,22,16,0.1)] ring-1 ring-inset ring-[#191610]/15 hover:bg-[#191610] hover:text-white hover:shadow-[0_6px_16px_rgba(25,22,16,0.25)]"
+                      }`}
+                    >
+                      {s.t}
+                      {selectionne && (
+                        <span className="absolute -right-1.5 -top-1.5 flex h-5 w-5 items-center justify-center rounded-full bg-[#9C7E32] text-[0.6rem] text-white shadow-[0_2px_6px_rgba(0,0,0,0.3)]" aria-hidden="true">
+                          ✓
+                        </span>
+                      )}
+                    </button>
+                  );
+                })}
               </div>
               <p className="mt-2 text-[0.75rem] text-[#191610]/55">
                 Coupe droite. {stockCharge && stockSynchronise ? "Stock synchronisé avec la boutique." : "Disponibilité vérifiée avant le paiement."}

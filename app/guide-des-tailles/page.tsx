@@ -97,16 +97,18 @@ export default function GuideTailles() {
         />
         <span className="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_75%_45%,rgba(173,129,48,0.12),transparent_38%),rgba(9,9,8,0.86)]" aria-hidden="true" />
         <span className="font-faq pointer-events-none absolute -left-6 bottom-0 -z-10 select-none text-[17rem] leading-none text-[#d4b36a]/[0.035] sm:text-[25rem]" aria-hidden="true">
-          FIT
+          UP
         </span>
 
         <div className="mx-auto grid w-full max-w-6xl min-w-0 items-center gap-10 sm:gap-14 lg:grid-cols-[0.88fr_1.12fr] lg:gap-20">
           <div className="min-w-0">
             <Kicker>Bien choisir</Kicker>
             <h1 id="titre-guide" className="font-display mt-6 max-w-[35rem] text-[clamp(2.15rem,5vw,4.5rem)] leading-[1.06] tracking-[-0.02em] sm:mt-7">
-              La bonne coupe,
+              La bonne
               <br />
-              <span className="italic text-[#e3c888]">sans hésiter.</span>
+              coupe,
+              <br />
+              <span className="italic text-[#e3c888] whitespace-nowrap">sans hésiter.</span>
             </h1>
             <span className="mt-6 block sm:mt-7"><Ornement sombre /></span>
             <p className="mt-5 max-w-[33rem] text-[0.9rem] leading-[1.7] text-[#f5f1e8]/74 sm:mt-7 sm:text-[clamp(0.94rem,1.4vw,1.06rem)] sm:leading-[1.8]">
@@ -114,10 +116,19 @@ export default function GuideTailles() {
               correspond. Un bon choix commence toujours par un vêtement qui te va déjà bien.
             </p>
 
-            <div className="mt-6 grid grid-cols-3 gap-3 text-[0.54rem] font-semibold uppercase leading-[1.45] tracking-[0.14em] text-[#d4b36a] sm:mt-8 sm:flex sm:flex-wrap sm:gap-x-7 sm:gap-y-3 sm:text-[0.63rem] sm:tracking-[0.2em]">
-              <span>Du S au XXL</span>
-              <span>Deux coupes</span>
-              <span>Séries limitées</span>
+            <div className="mt-7 grid max-w-[34rem] grid-cols-3 gap-2.5 sm:mt-9 sm:gap-3">
+              {["Du S au XXL", "Deux coupes", "Séries limitées"].map((label) => (
+                <div
+                  key={label}
+                  className="relative flex min-h-[5rem] flex-col items-center justify-center overflow-hidden border border-[#d4b36a]/32 bg-[#f5f1e8]/[0.045] px-2 py-3 text-center shadow-[inset_0_1px_0_rgba(255,255,255,0.04),0_10px_24px_rgba(0,0,0,0.14)] backdrop-blur-sm transition-[border-color,background-color,transform] duration-300 hover:-translate-y-0.5 hover:border-[#d4b36a]/65 hover:bg-[#d4b36a]/[0.075] sm:min-h-[5.5rem] sm:px-4"
+                >
+                  <span className="absolute inset-[3px] border border-[#d4b36a]/10" aria-hidden="true" />
+                  <span className="mb-2 h-1.5 w-1.5 rotate-45 bg-[#d4b36a]" aria-hidden="true" />
+                  <span className="relative text-[0.54rem] font-semibold uppercase leading-[1.45] tracking-[0.13em] text-[#e3c888] sm:text-[0.62rem] sm:tracking-[0.17em]">
+                    {label}
+                  </span>
+                </div>
+              ))}
             </div>
           </div>
 
@@ -173,7 +184,7 @@ export default function GuideTailles() {
 
         <div className="relative z-10 mx-auto w-full max-w-6xl min-w-0">
           <header className="mx-auto max-w-2xl text-center">
-            <p className="text-[0.67rem] font-semibold uppercase tracking-[0.3em] text-[#9c7e32]">En trois gestes</p>
+            <Kicker>En trois gestes</Kicker>
             <h2 id="titre-mesures" className="font-display mt-4 text-[clamp(1.8rem,4vw,3.2rem)] leading-tight">
               Mesure, compare, <span className="block sm:inline">choisis</span>
             </h2>
@@ -202,8 +213,13 @@ export default function GuideTailles() {
                     </div>
                     <div className="flex flex-wrap gap-2" aria-label={`Tailles disponibles pour ${produit.nom}`}>
                       {produit.tailles.map((taille) => (
-                        <span key={taille} className="flex h-9 min-w-9 items-center justify-center border border-[#9c7e32]/45 bg-[#efe5d5] px-2 text-[0.7rem] font-semibold text-[#191610]">
-                          {taille}
+                        <span
+                          key={taille}
+                          className="btn-cut relative isolate flex h-12 min-w-12 items-center justify-center overflow-hidden border border-[#9c7e32] bg-[linear-gradient(145deg,#211d17_0%,#0a0908_78%)] px-3 font-display text-[0.76rem] font-semibold uppercase tracking-[0.08em] text-[#f5f1e8] shadow-[0_3px_0_#9c7e32,0_8px_16px_rgba(25,22,16,0.18)]"
+                        >
+                          <span className="absolute right-2 top-2 h-1.5 w-1.5 rotate-45 bg-[#d4b36a] shadow-[0_0_7px_rgba(227,200,136,0.45)]" aria-hidden="true" />
+                          <span className="relative z-10">{taille}</span>
+                          <span className="absolute inset-x-3 bottom-1.5 h-px bg-[#d4b36a]/75" aria-hidden="true" />
                         </span>
                       ))}
                     </div>
@@ -215,7 +231,7 @@ export default function GuideTailles() {
                 ))}
               </div>
 
-              <div className="mt-5 border-l-2 border-[#d4b36a] bg-[#e5dcc9]/55 px-5 py-5 sm:flex sm:items-center sm:justify-between sm:gap-6">
+              <div className="mt-5 border border-[#191610]/15 bg-white px-5 py-5 shadow-[0_8px_24px_rgba(25,22,16,0.08)] sm:flex sm:items-center sm:justify-between sm:gap-6">
                 <div>
                   <p className="font-display text-[0.95rem] text-[#191610]">Encore un doute ?</p>
                   <p className="mt-2 max-w-md text-[0.8rem] leading-[1.55] text-[#191610]/62">

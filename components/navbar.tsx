@@ -31,7 +31,6 @@ const menuMaison: Groupe = {
   label: "La maison",
   liens: [
     { href: "/notre-histoire", label: "Notre histoire" },
-    { href: "/a-propos", label: "À propos" },
     { href: "/blog", label: "Le blog" },
     { href: "/guide-des-tailles", label: "Guide des tailles" },
     { href: "/livraison-retours", label: "Livraison" },
@@ -48,7 +47,6 @@ const liensMobile: Lien[] = [
   { href: "/collections", label: "Collections" },
   { href: "/galerie", label: "Galerie" },
   { href: "/notre-histoire", label: "Notre histoire" },
-  { href: "/a-propos", label: "À propos" },
   { href: "/blog", label: "Le blog" },
   { href: "/guide-des-tailles", label: "Guide des tailles" },
   { href: "/livraison-retours", label: "Livraison" },

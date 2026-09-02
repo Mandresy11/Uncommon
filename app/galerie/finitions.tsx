@@ -2,7 +2,7 @@
 
 // Grande section "Les finitions en detail" : zoom sur 4 macro-photos en tres grand format
 // avec legende explicative, met en avant la qualite avant le clic vers la boutique.
-import { Reveal } from "@/components/cta";
+import { Reveal, Kicker } from "@/components/cta";
 
 const FINITIONS = [
   {
@@ -32,9 +32,7 @@ export function Finitions() {
     <section className="relative overflow-hidden bg-[#0A0908] py-20 md:py-28">
       <div className="relative z-10 mx-auto max-w-6xl px-6">
         <Reveal className="text-center">
-          <span className="text-[0.68rem] font-semibold uppercase tracking-[0.28em] text-[#D4B36A]">
-            Zoom
-          </span>
+          <Kicker>Zoom</Kicker>
           <h2 className="font-display mt-3 text-[clamp(2rem,4.2vw,2.9rem)] text-[#F5F1E8]">
             Les finitions <span className="italic text-[#E3C888]">en détail</span>
           </h2>

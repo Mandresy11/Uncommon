@@ -26,7 +26,6 @@ const colonnes = [
     titre: "La maison",
     liens: [
       { href: "/notre-histoire", label: "Notre histoire" },
-      { href: "/a-propos", label: "À propos" },
       { href: "/mentions-legales", label: "Mentions légales" },
       { href: "/cgv", label: "CGV" },
       { href: "/confidentialite", label: "Confidentialité" },

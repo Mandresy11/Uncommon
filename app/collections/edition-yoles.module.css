@@ -1,0 +1,231 @@
+.section {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  background: #d8c8a9;
+}
+
+.desktopArtwork {
+  position: relative;
+  display: none;
+  aspect-ratio: 1916 / 821;
+  width: 100%;
+}
+
+.desktopLink {
+  position: absolute;
+  left: 50.18%;
+  top: 68.45%;
+  z-index: 2;
+  width: 22.91%;
+  height: 10.75%;
+  min-width: 12rem;
+  transform: translateX(-50%);
+  border-radius: 1px;
+}
+
+.desktopLink:focus-visible {
+  outline: 3px solid #fff6dc;
+  outline-offset: 4px;
+}
+
+.mobileArtwork {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  min-height: 39rem;
+  place-items: center;
+  padding: 3.5rem 1rem 6.25rem;
+  background-image:
+    linear-gradient(90deg, rgba(223, 208, 178, 0.28), rgba(226, 213, 188, 0.08)),
+    url("/img/edition-course-yoles-v2.webp");
+  background-position: center, right center;
+  background-size: cover, auto 200%;
+}
+
+.mobileArtwork::before {
+  position: absolute;
+  inset: 0;
+  background: rgba(226, 214, 190, 0.16);
+  content: "";
+  pointer-events: none;
+}
+
+.card {
+  position: relative;
+  z-index: 1;
+  box-sizing: border-box;
+  width: calc(100vw - 2rem);
+  min-width: 0;
+  max-width: 38rem;
+  padding: 3.5rem 1.25rem 2rem;
+  clip-path: polygon(
+    0.8rem 0,
+    calc(100% - 0.8rem) 0,
+    calc(100% - 0.8rem) 0.35rem,
+    100% 0.8rem,
+    100% calc(100% - 0.8rem),
+    calc(100% - 0.8rem) calc(100% - 0.35rem),
+    calc(100% - 0.8rem) 100%,
+    0.8rem 100%,
+    0.8rem calc(100% - 0.35rem),
+    0 calc(100% - 0.8rem),
+    0 0.8rem,
+    0.8rem 0.35rem
+  );
+  background:
+    linear-gradient(rgba(255, 251, 241, 0.86), rgba(246, 238, 221, 0.92)),
+    url("/img/fond-papier.webp") center / cover;
+  box-shadow: 0 0.5rem 1.5rem rgba(72, 49, 17, 0.28);
+  color: #32302c;
+  text-align: center;
+}
+
+.card::before {
+  position: absolute;
+  inset: 0.4rem;
+  border: 1px solid rgba(137, 104, 38, 0.78);
+  clip-path: inherit;
+  content: "";
+  pointer-events: none;
+}
+
+.topOrnament {
+  position: absolute;
+  left: 50%;
+  top: 1.25rem;
+  display: flex;
+  width: calc(100% - 3.5rem);
+  align-items: center;
+  gap: 0.75rem;
+  transform: translateX(-50%);
+  color: #9b7831;
+}
+
+.topOrnament::before,
+.topOrnament::after {
+  height: 1px;
+  flex: 1;
+  background: currentColor;
+  content: "";
+  opacity: 0.75;
+}
+
+.title {
+  font-family: var(--font-faq), Georgia, serif;
+  font-size: clamp(2.25rem, 12vw, 4rem);
+  font-weight: 400;
+  line-height: 0.92;
+  letter-spacing: 0.035em;
+  text-transform: uppercase;
+}
+
+.titleAccent {
+  display: block;
+  margin-top: 0.45rem;
+  color: #8c7136;
+  font-size: 0.82em;
+  font-style: italic;
+}
+
+.divider {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  margin: 1.6rem auto 1.25rem;
+  color: #9a7832;
+}
+
+.divider::before,
+.divider::after {
+  height: 1px;
+  flex: 1;
+  background: currentColor;
+  content: "";
+  opacity: 0.35;
+}
+
+.dividerDiamond {
+  width: 0.45rem;
+  height: 0.45rem;
+  transform: rotate(45deg);
+  background: currentColor;
+}
+
+.copy {
+  position: relative;
+  margin-inline: auto;
+  max-width: 32rem;
+  font-size: 0.95rem;
+  line-height: 1.65;
+}
+
+.cta {
+  position: relative;
+  display: inline-flex;
+  min-height: 3.5rem;
+  min-width: min(100%, 17rem);
+  align-items: center;
+  justify-content: center;
+  margin-top: 1.65rem;
+  border: 1px solid #8b6b2a;
+  background: linear-gradient(180deg, #b29655, #997a35);
+  box-shadow: 0 0.25rem 0.65rem rgba(55, 38, 12, 0.28);
+  color: #fff9eb;
+  font-size: 0.76rem;
+  font-weight: 500;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  transition: filter 180ms ease, transform 180ms ease;
+}
+
+.cta::before {
+  position: absolute;
+  inset: 0.22rem;
+  border: 1px solid rgba(255, 245, 215, 0.38);
+  content: "";
+}
+
+.cta:hover {
+  filter: brightness(1.08);
+  transform: translateY(-1px);
+}
+
+.cta:focus-visible {
+  outline: 3px solid #5b451e;
+  outline-offset: 4px;
+}
+
+@media (min-width: 80rem) {
+  .desktopArtwork {
+    display: block;
+  }
+
+  .mobileArtwork {
+    display: none;
+  }
+}
+
+@media (max-width: 25rem) {
+  .mobileArtwork {
+    padding-inline: 0.65rem;
+  }
+
+  .card {
+    width: calc(100vw - 1.3rem);
+  }
+
+  .title {
+    font-size: clamp(2rem, 10.5vw, 2.75rem);
+  }
+
+  .copy {
+    font-size: 0.88rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cta {
+    transition: none;
+  }
+}

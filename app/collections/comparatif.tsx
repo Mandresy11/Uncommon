@@ -1,309 +1,150 @@
-"use client";
-
-import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import type { SVGProps } from "react";
 
-type IconProps = SVGProps<SVGSVGElement>;
+const SAVOIR_FAIRE = [
+  {
+    collection: "Héritage",
+    geste: "La sérigraphie",
+    titre: "Une yole dessinée comme un emblème.",
+    description:
+      "L’or révèle les reliefs du dessin et transforme un symbole martiniquais en pièce manifeste.",
+    image: "/img/detail-yole.webp",
+    alt: "Détail de la yole sérigraphiée en doré sur le tee-shirt Héritage",
+    href: "/produit/tee-shirt-la-yole",
+  },
+  {
+    collection: "Signature",
+    geste: "La broderie",
+    titre: "Un monogramme pensé pour durer.",
+    description:
+      "Point après point, le fil doré donne du relief au monogramme UP et signe la pièce avec discrétion.",
+    image: "/img/detail-monogramme.webp",
+    alt: "Détail du monogramme UP brodé en fil doré sur le polo Signature",
+    href: "/produit/polo-signature-up",
+  },
+] as const;
 
-type Critere = {
-  label: string;
-  heritage: string;
-  signature: string;
-  Icone: (props: IconProps) => React.ReactNode;
-};
-
-const iconProps = (props: IconProps) => ({
-  xmlns: "http://www.w3.org/2000/svg",
-  viewBox: "0 0 24 24",
-  fill: "none",
-  stroke: "currentColor",
-  strokeWidth: 1.6,
-  strokeLinecap: "round" as const,
-  strokeLinejoin: "round" as const,
-  "aria-hidden": true,
-  ...props,
-});
-
-function IconDiamant(props: IconProps) {
+function Fleche() {
   return (
-    <svg {...iconProps(props)}>
-      <path d="M6.5 3.5h11L22 9l-10 12L2 9l4.5-5.5Z" />
-      <path d="m2.5 9 6-1.5L12 20.5 15.5 7.5 21.5 9M6.5 3.5l2 4h7l2-4" />
+    <svg viewBox="0 0 24 24" className="h-4 w-4" fill="none" aria-hidden="true">
+      <path d="M5 12h13M13 6l6 6-6 6" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
     </svg>
   );
 }
 
-function IconMatiere(props: IconProps) {
+function Losange() {
   return (
-    <svg {...iconProps(props)}>
-      <path d="M5 3v18M9.7 3v18M14.3 3v18M19 3v18M3 5h18M3 9.7h18M3 14.3h18M3 19h18" />
-      <path d="m3 7.3 18 9.4M3 16.7 21 7.3" opacity=".55" />
-    </svg>
-  );
-}
-
-function IconCoupe(props: IconProps) {
-  return (
-    <svg {...iconProps(props)}>
-      <path d="m8 4-4 2-2 5 4 2v7h12v-7l4-2-2-5-4-2c-.4 2-1.8 3-4 3S8.4 6 8 4Z" />
-    </svg>
-  );
-}
-
-function IconFinition(props: IconProps) {
-  return (
-    <svg {...iconProps(props)}>
-      <path d="m4 20 12.6-16a2.4 2.4 0 0 1 3.6 3.2L6 21" />
-      <path d="m15.5 5.4 3.1 3.1M7.5 14.8 4 11.5M10 12l-3.5-3.5M13 8.5 9.5 5" />
-    </svg>
-  );
-}
-
-function IconCouleurs(props: IconProps) {
-  return (
-    <svg {...iconProps(props)}>
-      <path d="M12 3a9 9 0 1 0 0 18h1.3a2 2 0 0 0 1.2-3.6 1.7 1.7 0 0 1 1-3.1H18a3 3 0 0 0 3-3C21 6.7 17 3 12 3Z" />
-      <circle cx="7.5" cy="10" r=".8" fill="currentColor" stroke="none" />
-      <circle cx="10" cy="6.8" r=".8" fill="currentColor" stroke="none" />
-      <circle cx="14" cy="6.8" r=".8" fill="currentColor" stroke="none" />
-    </svg>
-  );
-}
-
-function IconPrix(props: IconProps) {
-  return (
-    <svg {...iconProps(props)}>
-      <path d="M3 12 12 3h7l2 2v7l-9 9-9-9Z" />
-      <circle cx="17" cy="7" r="1" />
-    </svg>
-  );
-}
-
-function IconOccasion(props: IconProps) {
-  return (
-    <svg {...iconProps(props)}>
-      <path d="M4 5h16v16H4zM4 9h16M8 3v4M16 3v4" />
-      <path d="m9 15 2 2 4-5" />
-    </svg>
-  );
-}
-
-function IconBalance(props: IconProps) {
-  return (
-    <svg {...iconProps(props)}>
-      <path d="M12 3v18M8 21h8M12 5 5 8m14-3-7 3M5 8l-2.5 5a3 3 0 0 0 5 0ZM19 5l2.5 8a3 3 0 0 1-5 0Z" />
-    </svg>
-  );
-}
-
-// 4 criteres cles visibles directement (registre mobile), les autres restent dans l'accordeon.
-const CRITERES_CLES: Critere[] = [
-  { label: "Pièce phare", heritage: "Tee-shirt La Yole", signature: "Polo Signature UP", Icone: IconDiamant },
-  { label: "Matière", heritage: "Coton peigné épais", signature: "Piqué premium, 95 % coton / 5 % élasthanne", Icone: IconMatiere },
-  { label: "Finition", heritage: "Yole sérigraphiée or", signature: "Monogramme UP brodé or", Icone: IconFinition },
-  { label: "Pour quelle occasion", heritage: "Quotidien, décontracté", signature: "Élégant, plus habillé", Icone: IconOccasion },
-];
-
-const CRITERES_DETAIL: Critere[] = [
-  { label: "Coupe", heritage: "Droite", signature: "Normale", Icone: IconCoupe },
-  { label: "Couleurs", heritage: "Noir, Sable, Olive", signature: "Noir, Vert, Rouge", Icone: IconCouleurs },
-  { label: "Prix", heritage: "39 €", signature: "60 €", Icone: IconPrix },
-];
-
-function Ornement({ court = false }: { court?: boolean }) {
-  return (
-    <span className="inline-flex items-center" aria-hidden="true">
-      <span className="mx-1.5 h-2 w-2 rotate-45 border border-[#d0a841]" />
+    <span className="flex items-center gap-3" aria-hidden="true">
+      <span className="h-px w-9 bg-[#c79e47]/65" />
+      <span className="h-2 w-2 rotate-45 border border-[#d4b36a]" />
+      <span className="h-px w-9 bg-[#c79e47]/65" />
     </span>
   );
 }
 
-type Collection = "heritage" | "signature";
-
-const COLLECTIONS = {
-  heritage: {
-    nom: "Héritage",
-    image: "/img/tee-noir.webp",
-    alt: "Tee-shirt noir La Yole de la collection Héritage",
-    accroche: "L’essence de la tribu.",
-    description: "Un basique brut et authentique, pensé pour le quotidien.",
-    href: "/produit/tee-shirt-la-yole",
-  },
-  signature: {
-    nom: "Signature",
-    image: "/img/polo-noir.webp",
-    alt: "Polo noir au monogramme doré de la collection Signature",
-    accroche: "L’élégance de la tribu.",
-    description: "Une pièce raffinée, subtilement distinctive.",
-    href: "/produit/polo-signature-up",
-  },
-} as const;
-
-function CarteCollection({ collection }: { collection: Collection }) {
-  const contenu = COLLECTIONS[collection];
-  const signature = collection === "signature";
-  const [detailsOuverts, setDetailsOuverts] = useState(false);
-
+export function Comparatif() {
   return (
-    <article className="relative flex min-w-0 flex-col overflow-hidden rounded-[0.9rem] border border-[#a98539]/65 bg-[radial-gradient(circle_at_50%_15%,#1a1916_0%,#11110f_43%,#0c0c0b_100%)] px-5 pb-7 pt-5 shadow-[inset_0_1px_0_rgba(255,255,255,0.025),0_24px_70px_rgba(0,0,0,0.3)] sm:px-8 sm:pb-8 sm:pt-6">
-      <span className="pointer-events-none absolute inset-0 bg-[linear-gradient(125deg,rgba(255,255,255,0.025),transparent_35%,rgba(196,151,52,0.025)_70%,transparent)]" aria-hidden="true" />
-
-      <div className="relative grid items-center gap-4 border-b border-[#a98539]/70 pb-5 sm:grid-cols-[minmax(0,0.92fr)_minmax(13.5rem,1.08fr)] sm:gap-6">
-        <div className="relative mx-auto h-44 w-full max-w-[16.5rem] overflow-hidden bg-[#090908] sm:h-[11.25rem]">
-          <Image
-            src={contenu.image}
-            alt={contenu.alt}
-            fill
-            sizes="(min-width: 1280px) 250px, (min-width: 640px) 38vw, calc(100vw - 80px)"
-            className="object-cover object-[50%_58%] contrast-[1.16] saturate-[0.65] brightness-[0.68]"
-            style={{
-              maskImage: "linear-gradient(to bottom, transparent 0%, black 13%, black 75%, transparent 100%)",
-              WebkitMaskImage: "linear-gradient(to bottom, transparent 0%, black 13%, black 75%, transparent 100%)",
-            }}
-          />
-          <span className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_25%,rgba(8,8,7,0.18)_55%,#090908_100%)]" aria-hidden="true" />
-        </div>
-
-        <div className="flex flex-col items-center text-center sm:items-start sm:text-left">
-          <h3 className={`font-faq text-[clamp(2rem,3vw,2.65rem)] font-medium uppercase leading-none tracking-[0.025em] ${signature ? "text-[#d9b34e]" : "text-[#f5f1e8]"}`}>
-            {contenu.nom}
-          </h3>
-          <span className="mt-5 flex justify-center sm:justify-start"><Ornement court /></span>
-          <p className="mt-6 text-[0.93rem] leading-[1.65] text-[#f5f1e8]/82">
-            {contenu.accroche}<br />
-            {contenu.description}
-          </p>
-        </div>
-      </div>
-
-      <dl className="relative flex-1">
-        {CRITERES_CLES.map(({ label, heritage, signature: valeurSignature, Icone }) => (
-          <div key={label} className="grid min-h-[3rem] grid-cols-[minmax(0,1.04fr)_minmax(0,0.96fr)] items-center gap-3 border-b border-[#f5f1e8]/8 py-2.5 sm:gap-5">
-            <dt className="flex min-w-0 items-center gap-3 text-[0.66rem] font-semibold uppercase leading-[1.35] tracking-[0.1em] text-[#dbb343] sm:text-[0.7rem]">
-              <Icone className="h-[1.35rem] w-[1.35rem] shrink-0" />
-              <span>{label}</span>
-            </dt>
-            <dd className="text-[0.73rem] leading-[1.45] text-[#f5f1e8]/88 sm:text-[0.78rem]">
-              {signature ? valeurSignature : heritage}
-            </dd>
-          </div>
-        ))}
-
-        {detailsOuverts &&
-          CRITERES_DETAIL.map(({ label, heritage, signature: valeurSignature, Icone }) => (
-            <div key={label} className="grid min-h-[3rem] grid-cols-[minmax(0,1.04fr)_minmax(0,0.96fr)] items-center gap-3 border-b border-[#f5f1e8]/8 py-2.5 sm:gap-5">
-              <dt className="flex min-w-0 items-center gap-3 text-[0.66rem] font-semibold uppercase leading-[1.35] tracking-[0.1em] text-[#dbb343] sm:text-[0.7rem]">
-                <Icone className="h-[1.35rem] w-[1.35rem] shrink-0" />
-                <span>{label}</span>
-              </dt>
-              <dd className="text-[0.73rem] leading-[1.45] text-[#f5f1e8]/88 sm:text-[0.78rem]">
-                {signature ? valeurSignature : heritage}
-              </dd>
-            </div>
-          ))}
-      </dl>
-
-      <button
-        type="button"
-        onClick={() => setDetailsOuverts((v) => !v)}
-        aria-expanded={detailsOuverts}
-        className="flex min-h-[2.75rem] items-center justify-between border-b border-[#f5f1e8]/8 py-2.5 text-[0.66rem] font-semibold uppercase tracking-[0.14em] text-[#dbb343] sm:text-[0.7rem]"
+    <section
+      className="grain relative isolate overflow-hidden bg-[#0a0908] px-5 py-16 text-[#f5f1e8] sm:px-8 sm:py-20 lg:py-28"
+      aria-labelledby="titre-savoir-faire"
+    >
+      <span
+        className="pointer-events-none absolute inset-0 -z-20 bg-cover bg-center opacity-[0.035] mix-blend-screen"
+        style={{ backgroundImage: "url(/img/fond-grain-or.webp)" }}
+        aria-hidden="true"
+      />
+      <span
+        className="pointer-events-none absolute -right-24 -top-32 -z-10 select-none font-faq text-[22rem] leading-none text-[#d4b36a]/[0.025] lg:text-[34rem]"
+        aria-hidden="true"
       >
-        <span>Voir tous les détails</span>
-        <span className={`text-base transition-transform ${detailsOuverts ? "rotate-45" : ""}`} aria-hidden="true">+</span>
-      </button>
-
-      <Link
-        href={contenu.href}
-        className="relative mt-6 flex min-h-[3.55rem] items-center justify-center gap-2 rounded-[0.35rem] border border-[#c89f3d] px-4 text-center text-[0.72rem] font-semibold uppercase tracking-[0.2em] text-[#e0b94e] transition-colors duration-300 hover:bg-[#d4aa45] hover:text-[#0a0908] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#e3c888] sm:text-[0.78rem]"
-      >
-        Découvrir {contenu.nom}
-        <span aria-hidden="true">→</span>
-      </Link>
-    </article>
-  );
-}
-
-function Separateur() {
-  return (
-    <div className="relative hidden h-28 items-center justify-center lg:flex lg:h-auto lg:min-h-full" aria-hidden="true">
-      <span className="absolute left-0 right-0 h-px bg-[#b48d37]/70 lg:inset-y-3 lg:left-1/2 lg:right-auto lg:h-auto lg:w-px lg:-translate-x-1/2" />
-      <span className="relative flex h-[5.8rem] w-[5.8rem] items-center justify-center rounded-full border border-[#c49b3c] bg-[#090908] font-faq text-[2.75rem] leading-none text-[#d8b552] shadow-[0_0_0_9px_#090908]">
         UP
       </span>
-    </div>
-  );
-}
 
-export function Comparatif() {
-  const [ongletActif, setOngletActif] = useState<Collection>("heritage");
+      <div className="mx-auto max-w-[80rem]">
+        <header className="grid items-end gap-8 border-b border-[#d4b36a]/25 pb-10 lg:grid-cols-[minmax(0,1.45fr)_minmax(18rem,0.55fr)] lg:gap-16 lg:pb-14">
+          <div>
+            <div className="flex items-center gap-4 text-[0.62rem] font-semibold uppercase tracking-[0.28em] text-[#d4b36a]">
+              <span>Le détail UPT</span>
+              <span className="h-px w-14 bg-[#d4b36a]/55" aria-hidden="true" />
+            </div>
+            <h2
+              id="titre-savoir-faire"
+              className="font-display mt-5 max-w-[52rem] text-[clamp(2.55rem,6.2vw,5.4rem)] leading-[0.98] tracking-[-0.025em]"
+            >
+              L&apos;or comme
+              <span className="block font-faq italic text-[#d8b45f]">fil conducteur.</span>
+            </h2>
+          </div>
 
-  return (
-    <section className="grain relative isolate overflow-hidden bg-[#090908] px-4 pb-10 pt-7 sm:px-6 sm:pb-14 sm:pt-10" aria-labelledby="titre-comparatif">
-      <span className="pointer-events-none absolute left-1/2 top-[42%] -z-10 h-[42rem] w-[90rem] -translate-x-1/2 -translate-y-1/2 bg-[radial-gradient(ellipse,rgba(105,82,35,0.08)_0%,transparent_64%)]" aria-hidden="true" />
-
-      <div className="relative z-10 mx-auto max-w-[87.5rem]">
-        <header className="text-center">
-          <p className="sr-only">Aide au choix</p>
-          <h2 id="titre-comparatif" className="font-faq text-[clamp(2.65rem,5vw,4.2rem)] font-medium uppercase leading-[0.95] tracking-[0.01em] text-[#f5f1e8]">
-            Héritage <span className="italic text-[#dfbf67]">ou</span> Signature
-          </h2>
-          <div className="mx-auto mt-5 flex justify-center"><Ornement /></div>
-          <p className="mx-auto mt-5 max-w-xl text-[0.92rem] leading-[1.75] text-[#f5f1e8]/74 sm:text-[1.02rem]">
-            Deux collections, deux façons de porter la tribu.<br className="hidden sm:block" />
-            Voici de quoi t’aider à choisir.
-          </p>
+          <div className="lg:pb-1">
+            <Losange />
+            <p className="mt-6 max-w-[25rem] text-[0.86rem] leading-[1.8] text-[#f5f1e8]/68 sm:text-[0.94rem]">
+              Deux techniques, une même exigence. Sur chaque pièce, la finition dorée raconte notre lien à la Martinique sans jamais en faire trop.
+            </p>
+          </div>
         </header>
 
-        {/* Onglets mobile uniquement : une seule carte affichee a la fois */}
-        <div className="mt-9 flex items-center justify-center gap-8 lg:hidden">
-          {(["heritage", "signature"] as const).map((c) => (
-            <button
-              key={c}
-              type="button"
-              onClick={() => setOngletActif(c)}
-              className={`border-b-2 pb-2 text-[1.05rem] font-semibold uppercase tracking-[0.08em] transition-colors ${
-                ongletActif === c
-                  ? "border-[#d4b36a] text-[#f5f1e8]"
-                  : "border-transparent text-[#f5f1e8]/45"
-              }`}
+        <div className="mt-12 grid gap-14 lg:mt-16 lg:grid-cols-12 lg:gap-x-10 lg:gap-y-0">
+          {SAVOIR_FAIRE.map((item, index) => (
+            <article
+              key={item.collection}
+              className={index === 0 ? "group lg:col-span-7" : "group lg:col-span-5 lg:mt-32"}
             >
-              {COLLECTIONS[c].nom}
-            </button>
+              <Link href={item.href} className="block focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#e3c888]">
+                <div
+                  className={`relative overflow-hidden bg-[#17130f] ${
+                    index === 0 ? "aspect-[1.38/1]" : "aspect-[1.08/1]"
+                  }`}
+                >
+                  <Image
+                    src={item.image}
+                    alt={item.alt}
+                    fill
+                    sizes={index === 0 ? "(min-width: 1024px) 720px, calc(100vw - 40px)" : "(min-width: 1024px) 500px, calc(100vw - 40px)"}
+                    className="object-cover transition-transform duration-700 ease-out group-hover:scale-[1.035]"
+                  />
+                  <span className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[#080706]/80 via-transparent to-[#080706]/10" aria-hidden="true" />
+                  <p className="absolute bottom-5 left-5 text-[0.6rem] font-semibold uppercase tracking-[0.24em] text-[#f5f1e8]/85 sm:bottom-7 sm:left-7">
+                    Collection {item.collection}
+                  </p>
+                </div>
+              </Link>
+
+              <div className="grid gap-5 border-t border-[#d4b36a]/30 pt-6 sm:grid-cols-[9rem_minmax(0,1fr)] sm:gap-8 lg:pt-7">
+                <p className="text-[0.61rem] font-semibold uppercase tracking-[0.22em] text-[#d4b36a]">
+                  {item.geste}
+                </p>
+                <div>
+                  <h3 className="font-display text-[clamp(1.35rem,2.2vw,1.9rem)] leading-[1.18]">
+                    {item.titre}
+                  </h3>
+                  <p className="mt-4 max-w-[31rem] text-[0.8rem] leading-[1.75] text-[#f5f1e8]/62 sm:text-[0.86rem]">
+                    {item.description}
+                  </p>
+                  <Link
+                    href={item.href}
+                    className="mt-5 inline-flex items-center gap-3 text-[0.62rem] font-semibold uppercase tracking-[0.19em] text-[#e3c888] transition-colors hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#e3c888]"
+                  >
+                    Voir la pièce
+                    <span className="transition-transform duration-300 group-hover:translate-x-1"><Fleche /></span>
+                  </Link>
+                </div>
+              </div>
+            </article>
           ))}
         </div>
 
-        <div className="mt-6 grid items-stretch lg:mt-8 lg:grid-cols-[minmax(0,1fr)_6.5rem_minmax(0,1fr)] lg:gap-4">
-          <div className={ongletActif === "heritage" ? "block" : "hidden lg:block"}>
-            <CarteCollection collection="heritage" />
-          </div>
-          <Separateur />
-          <div className={ongletActif === "signature" ? "block" : "hidden lg:block"}>
-            <CarteCollection collection="signature" />
-          </div>
-        </div>
-
-        {/* Pagination mobile uniquement */}
-        <div className="mt-6 flex items-center justify-center gap-2 lg:hidden" aria-hidden="true">
-          {(["heritage", "signature"] as const).map((c) => (
-            <span
-              key={c}
-              className={`h-2 w-2 rounded-full transition-colors ${
-                ongletActif === c ? "bg-[#d4b36a]" : "bg-[#f5f1e8]/25"
-              }`}
-            />
-          ))}
-        </div>
-
-        {/* Rappel "Tu hesites ?" */}
-        <div className="mx-auto mt-9 flex max-w-md items-center justify-center gap-4 border-t border-[#f5f1e8]/10 pt-6 text-center lg:max-w-none">
-          <span className="shrink-0 text-[#dbb343]"><IconBalance className="h-6 w-6" /></span>
-          <p className="text-left text-[0.82rem] leading-relaxed text-[#f5f1e8]/70">
-            <span className="block font-semibold uppercase tracking-[0.1em] text-[#f5f1e8]">Tu hésites ?</span>
-            Héritage = plus casual · Signature = plus élégant
+        <div className="mt-16 flex flex-col items-center justify-between gap-7 border border-[#d4b36a]/35 px-6 py-7 text-center sm:px-9 lg:mt-24 lg:flex-row lg:py-8 lg:text-left">
+          <p className="font-faq text-[clamp(1.15rem,2vw,1.55rem)] italic text-[#f5f1e8]/88">
+            Sérigraphiée ou brodée, chaque pièce porte la même histoire.
           </p>
+          <Link
+            href="/boutique"
+            className="group inline-flex min-h-12 shrink-0 items-center justify-center gap-4 bg-[#d4b36a] px-7 text-[0.64rem] font-bold uppercase tracking-[0.18em] text-[#0a0908] transition-colors hover:bg-[#e3c888] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#e3c888]"
+          >
+            Explorer la boutique
+            <span className="transition-transform duration-300 group-hover:translate-x-1"><Fleche /></span>
+          </Link>
         </div>
       </div>
     </section>

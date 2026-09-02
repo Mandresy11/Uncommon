@@ -1,0 +1,449 @@
+.section {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  background: radial-gradient(circle at 50% 42%, #fbf8f2 0%, #f5efe6 58%, #eee5d9 100%);
+  color: #1a1815;
+}
+
+.textureFond {
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  background-image:
+    radial-gradient(circle at 50% 44%, rgba(255, 255, 255, 0.82), transparent 49%),
+    url("/img/fond-papier.webp");
+  background-size: 100% 100%, 920px auto;
+  background-repeat: no-repeat, repeat;
+  opacity: 0.1;
+}
+
+.conteneur {
+  width: min(100%, 100rem);
+  min-height: 59rem;
+  margin-inline: auto;
+  padding: 11.5rem 5rem 5.5rem;
+}
+
+.grilleCartes {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 8.5rem minmax(0, 1fr);
+  align-items: center;
+}
+
+.carteWrap {
+  position: relative;
+  min-width: 0;
+}
+
+.carteDroite {
+  transform: translateY(2.75rem);
+}
+
+.feuillePapier {
+  position: absolute;
+  inset: 0.25rem;
+  border: 1px solid rgba(174, 137, 67, 0.2);
+  background: #f3ede2;
+  box-shadow: 0 16px 30px rgba(65, 49, 28, 0.08);
+}
+
+.feuilleArriereDeux {
+  transform: translate(-1.55rem, -1rem) rotate(-0.65deg);
+}
+
+.feuilleArriereUne {
+  transform: translate(0.75rem, -0.5rem) rotate(0.4deg);
+}
+
+.carte {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  min-height: 33.5rem;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  border: 1px solid rgba(166, 127, 54, 0.5);
+  background-color: #f8f3eb;
+  background-image:
+    radial-gradient(circle at 50% 35%, rgba(255, 255, 255, 0.84), transparent 58%),
+    linear-gradient(135deg, rgba(218, 196, 158, 0.08), transparent 35%, rgba(255, 255, 255, 0.2));
+  box-shadow: 0 18px 35px rgba(60, 45, 25, 0.16), 0 3px 8px rgba(60, 45, 25, 0.08);
+}
+
+.carte::before {
+  position: absolute;
+  inset: 0;
+  content: "";
+  background: url("/img/fond-papier.webp") center / 760px auto repeat;
+  opacity: 0.075;
+  mix-blend-mode: multiply;
+  pointer-events: none;
+}
+
+.cadreInterieur {
+  position: absolute;
+  inset: 0.65rem;
+  border: 1px solid rgba(177, 136, 54, 0.76);
+  pointer-events: none;
+}
+
+.coins {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  pointer-events: none;
+}
+
+.coins i {
+  position: absolute;
+  width: 2.35rem;
+  height: 2.35rem;
+  background: linear-gradient(135deg, #8f6926 0%, #ddc175 48%, #987126 100%);
+  box-shadow: inset 0 0 0 1px rgba(255, 247, 217, 0.45);
+}
+
+.coinHautGauche {
+  top: 0.65rem;
+  left: 0.65rem;
+  clip-path: polygon(0 0, 100% 0, 0 100%);
+}
+
+.coinHautDroit {
+  top: 0.65rem;
+  right: 0.65rem;
+  clip-path: polygon(0 0, 100% 0, 100% 100%);
+}
+
+.coinBasGauche {
+  bottom: 0.65rem;
+  left: 0.65rem;
+  clip-path: polygon(0 0, 0 100%, 100% 100%);
+}
+
+.coinBasDroit {
+  right: 0.65rem;
+  bottom: 0.65rem;
+  clip-path: polygon(100% 0, 100% 100%, 0 100%);
+}
+
+.feuillageCarte {
+  position: absolute;
+  width: 20rem;
+  height: 27rem;
+  background: url("/img/fond-feuillage.webp") center / contain no-repeat;
+  opacity: 0.075;
+  filter: sepia(0.45);
+  mix-blend-mode: multiply;
+  pointer-events: none;
+}
+
+.feuillageGauche {
+  left: -4rem;
+  bottom: -4rem;
+  transform: rotate(-8deg);
+}
+
+.feuillageDroit {
+  right: -4.5rem;
+  bottom: -5rem;
+  transform: scaleX(-1) rotate(-7deg);
+}
+
+.contenuCarte {
+  position: relative;
+  z-index: 4;
+  display: flex;
+  width: min(100%, 37rem);
+  flex-direction: column;
+  align-items: center;
+  padding: 3.5rem 3.4rem;
+  text-align: center;
+}
+
+.icone {
+  width: 2.75rem;
+  height: 2.75rem;
+  color: #ae8538;
+}
+
+.ornement {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  margin-block: 1.75rem;
+}
+
+.ornement span {
+  width: 5.25rem;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(174, 133, 56, 0.74));
+}
+
+.ornement span:last-child {
+  transform: scaleX(-1);
+}
+
+.ornement i {
+  width: 0.5rem;
+  height: 0.5rem;
+  transform: rotate(45deg);
+  background: #b38a3d;
+}
+
+.titreCarte {
+  font-family: var(--font-display), Georgia, serif;
+  font-size: clamp(1.7rem, 2.35vw, 2.6rem);
+  line-height: 1.1;
+  text-transform: uppercase;
+  letter-spacing: 0.015em;
+  color: #171512;
+}
+
+.texteCarte {
+  max-width: 31rem;
+  font-size: clamp(0.94rem, 1.25vw, 1.15rem);
+  line-height: 1.85;
+  color: rgba(25, 22, 16, 0.8);
+}
+
+.connecteur {
+  position: relative;
+  z-index: 5;
+  display: flex;
+  min-height: 8rem;
+  align-items: center;
+  justify-content: center;
+  color: #b18a40;
+}
+
+.ligneConnecteur {
+  position: absolute;
+  inset-inline: 0;
+  top: 50%;
+  height: 1px;
+  background: #b18a40;
+  opacity: 0.68;
+}
+
+.ligneConnecteur::before,
+.ligneConnecteur::after {
+  position: absolute;
+  top: 50%;
+  width: 0.45rem;
+  height: 0.45rem;
+  content: "";
+  transform: translateY(-50%) rotate(45deg);
+  background: #b18a40;
+}
+
+.ligneConnecteur::before { left: 0; }
+.ligneConnecteur::after { right: 0; }
+
+.medaillonExterieur {
+  position: relative;
+  display: flex;
+  width: 6rem;
+  height: 6rem;
+  align-items: center;
+  justify-content: center;
+  border: 1px dashed #b18a40;
+  border-radius: 999px;
+  background: #f4eee5;
+  box-shadow: 0 0 0 0.45rem #f4eee5;
+}
+
+.medaillonInterieur {
+  display: flex;
+  width: 5rem;
+  height: 5rem;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(177, 138, 64, 0.72);
+  border-radius: 999px;
+}
+
+.action {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 6.5rem;
+}
+
+.boutonContact {
+  position: relative;
+  display: inline-flex;
+  min-width: 25rem;
+  min-height: 5rem;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+  border: 1px solid #b18a40;
+  background: linear-gradient(145deg, #211d17 0%, #0a0908 72%);
+  box-shadow: inset 0 0 0 0.35rem #0a0908, inset 0 0 0 0.4rem rgba(177, 138, 64, 0.72), 0 8px 18px rgba(35, 27, 16, 0.22);
+  color: #f5f1e8;
+  font-size: 0.93rem;
+  font-weight: 700;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  transition: color 250ms ease, background 250ms ease, transform 250ms ease, box-shadow 250ms ease;
+  clip-path: polygon(0.8rem 0, calc(100% - 0.8rem) 0, 100% 0.8rem, 100% calc(100% - 0.8rem), calc(100% - 0.8rem) 100%, 0.8rem 100%, 0 calc(100% - 0.8rem), 0 0.8rem);
+}
+
+.boutonContact:hover {
+  transform: translateY(-2px);
+  background: linear-gradient(145deg, #29231b 0%, #11100d 72%);
+  box-shadow: inset 0 0 0 0.35rem #0a0908, inset 0 0 0 0.4rem #d4b36a, 0 12px 24px rgba(35, 27, 16, 0.28);
+  color: #e3c888;
+}
+
+.boutonContact:focus-visible {
+  outline: 2px solid #9c7e32;
+  outline-offset: 4px;
+}
+
+.losangeBouton {
+  width: 0.45rem;
+  height: 0.45rem;
+  transform: rotate(45deg);
+  background: #b18a40;
+}
+
+.trioLosanges {
+  display: flex;
+  gap: 0.55rem;
+  margin-top: 2.7rem;
+}
+
+.trioLosanges i {
+  width: 0.45rem;
+  height: 0.45rem;
+  transform: rotate(45deg);
+  background: #b18a40;
+}
+
+@media (max-width: 1023px) {
+  .conteneur {
+    padding: 10rem 2rem 5rem;
+  }
+
+  .grilleCartes {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .carteWrap {
+    width: min(100%, 44rem);
+    margin-inline: auto;
+  }
+
+  .carteDroite {
+    transform: none;
+  }
+
+  .connecteur {
+    min-height: 8.5rem;
+  }
+
+  .ligneConnecteur {
+    inset-block: 0;
+    inset-inline: auto;
+    left: 50%;
+    width: 1px;
+    height: auto;
+  }
+
+  .ligneConnecteur::before,
+  .ligneConnecteur::after {
+    left: 50%;
+    top: auto;
+    transform: translateX(-50%) rotate(45deg);
+  }
+
+  .ligneConnecteur::before { top: 0; }
+  .ligneConnecteur::after { right: auto; bottom: 0; }
+
+  .action {
+    margin-top: 4.5rem;
+  }
+}
+
+@media (max-width: 639px) {
+  .conteneur {
+    min-height: 0;
+    padding: 8.25rem 1.25rem 4rem;
+  }
+
+  .carteWrap {
+    width: calc(100% - 0.75rem);
+  }
+
+  .feuilleArriereDeux {
+    transform: translate(-0.65rem, -0.55rem) rotate(-0.45deg);
+  }
+
+  .feuilleArriereUne {
+    transform: translate(0.45rem, -0.25rem) rotate(0.3deg);
+  }
+
+  .carte {
+    min-height: 31rem;
+  }
+
+  .contenuCarte {
+    padding: 3.25rem 2rem;
+  }
+
+  .icone {
+    width: 2.4rem;
+    height: 2.4rem;
+  }
+
+  .ornement {
+    gap: 0.55rem;
+    margin-block: 1.45rem;
+  }
+
+  .ornement span {
+    width: 3.5rem;
+  }
+
+  .titreCarte {
+    font-size: clamp(1.55rem, 8vw, 2.15rem);
+  }
+
+  .texteCarte {
+    font-size: 0.92rem;
+    line-height: 1.78;
+  }
+
+  .connecteur {
+    min-height: 7.5rem;
+  }
+
+  .medaillonExterieur {
+    width: 5rem;
+    height: 5rem;
+  }
+
+  .medaillonInterieur {
+    width: 4.25rem;
+    height: 4.25rem;
+  }
+
+  .medaillonInterieur svg {
+    width: 3rem;
+    height: 3rem;
+  }
+
+  .boutonContact {
+    width: min(100%, 22rem);
+    min-width: 0;
+    min-height: 4.5rem;
+    gap: 1.25rem;
+    padding-inline: 1.5rem;
+    font-size: 0.76rem;
+    letter-spacing: 0.19em;
+  }
+}

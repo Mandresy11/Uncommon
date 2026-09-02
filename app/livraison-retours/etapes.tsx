@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { Reveal, RevealGroup, RevealItem } from "@/components/cta";
+import { Reveal, RevealGroup, RevealItem, Kicker } from "@/components/cta";
 import { IconPanier, IconColis, IconCamion, IconCoche } from "@/components/icons";
 
 const ETAPES = [
@@ -55,9 +55,7 @@ export function Etapes() {
 
       <div className="relative mx-auto flex w-full max-w-[105rem] flex-col px-6 py-20 sm:px-10 lg:min-h-[50.5rem] lg:px-14 lg:pb-24 lg:pt-[13.0625rem]">
         <Reveal className="text-center" amount={0.35}>
-          <p className="text-[0.7rem] font-semibold uppercase tracking-[0.4em] text-[#E3C05F] sm:text-[0.82rem]">
-            De la commande à la porte
-          </p>
+          <Kicker>De la commande à la porte</Kicker>
           <h2
             id="titre-etapes-commande"
             className="font-display mt-9 text-[clamp(2rem,3.8vw,3.25rem)] font-normal uppercase leading-[1.08] text-[#F5F1E8] [text-shadow:0_3px_24px_rgba(0,0,0,0.65)]"

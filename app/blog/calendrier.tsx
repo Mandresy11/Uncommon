@@ -3,7 +3,7 @@
 // Grande section "Ce qui s'en vient" : timeline centrale sur fond photo, calquee sur la
 // maquette client (jalons alternes gauche/droite, connecteurs horizontaux, cartes
 // alternant clair/sombre avec coins graves).
-import { Reveal } from "@/components/cta";
+import { Reveal, Kicker } from "@/components/cta";
 
 const ETAPES = [
   {
@@ -57,9 +57,7 @@ export function Calendrier() {
 
       <div className="relative z-10 mx-auto max-w-5xl px-6">
         <Reveal className="text-center">
-          <span className="text-[0.68rem] font-semibold uppercase tracking-[0.28em] text-[#D4B36A]">
-            Le programme
-          </span>
+          <Kicker>Le programme</Kicker>
           <h2 className="font-display mt-3 text-[clamp(2rem,4.2vw,2.9rem)] text-[#F5F1E8]">
             Ce qui <span className="italic text-[#E3C888]">s&apos;en vient</span>
           </h2>

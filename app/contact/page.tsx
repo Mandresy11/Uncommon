@@ -2,7 +2,7 @@
 
 // INSPIRATION: maquette client (formulaire + carte de contact en deux colonnes).
 import { useState } from "react";
-import { Cta } from "@/components/cta";
+import { Cta, Kicker } from "@/components/cta";
 import { IconEmail, IconHorloge } from "@/components/icons";
 
 const champCls =
@@ -39,9 +39,7 @@ export default function Contact() {
     <main className="bg-[#F0EAE0] px-6 pb-20 pt-32 md:pt-40">
       <div className="mx-auto max-w-5xl">
         <div className="text-center">
-          <span className="text-[0.68rem] font-semibold uppercase tracking-[0.28em] text-[#9C7E32]">
-            Contacte-nous
-          </span>
+          <Kicker>Contacte-nous</Kicker>
           <h1 className="font-display mt-3 text-[clamp(2.1rem,4.5vw,3.2rem)] text-[#191610]">
             On est à ton écoute
           </h1>

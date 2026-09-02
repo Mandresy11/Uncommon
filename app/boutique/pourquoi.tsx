@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { Reveal } from "@/components/cta";
+import { Reveal, Kicker } from "@/components/cta";
 import {
   IconAiguille,
   IconCamion,
@@ -46,17 +46,6 @@ function Monogramme({ grand = false }: { grand?: boolean }) {
         height={grand ? 48 : 32}
         className="h-full w-full scale-x-[1.72] scale-y-[2.7] object-contain"
       />
-    </span>
-  );
-}
-
-function PetitOrnement() {
-  return (
-    <span className="relative block h-5 w-5" aria-hidden="true">
-      <span className="absolute left-1/2 top-0 h-2 w-2 -translate-x-1/2 rotate-45 bg-[#D4B36A]" />
-      <span className="absolute bottom-0 left-1/2 h-2 w-2 -translate-x-1/2 rotate-45 border border-[#D4B36A]" />
-      <span className="absolute left-0 top-1/2 h-2 w-2 -translate-y-1/2 rotate-45 border border-[#D4B36A]" />
-      <span className="absolute right-0 top-1/2 h-2 w-2 -translate-y-1/2 rotate-45 bg-[#D4B36A]" />
     </span>
   );
 }
@@ -136,10 +125,7 @@ export function Pourquoi() {
 
       <div className="relative z-10 mx-auto grid h-full max-w-[105rem] items-center gap-10 px-6 py-14 sm:px-10 lg:grid-cols-[0.72fr_1fr] lg:gap-16 lg:py-14 lg:pl-[7.75rem] lg:pr-16">
         <Reveal className="max-w-[36rem] lg:self-center">
-          <PetitOrnement />
-          <p className="mt-5 text-[0.78rem] font-semibold uppercase tracking-[0.3em] text-[#E3C888] sm:text-[0.95rem]">
-            Pourquoi acheter chez nous
-          </p>
+          <Kicker>Pourquoi acheter chez nous</Kicker>
           <h2
             id="titre-pourquoi"
             className="font-display mt-4 text-[clamp(2rem,3.4vw,3.4rem)] font-normal uppercase leading-[1.15] tracking-[0.01em] text-[#F7F3EB] lg:w-[115%] lg:origin-left lg:scale-x-[0.98]"

@@ -1,0 +1,247 @@
+.section {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  background:
+    linear-gradient(rgba(246, 236, 218, 0.72), rgba(238, 224, 199, 0.76)),
+    url("/img/fond-papier.webp") center / cover;
+}
+
+.desktopArtwork {
+  display: none;
+  aspect-ratio: 1672 / 941;
+  width: 100%;
+  background: url("/img/fondateur-histoire.webp") center / cover no-repeat;
+}
+
+.mobileArtwork {
+  position: relative;
+  padding: 9rem 1rem 4.5rem;
+  background:
+    linear-gradient(rgba(248, 239, 223, 0.86), rgba(239, 225, 201, 0.9)),
+    url("/img/fond-papier.webp") center / cover;
+}
+
+.mobileArtwork::before {
+  position: absolute;
+  inset: 0;
+  background: url("/img/fond-feuillage.webp") left top / 42rem auto no-repeat;
+  content: "";
+  opacity: 0.08;
+  mix-blend-mode: multiply;
+  pointer-events: none;
+}
+
+.layout {
+  position: relative;
+  z-index: 1;
+  margin-inline: auto;
+  max-width: 44rem;
+}
+
+.panel {
+  position: relative;
+  padding: 3.4rem 1.4rem 2.2rem;
+  clip-path: polygon(
+    1.5rem 0,
+    calc(100% - 1.5rem) 0,
+    calc(100% - 1.5rem) 0.35rem,
+    calc(100% - 0.35rem) 0.35rem,
+    calc(100% - 0.35rem) 1.5rem,
+    100% 1.5rem,
+    100% calc(100% - 1.5rem),
+    calc(100% - 0.35rem) calc(100% - 1.5rem),
+    calc(100% - 0.35rem) calc(100% - 0.35rem),
+    calc(100% - 1.5rem) calc(100% - 0.35rem),
+    calc(100% - 1.5rem) 100%,
+    1.5rem 100%,
+    1.5rem calc(100% - 0.35rem),
+    0.35rem calc(100% - 0.35rem),
+    0.35rem calc(100% - 1.5rem),
+    0 calc(100% - 1.5rem),
+    0 1.5rem,
+    0.35rem 1.5rem,
+    0.35rem 0.35rem,
+    1.5rem 0.35rem
+  );
+  background:
+    linear-gradient(rgba(18, 18, 17, 0.94), rgba(20, 20, 19, 0.97)),
+    url("/img/fond-broderie.webp") center / cover;
+  box-shadow: 0 1.5rem 3rem rgba(43, 30, 12, 0.24);
+  color: #f5f1e8;
+}
+
+.panel::before {
+  position: absolute;
+  inset: 0.45rem;
+  border: 1px solid rgba(194, 151, 59, 0.76);
+  clip-path: inherit;
+  content: "";
+  pointer-events: none;
+}
+
+.panel::after {
+  position: absolute;
+  inset: 1.25rem;
+  border: 1px solid rgba(194, 151, 59, 0.32);
+  content: "";
+  pointer-events: none;
+}
+
+.panelContent {
+  position: relative;
+  z-index: 1;
+}
+
+.eyebrow {
+  display: inline-flex;
+  min-height: 2.65rem;
+  align-items: center;
+  border: 1px solid rgba(194, 151, 59, 0.58);
+  padding-inline: 1rem;
+  color: #d4ad55;
+  font-size: 0.66rem;
+  font-weight: 600;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+}
+
+.title {
+  margin-top: 1.9rem;
+  font-family: var(--font-faq), Georgia, serif;
+  font-size: clamp(2.25rem, 11vw, 3.8rem);
+  font-weight: 400;
+  line-height: 0.98;
+  letter-spacing: 0.015em;
+  text-transform: uppercase;
+}
+
+.titleAccent {
+  display: block;
+  margin-top: 0.5rem;
+  color: #c39842;
+  font-size: 0.85em;
+  font-style: italic;
+}
+
+.copy {
+  margin-top: 2rem;
+  font-size: 0.93rem;
+  line-height: 1.75;
+  color: rgba(245, 241, 232, 0.78);
+}
+
+.copy + .copy {
+  margin-top: 1.2rem;
+}
+
+.quote {
+  margin-top: 2rem;
+  border-left: 2px solid #c39842;
+  padding-left: 1.15rem;
+}
+
+.quoteText {
+  font-family: var(--font-faq), Georgia, serif;
+  font-size: 1.12rem;
+  font-style: italic;
+  line-height: 1.35;
+  text-transform: uppercase;
+}
+
+.signature {
+  margin-top: 0.8rem;
+  color: #d4ad55;
+  font-size: 0.61rem;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+}
+
+.portraitWrap {
+  position: relative;
+  margin: -0.75rem 0.5rem 0;
+  border: 1px solid #ae8231;
+  background: #cbb58c;
+  box-shadow: 0 1.25rem 2.6rem rgba(55, 37, 14, 0.2);
+}
+
+.portrait {
+  display: block;
+  aspect-ratio: 4 / 5;
+  width: 100%;
+  object-fit: cover;
+  object-position: center top;
+}
+
+.plaque {
+  position: absolute;
+  right: -0.65rem;
+  bottom: 1.5rem;
+  width: 7.5rem;
+  padding: 1.15rem 0.75rem;
+  background:
+    linear-gradient(145deg, rgba(205, 163, 77, 0.96), rgba(151, 108, 35, 0.98)),
+    url("/img/fond-grain-or.webp") center / cover;
+  box-shadow: 0 0.8rem 1.5rem rgba(50, 32, 8, 0.25);
+  color: #fff8e7;
+  text-align: center;
+}
+
+.plaqueLogo {
+  display: flex;
+  width: 3.2rem;
+  height: 3.2rem;
+  align-items: center;
+  justify-content: center;
+  margin-inline: auto;
+  border: 1px solid rgba(255, 248, 231, 0.48);
+  border-radius: 999px;
+  font-family: var(--font-faq), Georgia, serif;
+  font-size: 1.35rem;
+  font-style: italic;
+}
+
+.plaqueCopy {
+  margin-top: 1rem;
+  font-size: 0.57rem;
+  font-weight: 600;
+  line-height: 1.8;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.compass {
+  margin: 0.9rem auto 0;
+  width: 2.2rem;
+  height: 2.2rem;
+  color: rgba(255, 248, 231, 0.68);
+}
+
+@media (min-width: 48rem) {
+  .mobileArtwork {
+    padding-inline: 2rem;
+  }
+
+  .panel {
+    padding: 4.25rem 3.5rem 3.25rem;
+  }
+
+  .portraitWrap {
+    margin-inline: 2.5rem;
+  }
+}
+
+@media (min-width: 80rem) {
+  .section {
+    padding-top: 6.5rem;
+  }
+
+  .desktopArtwork {
+    display: block;
+  }
+
+  .mobileArtwork {
+    display: none;
+  }
+}
