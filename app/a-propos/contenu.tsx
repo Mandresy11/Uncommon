@@ -51,14 +51,6 @@ const CREATION = [
   },
 ] as const;
 
-function Ornement({ sombre = false }: { sombre?: boolean }) {
-  return (
-    <span className="inline-flex items-center" aria-hidden="true">
-      <span className="h-1.5 w-1.5 rotate-45 border border-[#c49a3f]" />
-    </span>
-  );
-}
-
 export function ContenuMaison() {
   return (
     <div className="overflow-x-hidden">
@@ -76,18 +68,19 @@ export function ContenuMaison() {
         <div className="mx-auto grid w-full max-w-6xl min-w-0 items-center gap-14 lg:grid-cols-[0.9fr_1.1fr] lg:gap-20">
           <div className="relative z-10 min-w-0">
             <Kicker>La raison d&apos;être</Kicker>
-            <h2 id="titre-maison" className="font-display mt-7 max-w-[37rem] text-[clamp(2.6rem,5vw,4.6rem)] leading-[1.05] tracking-[-0.02em]">
-              La Martinique,
+            <h2 id="titre-maison" className="font-display mt-7 max-w-[37rem] text-[clamp(2.2rem,4.4vw,4.6rem)] leading-[1.05] tracking-[-0.02em]">
+              <span className="whitespace-nowrap">La Martinique,</span>
               <br />
               <span className="italic text-[#e3c888]">
-                portée <span className="block sm:inline">autrement.</span>
+                portée
+                <br />
+                autrement.
               </span>
             </h2>
-            <span className="mt-7 block"><Ornement sombre /></span>
             <p className="mt-7 max-w-[34rem] text-[clamp(0.95rem,1.5vw,1.08rem)] leading-[1.8] text-[#f5f1e8]/76">
               Uncommon People Tribe représente une Martinique fière, contemporaine et
               exigeante. La marque transforme les symboles et l&apos;énergie de l&apos;île en
-              pièces premium, sobres et faites pour durer — jamais en souvenir touristique.
+              pièces premium, sobres et faites pour durer, jamais en souvenir touristique.
             </p>
             <p className="mt-5 max-w-[34rem] text-[clamp(0.95rem,1.5vw,1.08rem)] leading-[1.8] text-[#f5f1e8]/70">
               Elle parle aux Martiniquais d&apos;ici, à la diaspora dans l&apos;Hexagone, mais
@@ -135,16 +128,15 @@ export function ContenuMaison() {
             <h2 id="titre-valeurs" className="font-display mt-4 text-[clamp(1.75rem,4vw,3.25rem)] leading-tight">
               Ce qui nous <span className="block sm:inline">guide</span>
             </h2>
-            <span className="mt-5 flex justify-center"><Ornement /></span>
             <p className="mx-auto mt-6 max-w-xl leading-[1.75] text-[#191610]/68">
               Trois principes donnent une direction à chaque création et définissent
               la façon dont nous souhaitons représenter notre île.
             </p>
           </header>
 
-          <div className="mt-12 grid gap-6 md:grid-cols-3">
+          <div className="mt-12 -mx-6 flex snap-x snap-mandatory gap-5 overflow-x-auto overflow-y-hidden scroll-px-6 px-6 pb-2 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden md:mx-0 md:grid md:snap-none md:gap-6 md:overflow-visible md:px-0 md:pb-0 md:grid-cols-3">
             {VALEURS.map((valeur) => (
-              <article key={valeur.numero} className="group min-w-0 border border-[#191610]/14 bg-[#f7f2e9]/85 shadow-[0_18px_45px_rgba(25,22,16,0.07)]">
+              <article key={valeur.numero} className="group w-[78vw] max-w-[20rem] shrink-0 snap-start border border-[#191610]/14 bg-[#f7f2e9]/85 shadow-[0_18px_45px_rgba(25,22,16,0.07)] md:w-auto md:max-w-none md:min-w-0">
                 <div className="relative aspect-[1.35/1] overflow-hidden bg-[#171510]">
                   <Image
                     src={valeur.image}
@@ -154,9 +146,6 @@ export function ContenuMaison() {
                     className="object-cover transition-transform duration-700 group-hover:scale-[1.035]"
                   />
                   <span className="absolute inset-0 bg-gradient-to-t from-[#0a0908]/55 via-transparent to-transparent" aria-hidden="true" />
-                  <span className="font-faq absolute bottom-3 left-4 text-[2.8rem] leading-none text-[#e3c888]">
-                    {valeur.numero}
-                  </span>
                 </div>
                 <div className="p-6 sm:p-7">
                   <h3 className="font-display text-xl text-[#191610]">{valeur.titre}</h3>
@@ -165,6 +154,9 @@ export function ContenuMaison() {
               </article>
             ))}
           </div>
+          <p className="mt-3 text-center text-[0.68rem] uppercase tracking-[0.16em] text-[#191610]/40 md:hidden">
+            Faites glisser pour découvrir
+          </p>
         </div>
       </section>
 
@@ -199,7 +191,6 @@ export function ContenuMaison() {
             <h2 id="titre-creation" className="font-display mt-4 text-[clamp(1.85rem,4vw,3.4rem)] leading-tight">
               Du symbole <span className="block sm:inline">à la pièce</span>
             </h2>
-            <span className="mt-5 block"><Ornement sombre /></span>
             <p className="mt-6 max-w-xl leading-[1.75] text-[#f5f1e8]/68">
               Nous ne reproduisons pas un symbole : nous cherchons la forme juste pour
               qu’il trouve naturellement sa place sur un vêtement contemporain.

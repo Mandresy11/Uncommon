@@ -1,0 +1,386 @@
+.section {
+  position: relative;
+  isolation: isolate;
+  display: grid;
+  overflow: hidden;
+  width: 100%;
+  min-height: 100svh;
+  place-items: center;
+  margin-top: 0;
+  padding: clamp(2rem, 5vw, 5.5rem);
+  color: #f5f1e8;
+  background: #0a0908;
+  box-shadow: 0 1.8rem 4.5rem rgb(40 28 11 / 0.2);
+}
+
+.background,
+.foliage {
+  position: absolute;
+  z-index: -2;
+  inset: 0;
+  pointer-events: none;
+}
+
+.background {
+  background:
+    linear-gradient(90deg, rgb(10 9 8 / 0.35), rgb(10 9 8 / 0.76) 50%, rgb(10 9 8 / 0.88)),
+    linear-gradient(180deg, rgb(10 9 8 / 0.26), rgb(10 9 8 / 0.72)),
+    url("/img/fond-mer.webp") center / cover no-repeat;
+}
+
+.foliage {
+  z-index: -1;
+  left: 45%;
+  background:
+    linear-gradient(90deg, transparent, rgb(10 9 8 / 0.2)),
+    url("/img/fond-feuillage.webp") center right / cover no-repeat;
+  opacity: 0.12;
+  mix-blend-mode: screen;
+}
+
+.panel {
+  position: relative;
+  display: grid;
+  width: min(100%, 68rem);
+  min-height: 28rem;
+  margin-inline: auto;
+  grid-template-columns: minmax(0, 1.05fr) minmax(20rem, 0.95fr);
+  gap: clamp(3rem, 6vw, 6rem);
+  align-items: center;
+  border: 1px solid rgb(212 179 106 / 0.56);
+  padding: clamp(2.4rem, 4.5vw, 4.5rem);
+  background:
+    linear-gradient(110deg, rgb(18 16 13 / 0.87), rgb(7 7 6 / 0.82)),
+    url("/img/fond-grain-or.webp") center / cover no-repeat;
+  box-shadow: inset 0 0 0 1px rgb(255 255 255 / 0.025), 0 1.5rem 4rem rgb(0 0 0 / 0.3);
+}
+
+.panel::before,
+.panel::after {
+  position: absolute;
+  width: 2rem;
+  height: 2rem;
+  content: "";
+  pointer-events: none;
+}
+
+.panel::before {
+  top: 0.7rem;
+  left: 0.7rem;
+  border-top: 1px solid #d4b36a;
+  border-left: 1px solid #d4b36a;
+}
+
+.panel::after {
+  right: 0.7rem;
+  bottom: 0.7rem;
+  border-right: 1px solid #d4b36a;
+  border-bottom: 1px solid #d4b36a;
+}
+
+.copy {
+  position: relative;
+  align-self: stretch;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.spark {
+  color: #d4b36a;
+  font-size: 1.05rem;
+}
+
+.copy h2 {
+  max-width: 33rem;
+  margin-top: 1.8rem;
+  font-family: var(--font-display), Georgia, serif;
+  font-size: clamp(2.25rem, 4vw, 4rem);
+  font-weight: 400;
+  line-height: 1.08;
+  letter-spacing: 0.025em;
+  text-transform: uppercase;
+  text-wrap: balance;
+}
+
+.copy > p {
+  position: relative;
+  z-index: 2;
+  max-width: 31rem;
+  margin-top: 1.4rem;
+  color: rgb(245 241 232 / 0.92);
+  font-size: clamp(0.86rem, 1.3vw, 1rem);
+  font-weight: 450;
+  line-height: 1.85;
+  text-shadow: 0 2px 8px rgb(0 0 0 / 0.9);
+}
+
+.seal {
+  position: absolute;
+  bottom: -4.6rem;
+  left: -2.2rem;
+  display: flex;
+  width: 7rem;
+  height: 7rem;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgb(212 179 106 / 0.27);
+  border-radius: 999px;
+  color: rgb(212 179 106 / 0.42);
+  font-family: var(--font-display), Georgia, serif;
+  font-size: 1.65rem;
+  box-shadow: inset 0 0 0 0.45rem rgb(10 9 8 / 0.25);
+}
+
+.seal i {
+  position: absolute;
+  width: 8.5rem;
+  color: rgb(212 179 106 / 0.34);
+  font-family: sans-serif;
+  font-size: 0.4rem;
+  font-style: normal;
+  letter-spacing: 0.12em;
+  text-align: center;
+  text-transform: uppercase;
+  transform: translateY(2.5rem);
+}
+
+.formColumn {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.mailIcon {
+  display: flex;
+  width: 4.5rem;
+  height: 4.5rem;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgb(212 179 106 / 0.72);
+  border-radius: 999px;
+  color: #d4b36a;
+  font-size: 1.4rem;
+  box-shadow: 0 0 2.5rem rgb(212 179 106 / 0.08);
+}
+
+.mailIcon svg {
+  width: 1.35rem;
+  height: 1.35rem;
+}
+
+.formTitle {
+  margin-top: 1.4rem;
+  color: #dcb765;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.24em;
+  line-height: 1.5;
+  text-transform: uppercase;
+}
+
+.form {
+  width: 100%;
+  margin-top: 1.8rem;
+}
+
+.inputWrap {
+  display: flex;
+  min-height: 4rem;
+  align-items: center;
+  gap: 1rem;
+  border: 1px solid rgb(212 179 106 / 0.58);
+  padding: 0 1.25rem;
+  color: #d4b36a;
+  background: rgb(10 9 8 / 0.5);
+  transition: border-color 250ms ease, box-shadow 250ms ease;
+}
+
+.inputWrap:focus-within {
+  border-color: #e3c888;
+  box-shadow: 0 0 0 2px rgb(212 179 106 / 0.1), inset 0 0 2rem rgb(212 179 106 / 0.035);
+}
+
+.inputWrap span,
+.inputWrap svg {
+  width: 1.1rem;
+  height: 1.1rem;
+  flex: none;
+}
+
+.inputWrap input {
+  width: 100%;
+  border: 0;
+  outline: 0;
+  color: #f5f1e8;
+  background: transparent;
+  font-size: 0.86rem;
+}
+
+.inputWrap input::placeholder {
+  color: rgb(245 241 232 / 0.42);
+}
+
+.form > button {
+  position: relative;
+  width: 100%;
+  min-height: 4rem;
+  margin-top: 1rem;
+  border: 1px solid #e3c888;
+  color: #0a0908;
+  background: linear-gradient(100deg, #b9903d, #e4c77f 48%, #c59b48);
+  cursor: pointer;
+  font-size: 0.7rem;
+  font-weight: 800;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  box-shadow: inset 0 0 0 0.35rem rgb(10 9 8 / 0.08), 0 0.8rem 2rem rgb(0 0 0 / 0.22);
+  transition: filter 250ms ease, translate 250ms ease;
+}
+
+.form > button:hover {
+  filter: brightness(1.08);
+  translate: 0 -0.1rem;
+}
+
+.form > button:disabled {
+  cursor: wait;
+  opacity: 0.68;
+}
+
+.reassurance {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.55rem;
+  margin-top: 1.2rem;
+  color: rgb(245 241 232 / 0.58);
+  font-size: 0.73rem;
+}
+
+.reassurance span,
+.reassurance svg {
+  width: 0.9rem;
+  height: 0.9rem;
+  color: #d4b36a;
+}
+
+.error {
+  margin-top: 0.8rem;
+  color: #ffaaa2;
+  font-size: 0.74rem;
+}
+
+.success {
+  display: flex;
+  width: 100%;
+  min-height: 8rem;
+  margin-top: 2rem;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  border: 1px solid rgb(212 179 106 / 0.42);
+  color: #e3c888;
+  background: rgb(10 9 8 / 0.42);
+}
+
+.success span,
+.success svg {
+  width: 1.4rem;
+  height: 1.4rem;
+}
+
+.success p {
+  font-size: 0.86rem;
+}
+
+@media (max-width: 767px) {
+  .section {
+    min-height: 100svh;
+    margin-top: 0;
+    padding: 1rem;
+  }
+
+  .background {
+    background:
+      linear-gradient(180deg, rgb(10 9 8 / 0.48), rgb(10 9 8 / 0.9) 65%),
+      url("/img/fond-mer.webp") 65% center / cover no-repeat;
+  }
+
+  .foliage {
+    left: 10%;
+    opacity: 0.08;
+  }
+
+  .panel {
+    min-height: 0;
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+    padding: 2.5rem 1.25rem 2rem;
+    text-align: center;
+  }
+
+  .copy {
+    align-items: center;
+  }
+
+  .copy h2 {
+    margin-top: 1.2rem;
+    font-size: clamp(1.8rem, 8.6vw, 2.45rem);
+    line-height: 1.05;
+  }
+
+  .copy > p {
+    margin-top: 1.1rem;
+    font-size: 0.79rem;
+    line-height: 1.72;
+  }
+
+  .seal {
+    display: none;
+  }
+
+  .formColumn {
+    border-top: 1px solid rgb(212 179 106 / 0.25);
+    padding-top: 2.2rem;
+  }
+
+  .mailIcon {
+    width: 3.7rem;
+    height: 3.7rem;
+  }
+
+  .formTitle {
+    max-width: 15rem;
+    font-size: 0.62rem;
+  }
+
+  .form {
+    margin-top: 1.5rem;
+  }
+
+  .inputWrap,
+  .form > button {
+    min-height: 3.65rem;
+  }
+
+  .inputWrap {
+    padding-inline: 1rem;
+  }
+
+  .reassurance {
+    align-items: flex-start;
+    font-size: 0.66rem;
+    line-height: 1.45;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .inputWrap,
+  .form > button {
+    transition: none;
+  }
+}

@@ -83,10 +83,10 @@ export function PopupNewsletter() {
                 -10%
               </p>
               <h2 className="font-display mt-3 text-[1.4rem] leading-tight text-[#F5F1E8]">
-                sur ta première commande
+                sur votre première commande
               </h2>
               <p className="mx-auto mt-3 max-w-xs text-[0.85rem] leading-relaxed text-white/85">
-                Rejoins la tribu. Inscris-toi à la newsletter et reçois ton code
+                Rejoignez la tribu. Inscrivez-vous à la newsletter et recevez votre code
                 de réduction, plus les annonces des séries limitées.
               </p>
 
@@ -100,7 +100,7 @@ export function PopupNewsletter() {
                   className="mt-7"
                 >
                   <label htmlFor="popup-email" className="sr-only">
-                    Ton adresse e-mail
+                    Votre adresse e-mail
                   </label>
                   <input
                     id="popup-email"

@@ -1,0 +1,265 @@
+@media (max-width: 767px) {
+  .section {
+    background:
+      radial-gradient(circle at 86% 7%, rgb(196 151 61 / 0.1), transparent 19rem),
+      radial-gradient(circle at 8% 72%, rgb(139 98 30 / 0.07), transparent 17rem),
+      #0a0908;
+  }
+
+  .header {
+    position: relative;
+    overflow: hidden;
+    border: 0;
+    padding: 1.5rem 1.15rem 1.65rem;
+    background:
+      linear-gradient(135deg, rgb(255 255 255 / 0.035), transparent 48%),
+      rgb(17 15 12 / 0.72);
+    box-shadow: 0 1.25rem 3.5rem rgb(0 0 0 / 0.28);
+  }
+
+  .header::before,
+  .header::after {
+    position: absolute;
+    content: "";
+    pointer-events: none;
+  }
+
+  .header::before {
+    top: -5.5rem;
+    right: -4.5rem;
+    width: 13rem;
+    height: 13rem;
+    border: 1px solid rgb(212 179 106 / 0.12);
+    border-radius: 999px;
+    box-shadow: inset 0 0 3.5rem rgb(212 179 106 / 0.055);
+  }
+
+  .header::after {
+    right: 1.1rem;
+    bottom: 0;
+    left: 1.1rem;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgb(212 179 106 / 0.7), transparent);
+  }
+
+  .title {
+    position: relative;
+    text-shadow: 0 0.8rem 2.5rem rgb(0 0 0 / 0.5);
+  }
+
+  .title span {
+    text-shadow: 0 0 2rem rgb(216 180 95 / 0.13);
+  }
+
+  .intro {
+    position: relative;
+    border-left-color: rgb(212 179 106 / 0.58);
+    background: linear-gradient(90deg, rgb(212 179 106 / 0.06), transparent 80%);
+    padding-top: 0.15rem;
+    padding-bottom: 0.25rem;
+  }
+
+  .cards {
+    position: relative;
+    isolation: isolate;
+  }
+
+  .cards::before {
+    position: absolute;
+    z-index: -1;
+    top: 2rem;
+    bottom: 2rem;
+    left: 50%;
+    width: 1px;
+    content: "";
+    background: linear-gradient(transparent, rgb(212 179 106 / 0.45) 12%, rgb(212 179 106 / 0.45) 88%, transparent);
+  }
+
+  .card {
+    position: relative;
+    isolation: isolate;
+    background:
+      linear-gradient(145deg, rgb(255 255 255 / 0.025), transparent 42%),
+      #100e0c;
+    transition: border-color 350ms ease, box-shadow 350ms ease, translate 350ms ease;
+  }
+
+  .card:nth-child(odd) {
+    margin-right: 0.7rem;
+  }
+
+  .card:nth-child(even) {
+    margin-left: 0.7rem;
+  }
+
+  .card::before,
+  .card::after {
+    position: absolute;
+    z-index: 4;
+    width: 1.45rem;
+    height: 1.45rem;
+    content: "";
+    pointer-events: none;
+  }
+
+  .card::before {
+    top: 0.42rem;
+    right: 0.42rem;
+    border-top: 1px solid rgb(227 200 136 / 0.72);
+    border-right: 1px solid rgb(227 200 136 / 0.72);
+  }
+
+  .card::after {
+    bottom: 0.42rem;
+    left: 0.42rem;
+    border-bottom: 1px solid rgb(227 200 136 / 0.5);
+    border-left: 1px solid rgb(227 200 136 / 0.5);
+  }
+
+  .card:focus-within {
+    border-color: rgb(212 179 106 / 0.62);
+    box-shadow: 0 1.4rem 3.6rem rgb(0 0 0 / 0.38), 0 0 0 1px rgb(212 179 106 / 0.08);
+    translate: 0 -0.2rem;
+  }
+
+  .imageFrame::before,
+  .imageFrame::after {
+    position: absolute;
+    z-index: 2;
+    inset: 0;
+    content: "";
+    pointer-events: none;
+  }
+
+  .imageFrame::before {
+    background:
+      radial-gradient(circle at 68% 42%, rgb(239 201 116 / 0.15), transparent 35%),
+      linear-gradient(180deg, transparent 58%, rgb(5 4 3 / 0.32));
+    mix-blend-mode: screen;
+  }
+
+  .imageFrame::after {
+    width: 42%;
+    background: linear-gradient(105deg, transparent, rgb(255 232 179 / 0.12), transparent);
+    transform: translateX(-180%) skewX(-12deg);
+    animation: mobileShine 7s ease-in-out 1.2s infinite;
+  }
+
+  .image {
+    filter: saturate(0.92) contrast(1.04);
+  }
+
+  .card:active .image {
+    transform: scale(1.025);
+  }
+
+  .index {
+    width: 2.55rem;
+    height: 2.55rem;
+    border-radius: 999px;
+    background: rgb(10 9 8 / 0.78);
+    box-shadow: 0 0 0 0.25rem rgb(10 9 8 / 0.28), 0 0 1.8rem rgb(212 179 106 / 0.16);
+    animation: mobileMedallion 4.8s ease-in-out infinite;
+  }
+
+  .cardBody {
+    position: relative;
+    background:
+      radial-gradient(circle at 100% 0, rgb(212 179 106 / 0.07), transparent 10rem),
+      linear-gradient(180deg, rgb(255 255 255 / 0.018), transparent);
+  }
+
+  .gesture {
+    display: flex;
+    align-items: center;
+    gap: 0.65rem;
+  }
+
+  .finalCard {
+    position: relative;
+    overflow: hidden;
+    background:
+      radial-gradient(circle at 50% -45%, rgb(212 179 106 / 0.22), transparent 12rem),
+      linear-gradient(145deg, rgb(255 255 255 / 0.025), transparent 50%),
+      rgb(17 16 14 / 0.9);
+    box-shadow: 0 1.4rem 3.5rem rgb(0 0 0 / 0.26);
+  }
+
+  .finalLink {
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 0.75rem 2rem rgb(0 0 0 / 0.32), inset 0 0 0 1px rgb(255 244 210 / 0.28);
+  }
+
+  .finalLink::before {
+    position: absolute;
+    inset: 0;
+    content: "";
+    background: linear-gradient(110deg, transparent 30%, rgb(255 255 255 / 0.22), transparent 70%);
+    transform: translateX(-120%);
+    transition: transform 650ms ease;
+  }
+
+  .finalLink:active::before {
+    transform: translateX(120%);
+  }
+}
+
+@keyframes mobileShine {
+  0%,
+  62% {
+    transform: translateX(-180%) skewX(-12deg);
+  }
+
+  82%,
+  100% {
+    transform: translateX(330%) skewX(-12deg);
+  }
+}
+
+@keyframes mobileMedallion {
+  0%,
+  100% {
+    box-shadow: 0 0 0 0.25rem rgb(10 9 8 / 0.28), 0 0 1.4rem rgb(212 179 106 / 0.12);
+  }
+
+  50% {
+    box-shadow: 0 0 0 0.25rem rgb(10 9 8 / 0.28), 0 0 2.2rem rgb(212 179 106 / 0.24);
+  }
+}
+
+@media (max-width: 767px) and (prefers-reduced-motion: no-preference) {
+  @supports (animation-timeline: view()) {
+    .card {
+      animation: mobileReveal both linear;
+      animation-timeline: view();
+      animation-range: entry 4% cover 27%;
+    }
+  }
+}
+
+@keyframes mobileReveal {
+  from {
+    opacity: 0.35;
+    transform: translateY(1.6rem) scale(0.985);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .imageFrame::after,
+  .index,
+  .card {
+    animation: none;
+  }
+
+  .card,
+  .image,
+  .finalLink::before {
+    transition: none;
+  }
+}

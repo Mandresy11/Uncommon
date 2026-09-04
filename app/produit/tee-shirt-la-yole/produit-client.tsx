@@ -123,7 +123,7 @@ export function ProduitClient({ couleurInitiale }: { couleurInitiale?: string })
             </div>
 
             {/* Vignettes cliquables */}
-            <div className="mt-3 flex gap-3">
+            <div className="mt-3 hidden gap-3 sm:flex">
               {galerie.map((src, i) => (
                 <button
                   key={src}
@@ -286,7 +286,7 @@ export function ProduitClient({ couleurInitiale }: { couleurInitiale?: string })
       <div className="mx-auto max-w-6xl px-4 md:px-6">
         {/* Suggestions */}
         <div className="py-14">
-          <h2 className="font-display text-2xl text-[#191610]">Tu aimeras aussi</h2>
+          <h2 className="font-display text-2xl text-[#191610]">Vous aimerez aussi</h2>
           <div className="mt-6 grid grid-cols-2 gap-4 md:grid-cols-4">
             {[
               { image: "/img/polo-noir.webp", nom: "Polo Signature UP Noir", prix: 60, href: "/produit/polo-signature-up?couleur=noir" },

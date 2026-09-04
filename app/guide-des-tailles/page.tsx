@@ -1,4 +1,3 @@
-import Image from "next/image";
 import { Cta, Kicker } from "@/components/cta";
 
 export const metadata = {
@@ -11,31 +10,34 @@ const PRODUITS = [
   {
     nom: "Polo Signature UP",
     coupe: "Coupe normale",
-    tailles: ["M", "L", "XL", "XXL"],
-    conseil: "Choisis ta taille habituelle pour un porté net. Si tu recherches plus d’aisance, privilégie la taille supérieure.",
+    mesures: [
+      { taille: "M", epaules: 44, poitrine: 52, longueur: 70 },
+      { taille: "L", epaules: 46, poitrine: 55, longueur: 72 },
+      { taille: "XL", epaules: 48, poitrine: 58, longueur: 74 },
+      { taille: "XXL", epaules: 50, poitrine: 61, longueur: 76 },
+    ],
+    conseil: "Choisissez votre taille habituelle pour un porté net. Si vous recherchez plus d’aisance, privilégiez la taille supérieure.",
     matiere: "Piqué premium · 95 % coton · 5 % élasthanne",
   },
   {
     nom: "Tee-shirt La Yole",
     coupe: "Coupe droite",
-    tailles: ["S", "M", "L", "XL", "XXL"],
-    conseil: "Choisis ta taille habituelle pour un tombé droit. Prends une taille au-dessus pour une allure plus ample.",
+    mesures: [
+      { taille: "S", epaules: 42, poitrine: 49, longueur: 68 },
+      { taille: "M", epaules: 44, poitrine: 52, longueur: 70 },
+      { taille: "L", epaules: 46, poitrine: 55, longueur: 72 },
+      { taille: "XL", epaules: 48, poitrine: 58, longueur: 74 },
+      { taille: "XXL", epaules: 50, poitrine: 61, longueur: 76 },
+    ],
+    conseil: "Choisissez votre taille habituelle pour un tombé droit. Prenez une taille au-dessus pour une allure plus ample.",
     matiere: "Coton peigné épais · Tombé structuré",
   },
 ] as const;
 
-function Ornement({ sombre = false }: { sombre?: boolean }) {
-  return (
-    <span className="inline-flex items-center" aria-hidden="true">
-      <span className="h-1.5 w-1.5 rotate-45 border border-[#c49a3f]" />
-    </span>
-  );
-}
-
 function SchemaMesures() {
   return (
-    <div className="border border-[#191610]/15 bg-[#e5dcc9]/65 p-4 sm:p-7">
-      <div className="relative mx-auto aspect-[4/4.2] w-full max-w-[17rem] sm:max-w-[24rem]">
+    <div className="grid items-center border border-[#191610]/15 bg-[#e5dcc9]/65 p-4 sm:p-7 lg:grid-cols-[0.88fr_1.12fr] lg:gap-12 lg:p-10">
+      <div className="relative mx-auto aspect-[4/4.2] w-full max-w-[17rem] sm:max-w-[21rem]">
         <svg viewBox="0 0 360 378" className="h-full w-full" aria-hidden="true">
           <path
             d="M128 60 88 80 46 142l39 24 20-28v184h150V138l20 28 39-24-42-62-40-20c-6 24-25 38-52 38s-46-14-52-38Z"
@@ -68,7 +70,7 @@ function SchemaMesures() {
         </svg>
       </div>
 
-      <dl className="mt-4 grid gap-4 sm:grid-cols-3">
+      <dl className="mt-4 grid gap-4 sm:grid-cols-3 lg:mt-0 lg:grid-cols-1 lg:gap-6">
         <div className="border-t border-[#9c7e32]/35 pt-3">
           <dt className="font-display text-[0.82rem] uppercase tracking-[0.08em] text-[#191610]">A · Épaules</dt>
           <dd className="mt-2 text-[0.76rem] leading-[1.55] text-[#191610]/65">D’une couture d’épaule à l’autre.</dd>
@@ -89,86 +91,7 @@ function SchemaMesures() {
 export default function GuideTailles() {
   return (
     <main className="overflow-x-hidden">
-      <section className="grain relative isolate overflow-hidden bg-[#090908] px-6 pb-14 pt-32 text-[#f5f1e8] sm:pb-20 sm:pt-40 lg:min-h-[47rem] lg:pb-24" aria-labelledby="titre-guide">
-        <span
-          className="absolute inset-0 -z-20 scale-105 bg-cover bg-center opacity-35"
-          style={{ backgroundImage: "url(/img/fond-grain-or.webp)" }}
-          aria-hidden="true"
-        />
-        <span className="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_75%_45%,rgba(173,129,48,0.12),transparent_38%),rgba(9,9,8,0.86)]" aria-hidden="true" />
-        <span className="font-faq pointer-events-none absolute -left-6 bottom-0 -z-10 select-none text-[17rem] leading-none text-[#d4b36a]/[0.035] sm:text-[25rem]" aria-hidden="true">
-          UP
-        </span>
-
-        <div className="mx-auto grid w-full max-w-6xl min-w-0 items-center gap-10 sm:gap-14 lg:grid-cols-[0.88fr_1.12fr] lg:gap-20">
-          <div className="min-w-0">
-            <Kicker>Bien choisir</Kicker>
-            <h1 id="titre-guide" className="font-display mt-6 max-w-[35rem] text-[clamp(2.15rem,5vw,4.5rem)] leading-[1.06] tracking-[-0.02em] sm:mt-7">
-              La bonne
-              <br />
-              coupe,
-              <br />
-              <span className="italic text-[#e3c888] whitespace-nowrap">sans hésiter.</span>
-            </h1>
-            <span className="mt-6 block sm:mt-7"><Ornement sombre /></span>
-            <p className="mt-5 max-w-[33rem] text-[0.9rem] leading-[1.7] text-[#f5f1e8]/74 sm:mt-7 sm:text-[clamp(0.94rem,1.4vw,1.06rem)] sm:leading-[1.8]">
-              Compare les coupes, prends trois mesures simples et trouve le tombé qui te
-              correspond. Un bon choix commence toujours par un vêtement qui te va déjà bien.
-            </p>
-
-            <div className="mt-7 grid max-w-[34rem] grid-cols-3 gap-2.5 sm:mt-9 sm:gap-3">
-              {["Du S au XXL", "Deux coupes", "Séries limitées"].map((label) => (
-                <div
-                  key={label}
-                  className="relative flex min-h-[5rem] flex-col items-center justify-center overflow-hidden border border-[#d4b36a]/32 bg-[#f5f1e8]/[0.045] px-2 py-3 text-center shadow-[inset_0_1px_0_rgba(255,255,255,0.04),0_10px_24px_rgba(0,0,0,0.14)] backdrop-blur-sm transition-[border-color,background-color,transform] duration-300 hover:-translate-y-0.5 hover:border-[#d4b36a]/65 hover:bg-[#d4b36a]/[0.075] sm:min-h-[5.5rem] sm:px-4"
-                >
-                  <span className="absolute inset-[3px] border border-[#d4b36a]/10" aria-hidden="true" />
-                  <span className="mb-2 h-1.5 w-1.5 rotate-45 bg-[#d4b36a]" aria-hidden="true" />
-                  <span className="relative text-[0.54rem] font-semibold uppercase leading-[1.45] tracking-[0.13em] text-[#e3c888] sm:text-[0.62rem] sm:tracking-[0.17em]">
-                    {label}
-                  </span>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          <div className="relative mx-auto grid h-[19rem] w-full max-w-[37rem] min-w-0 grid-cols-2 gap-2 sm:h-[25rem] sm:gap-3 lg:justify-self-end">
-            <span className="absolute -bottom-3 -right-3 h-full w-full border border-[#d4b36a]/40" aria-hidden="true" />
-
-            <div className="relative overflow-hidden border border-[#d4b36a]/25 bg-[#15120f]">
-              <Image
-                src="/img/polo-noir.webp"
-                alt="Polo Signature UP noir à coupe normale"
-                fill
-                priority
-                sizes="(min-width: 1024px) 290px, 45vw"
-                className="object-cover object-top"
-              />
-              <span className="absolute inset-0 bg-gradient-to-t from-[#090908]/80 via-transparent to-transparent" aria-hidden="true" />
-              <div className="absolute inset-x-0 bottom-0 p-4 sm:p-5">
-                <p className="text-[0.55rem] font-semibold uppercase tracking-[0.18em] text-[#d4b36a]">Signature</p>
-                <p className="font-display mt-1 text-[0.82rem] uppercase text-[#f5f1e8] sm:text-[0.95rem]">Coupe normale</p>
-              </div>
-            </div>
-
-            <div className="relative mt-8 overflow-hidden border border-[#d4b36a]/25 bg-[#15120f]">
-              <Image
-                src="/img/tee-noir.webp"
-                alt="Tee-shirt La Yole noir à coupe droite"
-                fill
-                priority
-                sizes="(min-width: 1024px) 290px, 45vw"
-                className="object-cover object-top"
-              />
-              <span className="absolute inset-0 bg-gradient-to-t from-[#090908]/80 via-transparent to-transparent" aria-hidden="true" />
-              <div className="absolute inset-x-0 bottom-0 p-4 sm:p-5">
-                <p className="text-[0.55rem] font-semibold uppercase tracking-[0.18em] text-[#d4b36a]">Héritage</p>
-                <p className="font-display mt-1 text-[0.82rem] uppercase text-[#f5f1e8] sm:text-[0.95rem]">Coupe droite</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+      <div className="h-[6.6rem] bg-[#0a0908]" aria-hidden="true" />
 
       <section className="relative overflow-hidden bg-[#f1e9dc] px-6 py-14 text-[#191610] sm:py-20 md:py-28" aria-labelledby="titre-mesures">
         <span
@@ -185,49 +108,93 @@ export default function GuideTailles() {
         <div className="relative z-10 mx-auto w-full max-w-6xl min-w-0">
           <header className="mx-auto max-w-2xl text-center">
             <Kicker>En trois gestes</Kicker>
-            <h2 id="titre-mesures" className="font-display mt-4 text-[clamp(1.8rem,4vw,3.2rem)] leading-tight">
-              Mesure, compare, <span className="block sm:inline">choisis</span>
-            </h2>
-            <span className="mt-5 flex justify-center"><Ornement /></span>
+            <h1 id="titre-mesures" className="font-display mt-4 text-[clamp(1.8rem,4vw,3.2rem)] leading-tight">
+              Mesurez, comparez, <span className="block sm:inline">choisissez</span>
+            </h1>
             <p className="mx-auto mt-6 max-w-xl leading-[1.75] text-[#191610]/68">
-              Pose à plat un vêtement dans lequel tu te sens bien. Mesure-le sans tirer
-              sur le tissu, puis compare son type de coupe avec nos modèles.
+              Posez à plat un vêtement dans lequel vous vous sentez bien. Mesurez-le sans tirer
+              sur le tissu, puis comparez son type de coupe avec nos modèles.
             </p>
           </header>
 
-          <div className="mt-9 grid items-start gap-7 sm:mt-12 sm:gap-8 lg:grid-cols-[0.92fr_1.08fr] lg:gap-10">
+          <div className="mt-9 sm:mt-12">
             <SchemaMesures />
 
-            <div className="min-w-0">
-              <div
-                className="-mx-6 flex snap-x snap-mandatory items-stretch gap-4 overflow-x-auto overflow-y-hidden scroll-px-6 px-6 pb-3 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden sm:mx-0 sm:block sm:snap-none sm:space-y-5 sm:overflow-visible sm:px-0 sm:pb-0"
-                style={{ touchAction: "pan-x", overscrollBehaviorInline: "contain" }}
-                aria-label="Coupes et tailles disponibles"
-              >
+            <div className="mt-7 min-w-0 sm:mt-8">
+              <div className="grid items-stretch gap-6 lg:grid-cols-2" aria-label="Tableaux des mesures par coupe">
                 {PRODUITS.map((produit) => (
-                <article key={produit.nom} className="w-[78vw] max-w-[18rem] shrink-0 snap-start border border-[#191610]/14 bg-[#f8f3eb]/90 p-5 shadow-[0_16px_38px_rgba(25,22,16,0.06)] sm:w-auto sm:max-w-none sm:shrink sm:p-8">
-                  <div className="flex flex-col gap-5 sm:flex-row sm:items-start sm:justify-between">
-                    <div>
-                      <p className="text-[0.62rem] font-semibold uppercase tracking-[0.2em] text-[#9c7e32]">{produit.coupe}</p>
-                      <h3 className="font-display mt-2 text-[1.15rem] text-[#191610] sm:text-[1.3rem]">{produit.nom}</h3>
+                  <article
+                    key={produit.nom}
+                    className="min-w-0 overflow-hidden border border-[#191610]/14 bg-[#f8f3eb]/90 shadow-[0_16px_38px_rgba(25,22,16,0.06)]"
+                  >
+                    <div className="flex flex-col gap-3 px-5 pb-4 pt-5 sm:flex-row sm:items-start sm:justify-between sm:px-7 sm:pt-6">
+                      <div>
+                        <p className="text-[0.6rem] font-semibold uppercase tracking-[0.2em] text-[#9c7e32]">
+                          {produit.coupe}
+                        </p>
+                        <h3 className="font-display mt-2 text-[1.1rem] text-[#191610] sm:text-[1.25rem]">
+                          {produit.nom}
+                        </h3>
+                      </div>
+                      <span className="w-fit border border-[#9c7e32]/35 bg-[#e5dcc9]/50 px-3 py-1.5 text-[0.55rem] font-semibold uppercase tracking-[0.16em] text-[#7e642d]">
+                        Mesures à plat · cm
+                      </span>
                     </div>
-                    <div className="flex flex-wrap gap-2" aria-label={`Tailles disponibles pour ${produit.nom}`}>
-                      {produit.tailles.map((taille) => (
-                        <span
-                          key={taille}
-                          className="btn-cut relative isolate flex h-12 min-w-12 items-center justify-center overflow-hidden border border-[#9c7e32] bg-[linear-gradient(145deg,#211d17_0%,#0a0908_78%)] px-3 font-display text-[0.76rem] font-semibold uppercase tracking-[0.08em] text-[#f5f1e8] shadow-[0_3px_0_#9c7e32,0_8px_16px_rgba(25,22,16,0.18)]"
-                        >
-                          <span className="absolute right-2 top-2 h-1.5 w-1.5 rotate-45 bg-[#d4b36a] shadow-[0_0_7px_rgba(227,200,136,0.45)]" aria-hidden="true" />
-                          <span className="relative z-10">{taille}</span>
-                          <span className="absolute inset-x-3 bottom-1.5 h-px bg-[#d4b36a]/75" aria-hidden="true" />
-                        </span>
-                      ))}
+
+                    <div
+                      className="overflow-hidden border-y border-[#191610]/10"
+                    >
+                      <table className="w-full table-fixed border-collapse text-center">
+                        <caption className="sr-only">
+                          Mesures indicatives en centimètres pour {produit.nom}
+                        </caption>
+                        <colgroup>
+                          <col className="w-[18%]" />
+                          <col className="w-[27.33%]" />
+                          <col className="w-[27.33%]" />
+                          <col className="w-[27.34%]" />
+                        </colgroup>
+                        <thead className="bg-[#17140f] text-[#f5f1e8]">
+                          <tr>
+                            <th scope="col" className="px-2 py-2.5 text-left text-[0.5rem] font-semibold uppercase tracking-[0.08em] text-[#e3c888] sm:px-4 sm:py-3 sm:text-[0.59rem] sm:tracking-[0.16em]">
+                              Taille
+                            </th>
+                            <th scope="col" className="px-0.5 py-2.5 text-[0.48rem] font-semibold uppercase tracking-[0.045em] sm:px-3 sm:py-3 sm:text-[0.59rem] sm:tracking-[0.12em]">
+                              <span className="mb-0.5 block text-[#d4b36a] sm:mb-0 sm:mr-1 sm:inline">A</span>
+                              Épaules
+                            </th>
+                            <th scope="col" className="px-0.5 py-2.5 text-[0.48rem] font-semibold uppercase tracking-[0.045em] sm:px-3 sm:py-3 sm:text-[0.59rem] sm:tracking-[0.12em]">
+                              <span className="mb-0.5 block text-[#d4b36a] sm:mb-0 sm:mr-1 sm:inline">B</span>
+                              Poitrine
+                            </th>
+                            <th scope="col" className="px-0.5 py-2.5 text-[0.48rem] font-semibold uppercase tracking-[0.045em] sm:px-3 sm:py-3 sm:text-[0.59rem] sm:tracking-[0.12em]">
+                              <span className="mb-0.5 block text-[#d4b36a] sm:mb-0 sm:mr-1 sm:inline">C</span>
+                              Longueur
+                            </th>
+                          </tr>
+                        </thead>
+                        <tbody className="divide-y divide-[#191610]/10">
+                          {produit.mesures.map((mesure, index) => (
+                            <tr key={mesure.taille} className={index % 2 === 0 ? "bg-white/55" : "bg-[#e5dcc9]/35"}>
+                              <th scope="row" className="px-2 py-3 text-left font-display text-[0.72rem] font-semibold text-[#9c7e32] sm:px-4 sm:text-[0.78rem]">
+                                {mesure.taille}
+                              </th>
+                              <td className="px-1 py-3 text-[0.76rem] tabular-nums text-[#191610]/78 sm:px-3 sm:text-[0.82rem]">{mesure.epaules}</td>
+                              <td className="px-1 py-3 text-[0.76rem] tabular-nums text-[#191610]/78 sm:px-3 sm:text-[0.82rem]">{mesure.poitrine}</td>
+                              <td className="px-1 py-3 text-[0.76rem] tabular-nums text-[#191610]/78 sm:px-3 sm:text-[0.82rem]">{mesure.longueur}</td>
+                            </tr>
+                          ))}
+                        </tbody>
+                      </table>
                     </div>
-                  </div>
-                  <span className="mt-5 block h-px w-full bg-[#191610]/10" aria-hidden="true" />
-                  <p className="mt-5 text-[0.88rem] leading-[1.65] text-[#191610]/72">{produit.conseil}</p>
-                  <p className="mt-3 text-[0.68rem] uppercase tracking-[0.12em] text-[#191610]/48">{produit.matiere}</p>
-                </article>
+
+                    <div className="px-5 pb-5 pt-4 sm:px-7 sm:pb-6">
+                      <p className="text-[0.84rem] leading-[1.65] text-[#191610]/72">{produit.conseil}</p>
+                      <p className="mt-3 text-[0.64rem] uppercase tracking-[0.12em] text-[#191610]/48">
+                        {produit.matiere}
+                      </p>
+                    </div>
+                  </article>
                 ))}
               </div>
 
@@ -235,7 +202,7 @@ export default function GuideTailles() {
                 <div>
                   <p className="font-display text-[0.95rem] text-[#191610]">Encore un doute ?</p>
                   <p className="mt-2 max-w-md text-[0.8rem] leading-[1.55] text-[#191610]/62">
-                    Envoie-nous ta taille habituelle, ta taille et ton tour de poitrine : nous t’aiderons à choisir.
+                    Envoyez-nous votre taille habituelle, votre taille et votre tour de poitrine : nous vous aiderons à choisir.
                   </p>
                 </div>
                 <div className="mt-5 shrink-0 sm:mt-0">
@@ -244,7 +211,9 @@ export default function GuideTailles() {
               </div>
 
               <p className="mt-5 text-[0.7rem] leading-relaxed text-[#191610]/48">
-                Les mensurations détaillées de chaque vêtement seront ajoutées après validation définitive des productions.
+                Mesures indicatives du vêtement posé à plat, en centimètres. Une tolérance
+                de fabrication de ± 1 à 2 cm est possible. À confirmer après validation
+                définitive des productions.
               </p>
             </div>
           </div>

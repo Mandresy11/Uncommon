@@ -1,16 +1,6 @@
 import { IconEmail, IconInstagram } from "@/components/icons";
 import styles from "./partage-photo.module.css";
 
-function Ornement() {
-  return (
-    <span className={styles.ornement} aria-hidden="true">
-      <span />
-      <i />
-      <span />
-    </span>
-  );
-}
-
 function Boussole() {
   return (
     <svg viewBox="0 0 84 84" className={styles.boussole} aria-hidden="true">
@@ -45,13 +35,10 @@ export function PartagePhoto() {
         </svg>
 
         <div className={styles.contenu}>
-          <Ornement />
-
           <header className={styles.entete}>
-            <h2 id="titre-partage-photo" className={styles.titre}>Envoie-nous ta photo</h2>
-            <span className={styles.tiret} aria-hidden="true" />
+            <h2 id="titre-partage-photo" className={styles.titre}>Envoyez-nous votre photo</h2>
             <p className={styles.texte}>
-              Tu portes une pièce Uncommon People Tribe ? Partage ta photo par e-mail
+              Vous portez une pièce Uncommon People Tribe ? Partagez votre photo par e-mail
               <br className={styles.retourLigne} /> ou sur Instagram : les meilleures rejoindront cette galerie.
             </p>
           </header>
@@ -63,9 +50,7 @@ export function PartagePhoto() {
               aria-label="Envoyer une photo par e-mail à uncommonpeopletribe@gmail.com"
             >
               <IconEmail className={styles.icone} aria-hidden="true" />
-              <Ornement />
               <span className={styles.coordonnees}>uncommonpeopletribe@gmail.com</span>
-              <span className={styles.petitOrnement} aria-hidden="true"><i /></span>
             </a>
 
             <a
@@ -76,9 +61,7 @@ export function PartagePhoto() {
               aria-label="Partager une photo sur le compte Instagram Uncommon People Tribe"
             >
               <IconInstagram className={styles.icone} aria-hidden="true" />
-              <Ornement />
               <span className={styles.coordonnees}>@uncommonpeopletribe</span>
-              <span className={styles.petitOrnement} aria-hidden="true"><i /></span>
             </a>
 
             <span className={styles.medaillon} aria-hidden="true">

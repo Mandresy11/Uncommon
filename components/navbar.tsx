@@ -5,6 +5,7 @@
 // - bandeau defilant avec une ICONE entre chaque element de reassurance
 // - mobile : logo horizontal centre, panier + burger a droite, "West Indian Excellence"
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import { IconPanier, IconMenu, IconFermer, LisereDrapeau } from "./icons";
@@ -72,9 +73,17 @@ function IconeSepareNoir() {
 
 export function Navbar() {
   const { nombreArticles } = useCart();
+  const pathname = usePathname();
   const [scrolled, setScrolled] = useState(false);
   const [ouvert, setOuvert] = useState(false);
   const [menuActif, setMenuActif] = useState<string | null>(null);
+  const estPageFondClair =
+    pathname === "/blog" ||
+    pathname.startsWith("/blog/") ||
+    pathname === "/boutique" ||
+    pathname.startsWith("/boutique/") ||
+    pathname === "/livraison-retours" ||
+    pathname === "/notre-histoire";
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 24);
@@ -100,11 +109,16 @@ export function Navbar() {
         </div>
       </div>
 
-      {/* Retour Tom v13 : le survol d'un menu ne teinte PLUS toute la barre (plus de bande
-          semi-transparente parasite). Seuls le scroll et le menu mobile ouvert tintent la barre. */}
+      {/* Les pages qui commencent sur fond clair (blog, boutique, livraison, notre-histoire) gardent
+          une navigation sombre des le haut de page pour rester lisibles. Sur les autres pages, elle
+          se teinte au scroll ou a l'ouverture du menu. */}
       <div
         className={`relative transition-colors duration-500 ${
-          scrolled || ouvert ? "bg-[#0A0908]/70 backdrop-blur-md" : "bg-transparent"
+          estPageFondClair
+            ? "bg-[#0A0908]/95 backdrop-blur-md"
+            : scrolled || ouvert
+              ? "bg-[#0A0908]/70 backdrop-blur-md"
+              : "bg-transparent"
         }`}
         onMouseLeave={() => setMenuActif(null)}
       >

@@ -28,8 +28,8 @@ export function useNewsletter() {
       setStatut("ok");
       setMessage(
         resultat.codeEnvoye
-          ? "Merci ! Ton code de bienvenue vient de partir par e-mail."
-          : "Merci ! Ton inscription à la tribu est bien enregistrée."
+          ? "Merci ! Votre code de bienvenue vient de partir par e-mail."
+          : "Merci ! Votre inscription à la tribu est bien enregistrée."
       );
     } catch (erreur) {
       setStatut("erreur");

@@ -31,7 +31,7 @@ export default function Galerie() {
     <>
       <PageShell kicker="Galerie" titre={<>Toute la collection en images</>}>
         <p className="mx-auto -mt-6 mb-10 max-w-md text-center text-[0.8rem] text-[#191610]/55">
-          Clique sur une photo pour l&apos;agrandir.
+          Cliquez sur une photo pour l&apos;agrandir.
         </p>
         <GalerieLightbox images={IMAGES} />
         <div className="mt-12 text-center">

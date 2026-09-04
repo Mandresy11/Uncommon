@@ -40,14 +40,14 @@ export function PanierClient() {
   };
 
   return (
-    <PageShell kicker="Ta sélection" titre={<>Panier</>}>
+    <PageShell kicker="Votre sélection" titre={<>Panier</>}>
       {!pret ? (
         <div className="mx-auto h-56 max-w-3xl animate-pulse bg-[#E5DCC9]/55" aria-label="Chargement du panier" />
       ) : articles.length === 0 ? (
         <div className="mx-auto max-w-md border border-[#191610]/20 bg-[#E5DCC9]/60 p-8 text-center sm:p-10">
-          <p className="font-display text-xl">Ton panier est vide.</p>
+          <p className="font-display text-xl">Votre panier est vide.</p>
           <p className="mt-3 text-[0.9rem] text-[#191610]/70">
-            Découvre les pièces Héritage et Signature, puis choisis ta couleur et ta taille.
+            Découvrez les pièces Héritage et Signature, puis choisissez votre couleur et votre taille.
           </p>
           <div className="mt-7">
             <Cta href="/boutique" variante="noir">Découvrir la collection</Cta>

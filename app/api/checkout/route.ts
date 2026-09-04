@@ -36,18 +36,18 @@ export async function POST(request: Request) {
     const code = erreur instanceof Error ? erreur.message : "";
     if (code === "CONFIGURATION_SHOPIFY_MANQUANTE") {
       return NextResponse.json(
-        { erreur: "Le paiement en ligne est en cours de configuration. Écris-nous pour réserver ta sélection." },
+        { erreur: "Le paiement en ligne est en cours de configuration. Écrivez-nous pour réserver votre sélection." },
         { status: 503 }
       );
     }
     if (code === "VARIANTE_INVALIDE" || code === "VARIANTE_NON_RELIEE") {
       return NextResponse.json(
-        { erreur: "Une pièce de ton panier n’est plus disponible. Retire-la puis réessaie." },
+        { erreur: "Une pièce de votre panier n’est plus disponible. Retirez-la puis réessayez." },
         { status: 422 }
       );
     }
     return NextResponse.json(
-      { erreur: "Le stock ou le paiement n’a pas pu être vérifié. Réessaie dans quelques instants." },
+      { erreur: "Le stock ou le paiement n’a pas pu être vérifié. Réessayez dans quelques instants." },
       { status: 502 }
     );
   }

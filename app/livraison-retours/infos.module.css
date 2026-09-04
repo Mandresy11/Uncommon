@@ -275,21 +275,22 @@
 .boutonContact {
   position: relative;
   display: inline-flex;
-  min-width: 25rem;
-  min-height: 5rem;
+  min-width: 0;
+  min-height: 3.25rem;
   align-items: center;
   justify-content: center;
-  gap: 2rem;
+  gap: 1rem;
+  padding-inline: 2.25rem;
   border: 1px solid #b18a40;
   background: linear-gradient(145deg, #211d17 0%, #0a0908 72%);
-  box-shadow: inset 0 0 0 0.35rem #0a0908, inset 0 0 0 0.4rem rgba(177, 138, 64, 0.72), 0 8px 18px rgba(35, 27, 16, 0.22);
+  box-shadow: inset 0 0 0 0.2rem #0a0908, inset 0 0 0 0.25rem rgba(177, 138, 64, 0.72), 0 8px 18px rgba(35, 27, 16, 0.22);
   color: #f5f1e8;
-  font-size: 0.93rem;
+  font-size: 0.8rem;
   font-weight: 700;
-  letter-spacing: 0.25em;
+  letter-spacing: 0.2em;
   text-transform: uppercase;
   transition: color 250ms ease, background 250ms ease, transform 250ms ease, box-shadow 250ms ease;
-  clip-path: polygon(0.8rem 0, calc(100% - 0.8rem) 0, 100% 0.8rem, 100% calc(100% - 0.8rem), calc(100% - 0.8rem) 100%, 0.8rem 100%, 0 calc(100% - 0.8rem), 0 0.8rem);
+  clip-path: polygon(0.6rem 0, calc(100% - 0.6rem) 0, 100% 0.6rem, 100% calc(100% - 0.6rem), calc(100% - 0.6rem) 100%, 0.6rem 100%, 0 calc(100% - 0.6rem), 0 0.6rem);
 }
 
 .boutonContact:hover {
@@ -438,12 +439,12 @@
   }
 
   .boutonContact {
-    width: min(100%, 22rem);
+    width: auto;
     min-width: 0;
-    min-height: 4.5rem;
-    gap: 1.25rem;
+    min-height: 3rem;
+    gap: 0.85rem;
     padding-inline: 1.5rem;
-    font-size: 0.76rem;
-    letter-spacing: 0.19em;
+    font-size: 0.72rem;
+    letter-spacing: 0.16em;
   }
 }

@@ -39,13 +39,10 @@ export default function Contact() {
     <main className="bg-[#F0EAE0] px-6 pb-20 pt-32 md:pt-40">
       <div className="mx-auto max-w-5xl">
         <div className="text-center">
-          <Kicker>Contacte-nous</Kicker>
+          <Kicker>Contactez-nous</Kicker>
           <h1 className="font-display mt-3 text-[clamp(2.1rem,4.5vw,3.2rem)] text-[#191610]">
-            On est à ton écoute
+            Nous sommes à votre écoute
           </h1>
-          <span className="mx-auto mt-5 flex items-center justify-center gap-3" aria-hidden="true">
-            <span className="h-1.5 w-1.5 rotate-45 border border-[#B8925A]" />
-          </span>
         </div>
 
         <div className="mt-14 grid gap-8 lg:grid-cols-[1.15fr_0.85fr]">
@@ -53,7 +50,7 @@ export default function Contact() {
           {statut === "ok" ? (
             <div className="border border-[#191610]/20 bg-[#E5DCC9]/70 p-10 text-center">
               <p className="font-display text-xl">Message envoyé.</p>
-              <p className="mt-3 text-[0.9rem] text-[#191610]/70">On te répond sous 48 h à l&apos;adresse indiquée.</p>
+              <p className="mt-3 text-[0.9rem] text-[#191610]/70">Nous vous répondons sous 48 h à l&apos;adresse indiquée.</p>
             </div>
           ) : (
             <form onSubmit={envoyer} className="space-y-5 border border-[#191610]/20 bg-[#E5DCC9]/70 p-8">
@@ -88,7 +85,7 @@ export default function Contact() {
                 </Cta>
                 {statut === "erreur" ? (
                   <p className="mt-3 text-[0.72rem] text-[#C8202E]" role="alert">
-                    L&apos;envoi a échoué. Écris-nous directement à uncommonpeopletribe@gmail.com.
+                    L&apos;envoi a échoué. Écrivez-nous directement à uncommonpeopletribe@gmail.com.
                   </p>
                 ) : (
                   <p className="mt-3 text-[0.72rem] text-[#191610]/55">Réponse sous 48 h.</p>
@@ -107,16 +104,13 @@ export default function Contact() {
               <p className="text-[0.55rem] uppercase tracking-[0.2em] text-[#191610]/45">
                 West Indian Excellence
               </p>
-              <span className="mx-auto mt-4 flex items-center justify-center gap-2" aria-hidden="true">
-                <span className="h-1.5 w-1.5 rotate-45 border border-[#B8925A]" />
-              </span>
             </div>
 
             <p className="font-display mt-6 text-center text-[1.1rem] leading-snug text-[#191610]">
               Une question sur une pièce, une taille ou une commande ?
             </p>
             <p className="mt-4 text-center text-[0.85rem] leading-relaxed text-[#191610]/70">
-              On te répond avec attention, sous 48 heures.
+              Nous vous répondons avec attention, sous 48 heures.
             </p>
 
             <div className="mt-7 space-y-5">
@@ -138,7 +132,7 @@ export default function Contact() {
                 </span>
                 <div>
                   <p className="text-[0.62rem] font-semibold uppercase tracking-[0.16em] text-[#191610]/55">Réponse sous 48 h</p>
-                  <p className="text-[0.85rem] text-[#191610]">On revient vers toi rapidement</p>
+                  <p className="text-[0.85rem] text-[#191610]">Nous revenons vers vous rapidement</p>
                 </div>
               </div>
             </div>

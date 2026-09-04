@@ -97,9 +97,6 @@ export function Intro() {
           </div>
         </Reveal>
 
-        <div className="mt-16 flex items-center justify-center gap-4" aria-hidden="true">
-          <span className="h-1.5 w-1.5 rotate-45 border border-[#B8925A]" />
-        </div>
         <p className="mt-4 text-center text-[0.62rem] uppercase tracking-[0.28em] text-[#191610]/50">
           Uncommon People Tribe <span className="text-[#B8925A]">|</span> West Indian Excellence
         </p>

@@ -8,7 +8,7 @@ const ETAPES = [
   {
     icone: IconPanier,
     titre: "Commande",
-    texte: "Tu choisis ta pièce, ta couleur, ta taille.",
+    texte: "Vous choisissez votre pièce, votre couleur et votre taille.",
     largeur: "lg:max-w-[13.5rem]",
   },
   {
@@ -20,13 +20,13 @@ const ETAPES = [
   {
     icone: IconCamion,
     titre: "Expédition ou retrait",
-    texte: "Envoi vers ton adresse, ou retrait en main propre.",
+    texte: "Envoi à votre adresse ou retrait en main propre.",
     largeur: "lg:max-w-[15rem]",
   },
   {
     icone: IconCoche,
     titre: "Réception",
-    texte: "Tu portes la tribu. 14 jours pour changer d’avis.",
+    texte: "Vous portez la tribu. Vous disposez de 14 jours pour changer d’avis.",
     largeur: "lg:max-w-[17rem]",
   },
 ];
@@ -60,7 +60,7 @@ export function Etapes() {
             id="titre-etapes-commande"
             className="font-display mt-9 text-[clamp(2rem,3.8vw,3.25rem)] font-normal uppercase leading-[1.08] text-[#F5F1E8] [text-shadow:0_3px_24px_rgba(0,0,0,0.65)]"
           >
-            Les étapes de ta commande
+            Les étapes de votre commande
           </h2>
         </Reveal>
 

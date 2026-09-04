@@ -18,7 +18,7 @@ const FINITIONS = [
   {
     image: "/img/detailv-col.webp",
     titre: "Le col et les boutons",
-    texte: "Col structuré, boutons choisis un à un, assortis à la couleur du polo.",
+    texte: "Col structuré, boutons sélectionnés un à un, assortis à la couleur du polo.",
   },
   {
     image: "/img/detailv-pique.webp",

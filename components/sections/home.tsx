@@ -7,7 +7,7 @@ import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import { Cta, Reveal, Kicker } from "../cta";
-import { IconGauche, IconDroite, IconAiguille, IconCiseaux, IconDrapeauMartinique } from "../icons";
+import { IconGauche, IconDroite, IconAiguille, IconCiseaux, IconDrapeauMartinique, IconPanier } from "../icons";
 import { POLO_COULEURS } from "@/lib/products";
 import { useNewsletter } from "../use-newsletter";
 
@@ -252,7 +252,7 @@ function PiecesPhares() {
                       className="aspect-[4/5] w-full object-cover transition-transform duration-500 group-hover:scale-[1.04]"
                     />
                   </div>
-                  <div className="flex items-center justify-between px-4 py-4">
+                  <div className="flex items-center justify-between px-4 pt-4">
                     <div>
                       <p className="text-[0.86rem] font-semibold text-[#191610]">{t.nom}</p>
                       <p className="text-[0.72rem] text-[#191610]/55">{t.variante}</p>
@@ -260,6 +260,15 @@ function PiecesPhares() {
                     <p className="font-semibold text-[#9C7E32]">{t.prix} €</p>
                   </div>
                 </Link>
+                <div className="px-4 pb-4 pt-3">
+                  <Link
+                    href={`${t.href}?couleur=${encodeURIComponent(t.variante.toLocaleLowerCase("fr-FR"))}`}
+                    className="flex h-10 w-full items-center justify-center gap-2 border border-[#191610]/25 text-[0.68rem] font-semibold uppercase tracking-[0.14em] text-[#191610] transition-colors hover:bg-[#191610] hover:text-white"
+                  >
+                    <IconPanier className="text-[0.95rem]" aria-hidden="true" />
+                    Ajouter au panier
+                  </Link>
+                </div>
               </article>
             ))}
           </div>
@@ -368,7 +377,7 @@ function Collections() {
 const LOOKBOOK_DETAILS = [
   { desk: "/img/detailv-monogramme.webp", mob: "/img/detail-monogramme.webp", titre: "Monogramme", sous: "Brodé au fil d'or" },
   { desk: "/img/detailv-drapeau.webp", mob: "/img/detail-drapeau.webp", titre: "Drapeau", sous: "Cousu sur la manche" },
-  { desk: "/img/detailv-col.webp", mob: "/img/detail-col.webp", titre: "Col & boutons", sous: "Choisis un à un" },
+  { desk: "/img/detailv-col.webp", mob: "/img/detail-col.webp", titre: "Col & boutons", sous: "Sélectionnés un à un" },
   { desk: "/img/detailv-yole.webp", mob: "/img/detail-yole.webp", titre: "La Yole", sous: "Sérigraphie or" },
   { desk: "/img/detailv-fente.webp", mob: "/img/detail-fente.webp", titre: "Fentes", sous: "Finitions latérales" },
   { desk: "/img/detailv-pique.webp", mob: "/img/detail-pile.webp", titre: "Piqué", sous: "Coton premium" },
@@ -385,7 +394,7 @@ function Lookbook() {
           </h2>
           <p className="mx-auto mt-4 max-w-xl text-[0.95rem] leading-relaxed text-[#F5F1E8]/80">
             Des pièces pensées pour être portées au quotidien, de Fort-de-France à
-            l&apos;Hexagone. Le même fil d&apos;or, la même fierté, où que tu sois.
+            l&apos;Hexagone. Le même fil d&apos;or, la même fierté, où que vous soyez.
           </p>
         </Reveal>
 
@@ -464,7 +473,7 @@ function Finitions() {
     {
       icone: <IconCiseaux />,
       titre: "Coupes travaillées",
-      texte: "Col structuré, fentes latérales, boutons choisis un à un.",
+      texte: "Col structuré, fentes latérales, boutons sélectionnés un à un.",
     },
   ];
   return (
@@ -677,7 +686,7 @@ function Newsletter() {
           >
             <CadreCoins />
             <label htmlFor="email" className="block text-[0.68rem] uppercase tracking-[0.18em] text-white">
-              Ton adresse e-mail
+              Votre adresse e-mail
             </label>
             <div className="mt-3 flex flex-col gap-3 sm:flex-row">
               <input

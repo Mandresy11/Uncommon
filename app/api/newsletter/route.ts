@@ -14,13 +14,13 @@ export async function POST(request: Request) {
   const emailBrut = (corps as { email?: unknown } | null)?.email;
   const email = typeof emailBrut === "string" ? emailBrut.trim().toLowerCase() : "";
   if (!EMAIL.test(email) || email.length > 254) {
-    return NextResponse.json({ erreur: "Saisis une adresse e-mail valide." }, { status: 400 });
+    return NextResponse.json({ erreur: "Saisissez une adresse e-mail valide." }, { status: 400 });
   }
 
   const apiKey = process.env.RESEND_API_KEY;
   if (!apiKey) {
     return NextResponse.json(
-      { erreur: "L’inscription n’est pas encore configurée. Réessaie prochainement." },
+      { erreur: "L’inscription n’est pas encore configurée. Réessayez prochainement." },
       { status: 503 }
     );
   }
@@ -36,7 +36,7 @@ export async function POST(request: Request) {
   if (error) {
     const dejaInscrit = /already|exists|duplicate/i.test(error.message ?? "");
     if (!dejaInscrit) {
-      return NextResponse.json({ erreur: "L’inscription a échoué. Réessaie dans quelques instants." }, { status: 502 });
+      return NextResponse.json({ erreur: "L’inscription a échoué. Réessayez dans quelques instants." }, { status: 502 });
     }
   }
 
@@ -48,8 +48,8 @@ export async function POST(request: Request) {
     const bienvenue = await resend.emails.send({
       from,
       to: email,
-      subject: "Bienvenue dans la tribu · Ton avantage de bienvenue",
-      text: `Bienvenue dans la tribu Uncommon People Tribe. Ton code de bienvenue est ${code}. Il sera valable selon les conditions indiquées lors de l’ouverture des commandes.`,
+      subject: "Bienvenue dans la tribu · Votre avantage de bienvenue",
+      text: `Bienvenue dans la tribu Uncommon People Tribe. Votre code de bienvenue est ${code}. Il sera valable selon les conditions indiquées lors de l’ouverture des commandes.`,
     });
     codeEnvoye = !bienvenue.error;
   }

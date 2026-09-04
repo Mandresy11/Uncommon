@@ -73,13 +73,6 @@ function MotifTitre() {
   );
 }
 
-function TraitOr() {
-  return (
-    <span className="mt-6 inline-flex items-center" aria-hidden="true">
-      <span className="h-1.5 w-1.5 rotate-45 border border-[#B8925A] bg-[#F5EFE3]" />
-    </span>
-  );
-}
 
 function Boussole() {
   return (
@@ -197,7 +190,6 @@ export function Parcours() {
                     <h3 className="font-display mt-12 text-[clamp(0.94rem,1.3vw,1.18rem)] font-medium uppercase leading-[1.4] tracking-[0.01em] text-[#24201C]">
                       {parcours.etape}
                     </h3>
-                    <TraitOr />
                     <p className="mt-7 text-[clamp(0.82rem,1.15vw,1rem)] leading-[1.45] text-[#332E28]/72">
                       {parcours.texte}
                     </p>

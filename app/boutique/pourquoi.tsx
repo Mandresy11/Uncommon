@@ -62,13 +62,6 @@ function RailDore() {
   );
 }
 
-function FiletTitre() {
-  return (
-    <span className="mt-9 inline-flex items-center" aria-hidden="true">
-      <span className="h-3 w-3 rotate-45 border-2 border-[#D4B36A] bg-[#0A0908]" />
-    </span>
-  );
-}
 
 function PlaqueEngagements() {
   return (
@@ -134,7 +127,6 @@ export function Pourquoi() {
             <br />
             pas un produit
           </h2>
-          <FiletTitre />
           <p className="mt-6 max-w-[34rem] text-[clamp(0.88rem,1.05vw,1.05rem)] leading-[1.65] text-[#F5F1E8]/86">
             Chaque création est le fruit d&apos;un savoir-faire
             <br className="hidden xl:block" /> exigeant et de matériaux d&apos;exception.

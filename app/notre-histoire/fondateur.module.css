@@ -2,46 +2,43 @@
   position: relative;
   isolation: isolate;
   overflow: hidden;
-  background:
-    linear-gradient(rgba(246, 236, 218, 0.72), rgba(238, 224, 199, 0.76)),
-    url("/img/fond-papier.webp") center / cover;
+  padding: 8.5rem 1rem 4.5rem;
+  background: #f0e6d5;
+  color: #f5f1e8;
 }
 
-.desktopArtwork {
-  display: none;
-  aspect-ratio: 1672 / 941;
-  width: 100%;
-  background: url("/img/fondateur-histoire.webp") center / cover no-repeat;
-}
-
-.mobileArtwork {
-  position: relative;
-  padding: 9rem 1rem 4.5rem;
-  background:
-    linear-gradient(rgba(248, 239, 223, 0.86), rgba(239, 225, 201, 0.9)),
-    url("/img/fond-papier.webp") center / cover;
-}
-
-.mobileArtwork::before {
+.paperGrain {
   position: absolute;
   inset: 0;
-  background: url("/img/fond-feuillage.webp") left top / 42rem auto no-repeat;
+  z-index: -2;
+  background:
+    linear-gradient(rgba(248, 239, 223, 0.79), rgba(239, 225, 201, 0.86)),
+    url("/img/fond-papier.webp") center / cover;
+}
+
+.paperGrain::after {
+  position: absolute;
+  inset: 0;
+  background: url("/img/fond-feuillage.webp") left top / min(42rem, 58vw) auto no-repeat;
   content: "";
-  opacity: 0.08;
   mix-blend-mode: multiply;
-  pointer-events: none;
+  opacity: 0.055;
 }
 
 .layout {
   position: relative;
-  z-index: 1;
-  margin-inline: auto;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  width: 100%;
   max-width: 44rem;
+  margin-inline: auto;
 }
 
 .panel {
   position: relative;
-  padding: 3.4rem 1.4rem 2.2rem;
+  z-index: 2;
+  min-width: 0;
+  padding: 3.4rem 1.4rem 2.4rem;
   clip-path: polygon(
     1.5rem 0,
     calc(100% - 1.5rem) 0,
@@ -65,10 +62,9 @@
     1.5rem 0.35rem
   );
   background:
-    linear-gradient(rgba(18, 18, 17, 0.94), rgba(20, 20, 19, 0.97)),
+    linear-gradient(rgba(16, 16, 15, 0.91), rgba(16, 16, 15, 0.96)),
     url("/img/fond-broderie.webp") center / cover;
   box-shadow: 0 1.5rem 3rem rgba(43, 30, 12, 0.24);
-  color: #f5f1e8;
 }
 
 .panel::before {
@@ -124,14 +120,14 @@
   font-style: italic;
 }
 
-.copy {
+.story {
   margin-top: 2rem;
+  color: rgba(245, 241, 232, 0.78);
   font-size: 0.93rem;
   line-height: 1.75;
-  color: rgba(245, 241, 232, 0.78);
 }
 
-.copy + .copy {
+.story p + p {
   margin-top: 1.2rem;
 }
 
@@ -160,6 +156,9 @@
 
 .portraitWrap {
   position: relative;
+  z-index: 1;
+  min-width: 0;
+  min-height: 31rem;
   margin: -0.75rem 0.5rem 0;
   border: 1px solid #ae8231;
   background: #cbb58c;
@@ -167,17 +166,15 @@
 }
 
 .portrait {
-  display: block;
-  aspect-ratio: 4 / 5;
-  width: 100%;
   object-fit: cover;
-  object-position: center top;
+  object-position: center 23%;
 }
 
 .plaque {
   position: absolute;
   right: -0.65rem;
   bottom: 1.5rem;
+  z-index: 2;
   width: 7.5rem;
   padding: 1.15rem 0.75rem;
   background:
@@ -203,6 +200,7 @@
 }
 
 .plaqueCopy {
+  display: block;
   margin-top: 1rem;
   font-size: 0.57rem;
   font-weight: 600;
@@ -212,14 +210,14 @@
 }
 
 .compass {
-  margin: 0.9rem auto 0;
   width: 2.2rem;
   height: 2.2rem;
+  margin: 0.9rem auto 0;
   color: rgba(255, 248, 231, 0.68);
 }
 
 @media (min-width: 48rem) {
-  .mobileArtwork {
+  .section {
     padding-inline: 2rem;
   }
 
@@ -228,20 +226,113 @@
   }
 
   .portraitWrap {
-    margin-inline: 2.5rem;
+    min-height: 43rem;
+    margin: -0.75rem 2.5rem 0;
+  }
+
+  .plaque {
+    right: 1rem;
+    bottom: 2.5rem;
+  }
+}
+
+@media (min-width: 64rem) {
+  .layout {
+    grid-template-columns: minmax(0, 1.04fr) minmax(0, 0.96fr);
+    align-items: stretch;
+    max-width: 103rem;
+  }
+
+  .panel {
+    padding-inline: clamp(2.5rem, 4vw, 4rem);
+  }
+
+  .portraitWrap {
+    min-height: 0;
+    margin: 2rem 0 2rem -0.1rem;
   }
 }
 
 @media (min-width: 80rem) {
   .section {
-    padding-top: 6.5rem;
+    padding: clamp(9.5rem, 10vw, 12rem) clamp(4rem, 7vw, 8.5rem) clamp(4.5rem, 5vw, 6rem);
   }
 
-  .desktopArtwork {
-    display: block;
+  .layout {
+    grid-template-columns: minmax(0, 52.5fr) minmax(0, 47.5fr);
   }
 
-  .mobileArtwork {
-    display: none;
+  .panel {
+    padding: clamp(4.8rem, 5vw, 6.2rem) clamp(4.5rem, 5.2vw, 6.5rem) clamp(4rem, 4.5vw, 5.3rem);
+  }
+
+  .eyebrow {
+    min-height: 3rem;
+    padding-inline: 1.25rem;
+    font-size: 0.73rem;
+  }
+
+  .title {
+    margin-top: 2.15rem;
+    font-size: clamp(3.15rem, 3.25vw, 4rem);
+    line-height: 1.02;
+  }
+
+  .story {
+    max-width: 38rem;
+    margin-top: 2.6rem;
+    font-size: clamp(0.98rem, 1.05vw, 1.15rem);
+    line-height: 1.85;
+  }
+
+  .story p + p {
+    margin-top: 1.75rem;
+  }
+
+  .quote {
+    margin-top: 2.25rem;
+    padding-left: 1.5rem;
+  }
+
+  .quoteText {
+    font-size: clamp(1.25rem, 1.45vw, 1.6rem);
+  }
+
+  .signature {
+    margin-top: 1rem;
+    font-size: 0.68rem;
+  }
+
+  .portraitWrap {
+    margin-block: 2rem;
+  }
+
+  .plaque {
+    top: 50%;
+    right: clamp(-6.75rem, -5.5vw, -4.25rem);
+    bottom: auto;
+    width: clamp(9.5rem, 9.7vw, 11.25rem);
+    min-height: clamp(23rem, 25vw, 27.5rem);
+    padding: 2.7rem 1rem 2rem;
+    transform: translateY(-50%);
+  }
+
+  .plaqueLogo {
+    width: 4.7rem;
+    height: 4.7rem;
+    font-size: 1.9rem;
+  }
+
+  .plaqueCopy {
+    margin-top: 3.1rem;
+    font-size: 0.68rem;
+    line-height: 2.15;
+    letter-spacing: 0.19em;
+  }
+
+  .compass {
+    width: 3rem;
+    height: 3rem;
+    margin-top: 2.4rem;
   }
 }

@@ -5,31 +5,7 @@
   background: #d8c8a9;
 }
 
-.desktopArtwork {
-  position: relative;
-  display: none;
-  aspect-ratio: 1916 / 821;
-  width: 100%;
-}
-
-.desktopLink {
-  position: absolute;
-  left: 50.18%;
-  top: 68.45%;
-  z-index: 2;
-  width: 22.91%;
-  height: 10.75%;
-  min-width: 12rem;
-  transform: translateX(-50%);
-  border-radius: 1px;
-}
-
-.desktopLink:focus-visible {
-  outline: 3px solid #fff6dc;
-  outline-offset: 4px;
-}
-
-.mobileArtwork {
+.artwork {
   position: relative;
   display: grid;
   grid-template-columns: minmax(0, 1fr);
@@ -38,16 +14,30 @@
   padding: 3.5rem 1rem 6.25rem;
   background-image:
     linear-gradient(90deg, rgba(223, 208, 178, 0.28), rgba(226, 213, 188, 0.08)),
-    url("/img/edition-course-yoles-v2.webp");
-  background-position: center, right center;
-  background-size: cover, auto 200%;
+    url("/img/fond-papier.webp");
+  background-position: center;
+  background-size: cover;
 }
 
-.mobileArtwork::before {
+.artwork::before {
   position: absolute;
   inset: 0;
-  background: rgba(226, 214, 190, 0.16);
+  background: url("/img/fond-feuillage.webp") left center / auto 125% no-repeat;
   content: "";
+  mix-blend-mode: multiply;
+  opacity: 0.08;
+  pointer-events: none;
+}
+
+.artwork::after {
+  position: absolute;
+  inset-block: 0;
+  right: 0;
+  width: min(52vw, 22rem);
+  background: url("/img/edition-course-yoles-v2.webp") right center / auto 100% no-repeat;
+  content: "";
+  mix-blend-mode: multiply;
+  opacity: 0.5;
   pointer-events: none;
 }
 
@@ -90,27 +80,6 @@
   pointer-events: none;
 }
 
-.topOrnament {
-  position: absolute;
-  left: 50%;
-  top: 1.25rem;
-  display: flex;
-  width: calc(100% - 3.5rem);
-  align-items: center;
-  gap: 0.75rem;
-  transform: translateX(-50%);
-  color: #9b7831;
-}
-
-.topOrnament::before,
-.topOrnament::after {
-  height: 1px;
-  flex: 1;
-  background: currentColor;
-  content: "";
-  opacity: 0.75;
-}
-
 .title {
   font-family: var(--font-faq), Georgia, serif;
   font-size: clamp(2.25rem, 12vw, 4rem);
@@ -126,30 +95,6 @@
   color: #8c7136;
   font-size: 0.82em;
   font-style: italic;
-}
-
-.divider {
-  display: flex;
-  align-items: center;
-  gap: 0.65rem;
-  margin: 1.6rem auto 1.25rem;
-  color: #9a7832;
-}
-
-.divider::before,
-.divider::after {
-  height: 1px;
-  flex: 1;
-  background: currentColor;
-  content: "";
-  opacity: 0.35;
-}
-
-.dividerDiamond {
-  width: 0.45rem;
-  height: 0.45rem;
-  transform: rotate(45deg);
-  background: currentColor;
 }
 
 .copy {
@@ -197,17 +142,45 @@
 }
 
 @media (min-width: 80rem) {
-  .desktopArtwork {
-    display: block;
+  .artwork {
+    min-height: clamp(39rem, 43vw, 51rem);
+    padding: 5rem clamp(5rem, 10vw, 12rem);
   }
 
-  .mobileArtwork {
-    display: none;
+  .artwork::after {
+    width: min(32vw, 38rem);
+    opacity: 0.62;
+  }
+
+  .card {
+    max-width: 78rem;
+    padding: clamp(5rem, 6vw, 7rem) clamp(4rem, 7vw, 8rem) clamp(3.5rem, 4vw, 5rem);
+  }
+
+  .title {
+    font-size: clamp(3.7rem, 4.25vw, 5.15rem);
+  }
+
+  .divider {
+    margin-block: 2.2rem 1.8rem;
+  }
+
+  .copy {
+    max-width: 50rem;
+    font-size: clamp(1rem, 1.15vw, 1.2rem);
+    line-height: 1.75;
+  }
+
+  .cta {
+    min-height: 4.6rem;
+    min-width: 24rem;
+    margin-top: 2.4rem;
+    font-size: 0.82rem;
   }
 }
 
 @media (max-width: 25rem) {
-  .mobileArtwork {
+  .artwork {
     padding-inline: 0.65rem;
   }
 

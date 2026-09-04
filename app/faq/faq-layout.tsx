@@ -72,9 +72,6 @@ export function Faq({ autres }: { autres: QuestionCategorisee[] }) {
             <h1 className="mt-10 text-[clamp(2.35rem,3.15vw,2.9rem)] font-medium uppercase leading-none tracking-[0.065em] text-[#211c18]">
               D&apos;autres questions
             </h1>
-            <span className="mx-auto mt-5 flex items-center justify-center gap-2" aria-hidden="true">
-              <span className="h-1.5 w-1.5 rotate-45 border border-[#b68b37]" />
-            </span>
           </div>
 
           <div className="mt-9 grid items-start gap-6 lg:grid-cols-[20.5rem_minmax(0,1fr)]">
@@ -144,7 +141,7 @@ export function Faq({ autres }: { autres: QuestionCategorisee[] }) {
               <div className="divide-y divide-[#74634e]/22 border border-[#74634e]/25 bg-[#f8f3ea]/25">
                 {filtrees.length === 0 && (
                   <p className="px-10 py-8 text-center font-sans text-[0.88rem] text-[#40372f]/65">
-                    Aucune question ne correspond à ta recherche.
+                    Aucune question ne correspond à votre recherche.
                   </p>
                 )}
                 {filtrees.map((item, i) => {

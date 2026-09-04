@@ -22,16 +22,6 @@ function Boussole() {
   );
 }
 
-function Ornement() {
-  return (
-    <span className={styles.ornement} aria-hidden="true">
-      <span />
-      <i />
-      <span />
-    </span>
-  );
-}
-
 function Coins() {
   return (
     <span className={styles.coins} aria-hidden="true">
@@ -59,9 +49,7 @@ function Carte({ titre, Icone, position, children }: CarteProps) {
 
         <div className={styles.contenuCarte}>
           <Icone className={styles.icone} aria-hidden="true" />
-          <Ornement />
           <h2 className={styles.titreCarte}>{titre}</h2>
-          <Ornement />
           <p className={styles.texteCarte}>{children}</p>
         </div>
       </div>
@@ -92,22 +80,17 @@ export function Infos() {
           </div>
 
           <Carte titre="Retours et échanges" Icone={IconColisRetour} position="droite">
-            Tu disposes de 14 jours après réception pour retourner un article non
+            Vous disposez de 14 jours après réception pour retourner un article non
             porté dans son emballage d&apos;origine. Les échanges de taille se font
-            selon le stock disponible : les séries étant limitées, contacte-nous
+            selon le stock disponible : les séries étant limitées, contactez-nous
             rapidement.
           </Carte>
         </div>
 
         <div className={styles.action}>
           <Link href="/contact" className={styles.boutonContact}>
-            <span className={styles.losangeBouton} aria-hidden="true" />
             <span>Nous contacter</span>
-            <span className={styles.losangeBouton} aria-hidden="true" />
           </Link>
-          <span className={styles.trioLosanges} aria-hidden="true">
-            <i /><i /><i />
-          </span>
         </div>
       </div>
     </section>

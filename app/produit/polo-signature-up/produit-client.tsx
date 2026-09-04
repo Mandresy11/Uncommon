@@ -72,7 +72,7 @@ export function ProduitClient({ couleurInitiale }: { couleurInitiale?: string })
           aria-hidden="true"
         />
         <div className="relative z-10 mx-auto max-w-6xl px-6 pb-14 pt-8 text-center md:pb-16">
-          <Kicker>Collection Signature</Kicker>
+          <Kicker>Collection</Kicker>
           <h1 className="font-display mt-3 text-[clamp(2rem,5vw,3.4rem)] text-[#F5F1E8]">
             Polo Signature UP
           </h1>
@@ -90,8 +90,6 @@ export function ProduitClient({ couleurInitiale }: { couleurInitiale?: string })
         <div className="grid gap-8 pb-16 md:grid-cols-[1.15fr_0.85fr] md:gap-12">
           <div>
             <div className="mb-4 md:hidden">
-              <Kicker>Collection Signature · Série limitée</Kicker>
-              <p className="font-display mt-1 text-[1.7rem] text-[#191610]">Polo Signature UP</p>
               <p className="mt-1 text-xl font-semibold text-[#191610]">60 €</p>
             </div>
 
@@ -112,7 +110,7 @@ export function ProduitClient({ couleurInitiale }: { couleurInitiale?: string })
               </AnimatePresence>
             </div>
 
-            <div className="mt-3 flex gap-3">
+            <div className="mt-3 hidden gap-3 sm:flex">
               {galerie.map((src, i) => (
                 <button
                   key={src}
@@ -269,7 +267,7 @@ export function ProduitClient({ couleurInitiale }: { couleurInitiale?: string })
         </div>
 
         <div className="border-t border-[#191610]/12 py-14">
-          <h2 className="font-display text-2xl text-[#191610]">Tu aimeras aussi</h2>
+          <h2 className="font-display text-2xl text-[#191610]">Vous aimerez aussi</h2>
           <div className="mt-6 grid grid-cols-2 gap-4 md:grid-cols-4">
             {[
               { image: "/img/tee-noir.webp", nom: "Tee-shirt La Yole Noir", prix: 39, href: "/produit/tee-shirt-la-yole?couleur=noir" },

@@ -12,67 +12,68 @@ function Compass() {
   );
 }
 
-function HistoireAccessible() {
-  return (
-    <>
-      <h1>Parti à 11 ans. Revenu pour créer.</h1>
-      <p>
-        Érick quitte le nord de la Martinique à 11 ans pour l&apos;Hexagone. Il y construit sa vie comme enseignant en EPS et ostéopathe, au contact de la transmission, de l&apos;effort et des autres, sans jamais perdre le lien avec son île.
-      </p>
-      <p>
-        En 2022, il revient s&apos;installer en Martinique. Uncommon People Tribe naît de ce retour : transformer ses racines en un langage vestimentaire contemporain et prouver qu&apos;avec du travail et les bonnes personnes, on accomplit de grandes choses.
-      </p>
-      <blockquote>« Plus qu&apos;une marque : une identité à porter. »</blockquote>
-    </>
-  );
-}
-
 export function Fondateur() {
   return (
-    <section className={styles.section}>
-      <div className={styles.desktopArtwork}>
-        <div className="sr-only"><HistoireAccessible /></div>
-      </div>
+    <section className={styles.section} aria-labelledby="titre-fondateur">
+      <div className={styles.paperGrain} aria-hidden="true" />
 
-      <div className={styles.mobileArtwork}>
-        <div className={styles.layout}>
-          <article className={styles.panel}>
-            <div className={styles.panelContent}>
-              <p className={styles.eyebrow}>Le fondateur</p>
-              <h1 className={styles.title}>
-                Parti à 11 ans.
-                <span className={styles.titleAccent}>Revenu pour créer.</span>
-              </h1>
-              <p className={styles.copy}>
-                Érick quitte le nord de la Martinique à 11 ans pour l&apos;Hexagone. Il y construit sa vie comme enseignant en EPS et ostéopathe, au contact de la transmission, de l&apos;effort et des autres, sans jamais perdre le lien avec son île.
+      <div className={styles.layout}>
+        <article className={styles.panel}>
+          <div className={styles.panelContent}>
+            <p className={styles.eyebrow}>Le fondateur</p>
+
+            <h1 id="titre-fondateur" className={styles.title}>
+              Parti à 11 ans.
+              <span className={styles.titleAccent}>Revenu pour créer.</span>
+            </h1>
+
+            <div className={styles.story}>
+              <p>
+                Érick quitte le nord de la Martinique à 11 ans pour l&apos;Hexagone. Il y
+                construit sa vie comme enseignant en EPS et ostéopathe, au contact de la
+                transmission, de l&apos;effort et des autres, sans jamais perdre le lien avec son île.
               </p>
-              <p className={styles.copy}>
-                En 2022, il revient s&apos;installer en Martinique. Uncommon People Tribe naît de ce retour : transformer ses racines en un langage vestimentaire contemporain et prouver qu&apos;avec du travail et les bonnes personnes, on accomplit de grandes choses.
+              <p>
+                En 2022, il revient s&apos;installer en Martinique. Uncommon People Tribe naît
+                de ce retour : transformer ses racines en un langage vestimentaire
+                contemporain et prouver qu&apos;avec du travail et les bonnes personnes, on
+                accomplit de grandes choses.
               </p>
-              <div className={styles.quote}>
-                <blockquote className={styles.quoteText}>« Plus qu&apos;une marque :<br />une identité à porter. »</blockquote>
-                <p className={styles.signature}>Érick · Fondateur</p>
-              </div>
             </div>
-          </article>
 
-          <div className={styles.portraitWrap}>
-            <Image
-              src="/img/portrait-erick.webp"
-              alt="Érick, fondateur d'Uncommon People Tribe, sur la côte martiniquaise"
-              width={896}
-              height={1152}
-              priority
-              sizes="(min-width: 1280px) 0px, (min-width: 768px) 640px, calc(100vw - 48px)"
-              className={styles.portrait}
-            />
-            <aside className={styles.plaque} aria-label="Les piliers du fondateur">
-              <span className={styles.plaqueLogo}>UP</span>
-              <p className={styles.plaqueCopy}>Racines<br />Transmission<br />Exigence</p>
-              <Compass />
-            </aside>
+            <figure className={styles.quote}>
+              <blockquote className={styles.quoteText}>
+                « Plus qu&apos;une marque :
+                <br />
+                une identité à porter. »
+              </blockquote>
+              <figcaption className={styles.signature}>Érick · Fondateur</figcaption>
+            </figure>
           </div>
-        </div>
+        </article>
+
+        <figure className={styles.portraitWrap}>
+          <Image
+            src="/photo.jpeg"
+            alt="Érick, fondateur d'Uncommon People Tribe, sur la côte martiniquaise"
+            fill
+            priority
+            sizes="(min-width: 1280px) 48vw, (min-width: 1024px) 50vw, (min-width: 768px) calc(100vw - 144px), calc(100vw - 48px)"
+            className={styles.portrait}
+          />
+
+          <figcaption className={styles.plaque}>
+            <span className={styles.plaqueLogo}>UP</span>
+            <span className={styles.plaqueCopy}>
+              Racines
+              <br />
+              Transmission
+              <br />
+              Exigence
+            </span>
+            <Compass />
+          </figcaption>
+        </figure>
       </div>
     </section>
   );

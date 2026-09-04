@@ -21,7 +21,7 @@ const QUESTIONS_AUTRES = [
   },
   {
     q: "Où sont fabriquées les pièces ?",
-    r: "La première collection a été fabriquée en Martinique. Les prochaines collections seront produites par un fournisseur en Chine, avec la même exigence portée aux matières, aux broderies et aux finitions. Nous préférons te l'indiquer clairement.",
+    r: "La première collection a été fabriquée en Martinique. Les prochaines collections seront produites par un fournisseur en Chine, avec la même exigence portée aux matières, aux broderies et aux finitions. Nous préférons vous l'indiquer clairement.",
     categorie: "produit" as const,
   },
   {
@@ -31,7 +31,7 @@ const QUESTIONS_AUTRES = [
   },
   {
     q: "Qu'est-ce que le logo veut dire ?",
-    r: "Le monogramme UP entrelacé représente Uncommon People, la tribu qui porte la marque. Le drapeau martiniquais brodé ou cousu rappelle l'origine de la maison, où que tu sois.",
+    r: "Le monogramme UP entrelacé représente Uncommon People, la tribu qui porte la marque. Le drapeau martiniquais brodé ou cousu rappelle l'origine de la maison, où que vous soyez.",
     categorie: "produit" as const,
   },
   {
@@ -45,8 +45,8 @@ const QUESTIONS_AUTRES = [
     categorie: "produit" as const,
   },
   {
-    q: "Comment je choisis ma taille ?",
-    r: "Consulte le guide des tailles. Les polos taillent normal, les tee-shirts ont une coupe droite.",
+    q: "Comment choisir ma taille ?",
+    r: "Consultez le guide des tailles. Les polos taillent normal, les tee-shirts ont une coupe droite.",
     categorie: "tailles" as const,
   },
   {
@@ -56,12 +56,12 @@ const QUESTIONS_AUTRES = [
   },
   {
     q: "Comment prendre mes mesures correctement ?",
-    r: "Pose à plat un vêtement qui te va bien, sans tirer sur le tissu. Mesure la largeur des épaules, la poitrine d'aisselle à aisselle et la longueur du haut de l'épaule jusqu'au bas, puis compare avec notre guide des tailles.",
+    r: "Posez à plat un vêtement qui vous va bien, sans tirer sur le tissu. Mesurez la largeur des épaules, la poitrine d'aisselle à aisselle et la longueur du haut de l'épaule jusqu'au bas, puis comparez avec notre guide des tailles.",
     categorie: "tailles" as const,
   },
   {
     q: "Que choisir si je suis entre deux tailles ?",
-    r: "Privilégie la taille supérieure si tu souhaites davantage d'aisance. Pour un rendu plus près du corps, choisis la taille inférieure en tenant compte de tes mesures et de la coupe du modèle.",
+    r: "Privilégiez la taille supérieure si vous souhaitez davantage d'aisance. Pour un rendu plus près du corps, choisissez la taille inférieure en tenant compte de vos mesures et de la coupe du modèle.",
     categorie: "tailles" as const,
   },
   {
@@ -71,22 +71,22 @@ const QUESTIONS_AUTRES = [
   },
   {
     q: "Quelle taille choisir pour un porté plus ample ?",
-    r: "Choisis une taille au-dessus de ta taille habituelle. Tu gagneras en aisance tout en conservant le tombé du modèle.",
+    r: "Choisissez une taille au-dessus de votre taille habituelle. Vous gagnerez en aisance tout en conservant le tombé du modèle.",
     categorie: "tailles" as const,
   },
   {
     q: "Puis-je demander conseil avant de commander ?",
-    r: "Oui. Envoie-nous ta taille habituelle, ta taille en centimètres et ton tour de poitrine via la page Contact : nous t'aiderons à choisir la coupe la plus adaptée.",
+    r: "Oui. Envoyez-nous votre taille habituelle, votre taille en centimètres et votre tour de poitrine via la page Contact : nous vous aiderons à choisir la coupe la plus adaptée.",
     categorie: "tailles" as const,
   },
   {
     q: "Puis-je modifier ou annuler ma commande ?",
-    r: "Écris-nous rapidement après ta commande via la page Contact : tant qu'elle n'est pas expédiée, on peut encore l'ajuster.",
+    r: "Écrivez-nous rapidement après votre commande via la page Contact : tant qu'elle n'est pas expédiée, nous pouvons encore l'ajuster.",
     categorie: "commande" as const,
   },
   {
     q: "Quels moyens de paiement sont acceptés ?",
-    r: "Tu peux régler ta commande par carte bancaire ou avec PayPal.",
+    r: "Vous pouvez régler votre commande par carte bancaire ou avec PayPal.",
     categorie: "commande" as const,
   },
   {
@@ -121,12 +121,12 @@ const QUESTIONS_AUTRES = [
   },
   {
     q: "Comment demander un retour ?",
-    r: "Contacte-nous dans les 14 jours suivant la réception de ta commande, avant de renvoyer l'article. Nous te communiquerons les étapes à suivre. La pièce doit être non portée et conservée dans son emballage d'origine.",
+    r: "Contactez-nous dans les 14 jours suivant la réception de votre commande, avant de renvoyer l'article. Nous vous communiquerons les étapes à suivre. La pièce doit être non portée et conservée dans son emballage d'origine.",
     categorie: "retours" as const,
   },
   {
     q: "Puis-je échanger un article pour une autre taille ?",
-    r: "Oui, selon les tailles encore disponibles. Les collections étant produites en séries limitées, contacte-nous rapidement pour que nous puissions vérifier le stock.",
+    r: "Oui, selon les tailles encore disponibles. Les collections étant produites en séries limitées, contactez-nous rapidement pour que nous puissions vérifier le stock.",
     categorie: "retours" as const,
   },
   {
