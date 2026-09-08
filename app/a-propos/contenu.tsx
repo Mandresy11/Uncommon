@@ -196,16 +196,16 @@ export function ContenuMaison() {
               qu’il trouve naturellement sa place sur un vêtement contemporain.
             </p>
 
-            <ol className="relative mt-9 border-l border-[#d4b36a]/35 pl-7 sm:pl-9">
-              {CREATION.map((etape) => (
+            <ol className="relative mt-9 pl-7 sm:pl-9">
+              {CREATION.map((etape, index) => (
                 <li key={etape.numero} className="relative pb-7 last:pb-0">
-                  <span className="absolute -left-[2.22rem] top-1 h-3 w-3 rotate-45 border border-[#d4b36a] bg-[#0a0908] sm:-left-[2.72rem]" aria-hidden="true" />
-                  <div className="grid gap-2 sm:grid-cols-[3.25rem_minmax(0,1fr)] sm:gap-4">
-                    <span className="text-[0.72rem] font-medium tracking-[0.12em] text-[#d4b36a]">{etape.numero}</span>
-                    <div>
-                      <h3 className="font-display text-[1.03rem] uppercase tracking-[0.04em] text-[#f5f1e8]">{etape.titre}</h3>
-                      <p className="mt-2 max-w-lg text-[0.88rem] leading-[1.65] text-[#f5f1e8]/66">{etape.texte}</p>
-                    </div>
+                  {index < CREATION.length - 1 && (
+                    <span className="absolute -left-7 top-2.5 h-full w-px bg-[#d4b36a]/35 sm:-left-9" aria-hidden="true" />
+                  )}
+                  <span className="absolute -left-7 top-1 h-3 w-3 -translate-x-1/2 rotate-45 border border-[#d4b36a] bg-[#0a0908] sm:-left-9" aria-hidden="true" />
+                  <div>
+                    <h3 className="font-display text-[1.03rem] uppercase tracking-[0.04em] text-[#f5f1e8]">{etape.titre}</h3>
+                    <p className="mt-2 max-w-lg text-[0.88rem] leading-[1.65] text-[#f5f1e8]/66">{etape.texte}</p>
                   </div>
                 </li>
               ))}

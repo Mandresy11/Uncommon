@@ -6,6 +6,7 @@ import { Footer } from "@/components/footer";
 import { ScrollProgress } from "@/components/scroll-progress";
 import { PopupNewsletter } from "@/components/popup-newsletter";
 import { CartProvider } from "@/components/cart-provider";
+import { BulleContact } from "@/components/bulle-contact";
 
 // Typo v2 (retour Tom, regle 75) : Cinzel en display, capitales romaines gravees qui font echo
 // aux serifs du monogramme UP brode. Jost en corps, geometrique elegant. Identite forte.
@@ -45,6 +46,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <Navbar />
           {children}
           <Footer />
+          <BulleContact />
         </CartProvider>
       </body>
     </html>

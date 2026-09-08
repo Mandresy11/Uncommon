@@ -34,66 +34,12 @@ const PRODUITS = [
   },
 ] as const;
 
-function SchemaMesures() {
-  return (
-    <div className="grid items-center border border-[#191610]/15 bg-[#e5dcc9]/65 p-4 sm:p-7 lg:grid-cols-[0.88fr_1.12fr] lg:gap-12 lg:p-10">
-      <div className="relative mx-auto aspect-[4/4.2] w-full max-w-[17rem] sm:max-w-[21rem]">
-        <svg viewBox="0 0 360 378" className="h-full w-full" aria-hidden="true">
-          <path
-            d="M128 60 88 80 46 142l39 24 20-28v184h150V138l20 28 39-24-42-62-40-20c-6 24-25 38-52 38s-46-14-52-38Z"
-            fill="#f5f1e8"
-            stroke="#8f7134"
-            strokeWidth="1.5"
-          />
-          <path d="M128 60c6 24 25 38 52 38s46-14 52-38" fill="none" stroke="#8f7134" strokeWidth="1.5" />
-          <path d="M105 138h150M105 322h150" fill="none" stroke="#191610" strokeOpacity=".12" />
-
-          <g fill="none" stroke="#b58c35" strokeWidth="1.6">
-            <path d="M112 116h136" />
-            <path d="m112 116 8-5m-8 5 8 5m128-5-8-5m8 5-8 5" />
-            <path d="M100 205h160" />
-            <path d="m100 205 8-5m-8 5 8 5m152-5-8-5m8 5-8 5" />
-            <path d="M285 116v206" />
-            <path d="m285 116-5 8m5-8 5 8m-5 198-5-8m5 8 5-8" />
-          </g>
-
-          <g fill="#0a0908" stroke="#d4b36a" strokeWidth="1">
-            <circle cx="180" cy="116" r="14" />
-            <circle cx="180" cy="205" r="14" />
-            <circle cx="285" cy="219" r="14" />
-          </g>
-          <g fill="#e3c888" fontFamily="serif" fontSize="13" textAnchor="middle" dominantBaseline="central">
-            <text x="180" y="116">A</text>
-            <text x="180" y="205">B</text>
-            <text x="285" y="219">C</text>
-          </g>
-        </svg>
-      </div>
-
-      <dl className="mt-4 grid gap-4 sm:grid-cols-3 lg:mt-0 lg:grid-cols-1 lg:gap-6">
-        <div className="border-t border-[#9c7e32]/35 pt-3">
-          <dt className="font-display text-[0.82rem] uppercase tracking-[0.08em] text-[#191610]">A · Épaules</dt>
-          <dd className="mt-2 text-[0.76rem] leading-[1.55] text-[#191610]/65">D’une couture d’épaule à l’autre.</dd>
-        </div>
-        <div className="border-t border-[#9c7e32]/35 pt-3">
-          <dt className="font-display text-[0.82rem] uppercase tracking-[0.08em] text-[#191610]">B · Poitrine</dt>
-          <dd className="mt-2 text-[0.76rem] leading-[1.55] text-[#191610]/65">D’aisselle à aisselle, vêtement posé à plat.</dd>
-        </div>
-        <div className="border-t border-[#9c7e32]/35 pt-3">
-          <dt className="font-display text-[0.82rem] uppercase tracking-[0.08em] text-[#191610]">C · Longueur</dt>
-          <dd className="mt-2 text-[0.76rem] leading-[1.55] text-[#191610]/65">Du haut de l’épaule jusqu’au bas.</dd>
-        </div>
-      </dl>
-    </div>
-  );
-}
-
 export default function GuideTailles() {
   return (
     <main className="overflow-x-hidden">
       <div className="h-[6.6rem] bg-[#0a0908]" aria-hidden="true" />
 
-      <section className="relative overflow-hidden bg-[#f1e9dc] px-6 py-14 text-[#191610] sm:py-20 md:py-28" aria-labelledby="titre-mesures">
+      <section className="relative overflow-hidden bg-[#f1e9dc] px-4 py-14 text-[#191610] sm:px-6 sm:py-20 md:py-28" aria-labelledby="titre-mesures">
         <span
           className="pointer-events-none absolute inset-0 bg-cover bg-center opacity-[0.2] mix-blend-multiply"
           style={{ backgroundImage: "url(/img/fond-papier.webp)" }}
@@ -118,82 +64,85 @@ export default function GuideTailles() {
           </header>
 
           <div className="mt-9 sm:mt-12">
-            <SchemaMesures />
-
-            <div className="mt-7 min-w-0 sm:mt-8">
-              <div className="grid items-stretch gap-6 lg:grid-cols-2" aria-label="Tableaux des mesures par coupe">
+            <div className="min-w-0">
+              <div className="grid gap-6 lg:grid-cols-2 lg:gap-x-7 lg:gap-y-0" aria-label="Tableaux des mesures par coupe">
                 {PRODUITS.map((produit) => (
                   <article
                     key={produit.nom}
-                    className="min-w-0 overflow-hidden border border-[#191610]/14 bg-[#f8f3eb]/90 shadow-[0_16px_38px_rgba(25,22,16,0.06)]"
+                    className="grid min-w-0 overflow-hidden border border-[#9c7e32]/25 bg-[#fcfaf5] shadow-[0_12px_36px_rgba(25,22,16,0.07)] lg:row-span-3 lg:grid-rows-subgrid"
                   >
-                    <div className="flex flex-col gap-3 px-5 pb-4 pt-5 sm:flex-row sm:items-start sm:justify-between sm:px-7 sm:pt-6">
-                      <div>
-                        <p className="text-[0.6rem] font-semibold uppercase tracking-[0.2em] text-[#9c7e32]">
+                    <header className="border-t-2 border-[#d4b36a] bg-[#191610] px-5 py-6 sm:px-7 sm:py-7">
+                      <div className="flex flex-wrap items-center justify-between gap-3">
+                        <p className="text-[0.65rem] font-medium uppercase tracking-[0.2em] text-[#e3c888]">
                           {produit.coupe}
                         </p>
-                        <h3 className="font-display mt-2 text-[1.1rem] text-[#191610] sm:text-[1.25rem]">
-                          {produit.nom}
-                        </h3>
+                        <span className="text-[0.7rem] tracking-[0.06em] text-[#f5f1e8]/65">
+                          {produit.mesures.length} tailles · {produit.mesures[0].taille} à {produit.mesures[produit.mesures.length - 1].taille}
+                        </span>
                       </div>
-                      <span className="w-fit border border-[#9c7e32]/35 bg-[#e5dcc9]/50 px-3 py-1.5 text-[0.55rem] font-semibold uppercase tracking-[0.16em] text-[#7e642d]">
-                        Mesures à plat · cm
-                      </span>
-                    </div>
+                      <h2 className="font-display mt-4 text-[1.2rem] leading-snug text-[#f5f1e8] sm:text-[1.5rem]">
+                        {produit.nom}
+                      </h2>
+                    </header>
 
-                    <div
-                      className="overflow-hidden border-y border-[#191610]/10"
-                    >
+                    <div className="min-w-0 px-3 pb-4 pt-5 sm:px-6 sm:pb-6">
+                      <p className="mb-4 flex items-center justify-between gap-3 px-1 text-[0.7rem] text-[#6b6253]">
+                        <span>Mesures à plat</span>
+                        <span className="border border-[#9c7e32]/25 bg-[#f0e9da] px-2 py-0.5 font-medium text-[#6e5727]">En cm</span>
+                      </p>
                       <table className="w-full table-fixed border-collapse text-center">
                         <caption className="sr-only">
                           Mesures indicatives en centimètres pour {produit.nom}
                         </caption>
                         <colgroup>
-                          <col className="w-[18%]" />
-                          <col className="w-[27.33%]" />
-                          <col className="w-[27.33%]" />
-                          <col className="w-[27.34%]" />
+                          <col className="w-[22%]" />
+                          <col className="w-[26%]" />
+                          <col className="w-[26%]" />
+                          <col className="w-[26%]" />
                         </colgroup>
-                        <thead className="bg-[#17140f] text-[#f5f1e8]">
+                        <thead className="border-y border-[#9c7e32]/20 bg-[#f0e9da] text-[0.625rem] font-semibold uppercase tracking-[0.025em] text-[#625334] sm:text-[0.7rem] sm:tracking-[0.06em]">
                           <tr>
-                            <th scope="col" className="px-2 py-2.5 text-left text-[0.5rem] font-semibold uppercase tracking-[0.08em] text-[#e3c888] sm:px-4 sm:py-3 sm:text-[0.59rem] sm:tracking-[0.16em]">
+                            <th scope="col" className="px-1 py-4 font-semibold">
                               Taille
                             </th>
-                            <th scope="col" className="px-0.5 py-2.5 text-[0.48rem] font-semibold uppercase tracking-[0.045em] sm:px-3 sm:py-3 sm:text-[0.59rem] sm:tracking-[0.12em]">
-                              <span className="mb-0.5 block text-[#d4b36a] sm:mb-0 sm:mr-1 sm:inline">A</span>
+                            <th scope="col" className="px-1 py-4 font-semibold">
                               Épaules
                             </th>
-                            <th scope="col" className="px-0.5 py-2.5 text-[0.48rem] font-semibold uppercase tracking-[0.045em] sm:px-3 sm:py-3 sm:text-[0.59rem] sm:tracking-[0.12em]">
-                              <span className="mb-0.5 block text-[#d4b36a] sm:mb-0 sm:mr-1 sm:inline">B</span>
+                            <th scope="col" className="px-1 py-4 font-semibold">
                               Poitrine
                             </th>
-                            <th scope="col" className="px-0.5 py-2.5 text-[0.48rem] font-semibold uppercase tracking-[0.045em] sm:px-3 sm:py-3 sm:text-[0.59rem] sm:tracking-[0.12em]">
-                              <span className="mb-0.5 block text-[#d4b36a] sm:mb-0 sm:mr-1 sm:inline">C</span>
+                            <th scope="col" className="px-1 py-4 font-semibold">
                               Longueur
                             </th>
                           </tr>
                         </thead>
-                        <tbody className="divide-y divide-[#191610]/10">
-                          {produit.mesures.map((mesure, index) => (
-                            <tr key={mesure.taille} className={index % 2 === 0 ? "bg-white/55" : "bg-[#e5dcc9]/35"}>
-                              <th scope="row" className="px-2 py-3 text-left font-display text-[0.72rem] font-semibold text-[#9c7e32] sm:px-4 sm:text-[0.78rem]">
-                                {mesure.taille}
+                        <tbody className="divide-y divide-[#9c7e32]/15 border-b border-[#9c7e32]/20 text-[0.95rem] tabular-nums text-[#302a20] sm:text-base">
+                          {produit.mesures.map((mesure) => (
+                            <tr key={mesure.taille} className="group even:bg-[#f5f0e6]/60 transition-colors duration-150 hover:bg-[#ebe0c7]">
+                              <th scope="row" className="bg-[#eee5d3]/35 px-1 py-3 font-medium">
+                                <span className="inline-flex min-h-8 min-w-10 items-center justify-center border border-[#9c7e32]/30 bg-[#fcfaf5] px-1.5 text-[0.8rem] font-semibold tracking-[0.04em] text-[#715923] transition-colors duration-150 group-hover:border-[#80642d] group-hover:bg-[#80642d] group-hover:text-white">
+                                  {mesure.taille}
+                                </span>
                               </th>
-                              <td className="px-1 py-3 text-[0.76rem] tabular-nums text-[#191610]/78 sm:px-3 sm:text-[0.82rem]">{mesure.epaules}</td>
-                              <td className="px-1 py-3 text-[0.76rem] tabular-nums text-[#191610]/78 sm:px-3 sm:text-[0.82rem]">{mesure.poitrine}</td>
-                              <td className="px-1 py-3 text-[0.76rem] tabular-nums text-[#191610]/78 sm:px-3 sm:text-[0.82rem]">{mesure.longueur}</td>
+                              <td className="px-1 py-3">{mesure.epaules}</td>
+                              <td className="px-1 py-3">{mesure.poitrine}</td>
+                              <td className="px-1 py-3">{mesure.longueur}</td>
                             </tr>
                           ))}
                         </tbody>
                       </table>
                     </div>
 
-                    <div className="px-5 pb-5 pt-4 sm:px-7 sm:pb-6">
-                      <p className="text-[0.84rem] leading-[1.65] text-[#191610]/72">{produit.conseil}</p>
-                      <p className="mt-3 text-[0.64rem] uppercase tracking-[0.12em] text-[#191610]/48">
+                    <footer className="border-t border-[#9c7e32]/20 bg-[#f3ede1] px-5 py-5 sm:px-7 sm:py-6">
+                      <p className="flex items-center gap-2 text-[0.65rem] font-semibold uppercase tracking-[0.14em] text-[#715923]">
+                        <span className="h-px w-5 bg-[#9c7e32]" aria-hidden="true" />
+                        Le conseil de la maison
+                      </p>
+                      <p className="mt-3 text-[0.875rem] leading-[1.7] text-[#4f483d]">{produit.conseil}</p>
+                      <p className="mt-4 text-[0.7rem] leading-relaxed text-[#6b6253]">
                         {produit.matiere}
                       </p>
-                    </div>
+                    </footer>
                   </article>
                 ))}
               </div>

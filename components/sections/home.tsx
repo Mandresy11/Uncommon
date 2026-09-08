@@ -733,7 +733,7 @@ function CtaFlottant() {
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: 20 }}
           transition={{ duration: 0.35, ease: EASE_LUXE }}
-          className="fixed bottom-5 right-5 z-40 md:hidden"
+          className="fixed bottom-[5.5rem] right-5 z-40 md:hidden"
         >
           <Cta href="/boutique" variante="or">
             Boutique
