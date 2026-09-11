@@ -46,7 +46,7 @@ function Hero() {
         className="absolute inset-0 hidden h-full w-full object-cover object-center md:block"
         aria-hidden="true"
       >
-        <source src="/img/hero-campagne.mp4" type="video/mp4" />
+        <source src="/hero-campagne.mp4" type="video/mp4" />
       </video>
       <video
         autoPlay
@@ -58,7 +58,7 @@ function Hero() {
         className="absolute inset-0 block h-full w-full object-cover object-center md:hidden"
         aria-hidden="true"
       >
-        <source src="/img/hero-campagne-mobile.mp4" type="video/mp4" />
+        <source src="/hero-campagne-mobile.mp4" type="video/mp4" />
       </video>
       {/* Overlay abaisse mobile ET desktop (retour Tom v17 : encore moins d'ombre sur ordinateur). */}
       <div className="absolute inset-0 bg-gradient-to-b from-[#0A0908]/25 via-[#0A0908]/15 to-[#0A0908]/45" aria-hidden="true" />
