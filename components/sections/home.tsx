@@ -42,7 +42,6 @@ function Hero() {
         loop
         playsInline
         preload="auto"
-        poster="/img/hero-campagne.webp"
         className="absolute inset-0 hidden h-full w-full object-cover object-center md:block"
         aria-hidden="true"
       >
@@ -54,7 +53,6 @@ function Hero() {
         loop
         playsInline
         preload="auto"
-        poster="/img/hero-campagne-mobile.webp"
         className="absolute inset-0 block h-full w-full object-cover object-center md:hidden"
         aria-hidden="true"
       >
