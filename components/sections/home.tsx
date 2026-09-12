@@ -714,34 +714,6 @@ function Newsletter() {
   );
 }
 
-// Bouton flottant qui APPARAIT une fois le hero depasse (retour Tom : il le veut au scroll).
-function CtaFlottant() {
-  const [visible, setVisible] = useState(false);
-  useEffect(() => {
-    const onScroll = () => setVisible(window.scrollY > window.innerHeight * 0.85);
-    onScroll();
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
-  return (
-    <AnimatePresence>
-      {visible && (
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          exit={{ opacity: 0, y: 20 }}
-          transition={{ duration: 0.35, ease: EASE_LUXE }}
-          className="fixed bottom-[5.5rem] right-5 z-40 md:hidden"
-        >
-          <Cta href="/boutique" variante="or">
-            Boutique
-          </Cta>
-        </motion.div>
-      )}
-    </AnimatePresence>
-  );
-}
-
 export function HomeSections() {
   return (
     <main>
@@ -753,7 +725,6 @@ export function HomeSections() {
       <Histoire />
       <PourquoiTribu />
       <Newsletter />
-      <CtaFlottant />
     </main>
   );
 }
