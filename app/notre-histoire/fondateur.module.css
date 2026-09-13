@@ -38,7 +38,7 @@
   position: relative;
   z-index: 2;
   min-width: 0;
-  padding: 3.4rem 1.4rem 2.4rem;
+  padding: 3.4rem 2.75rem 2.4rem;
   clip-path: polygon(
     1.5rem 0,
     calc(100% - 1.5rem) 0,
